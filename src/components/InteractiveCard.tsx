@@ -50,7 +50,7 @@ export default function InteractiveCard({ href, title, description, image, baseS
             <div style={{ position: 'relative', zIndex: 2 }}>
                 {/* 💡 AJUSTE DE FONTE para melhor visualização em cards menores */}
                 <h3 style={{ margin: 0, fontSize: '1.2em', marginBottom: '5px' }}>{title}</h3> 
-                <p style={{ margin: 0, fontSize: '0.8em', color: '#bbb' }}>{description}</p>
+                <p style={{ margin: 0, fontSize: '0.9em', color: '#bbb' }}>{description}</p>
             </div>
         </Link>
     );

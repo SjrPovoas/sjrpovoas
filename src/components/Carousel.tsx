@@ -8,7 +8,7 @@ interface CarouselProps {
 }
 
 // Largura de visualização para 3.5 cards (240px/card + 20px gap)
-const CAROUSEL_VIEWPORT_WIDTH = '900px'; 
+const CAROUSEL_VIEWPORT_WIDTH = '1200px'; 
 const CARD_WIDTH_WITH_GAP = 260; // 240px (card) + 20px (gap)
 
 // Estilo para os botões de navegação: MAIS FINO E MAIS TRANSPARENTE
@@ -16,13 +16,13 @@ const buttonStyle: React.CSSProperties = {
   position: 'absolute',
   top: 0, 
   height: '100%', // Mantém esticado para cobrir toda a altura
-  width: '35x', // Mais fino
-  backgroundColor: 'rgba(0, 0, 0, 0.3)', // Maior transparência (30% preto)
-  color: '#888', // COR DA SETA: Cinza mais escuro
+  width: '30px', // Mais fino
+  backgroundColor: 'rgba(0, 0, 0, 0.1)', // Maior transparência
+  color: 'white', // COR DA SETA
   border: 'none',
   cursor: 'pointer',
   zIndex: 10, 
-  fontSize: '7.5em',
+  fontSize: '4em', // TAMANHO DA SETA
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -32,7 +32,7 @@ const buttonStyle: React.CSSProperties = {
 // Estilo para o título da seção
 const titleStyle: React.CSSProperties = {
   color: 'white',
-  fontSize: '2em',
+  fontSize: '1.7em',
   fontWeight: '700',
   marginBottom: '15px',
   marginTop: '40px',
@@ -77,7 +77,7 @@ export default function Carousel({ title, children }: CarouselProps) {
   const buttonAreaStyle: React.CSSProperties = {
     position: 'relative', 
     maxWidth: CAROUSEL_VIEWPORT_WIDTH, // CHAVE: Limita a visualização a 3.5 cards
-    margin: '0 auto', // Centraliza o carrossel no container de 1200px
+    margin: '0', // Centraliza o carrossel no container de 1200px
   };
 
 
