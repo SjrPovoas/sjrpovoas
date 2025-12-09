@@ -1,6 +1,10 @@
+// src/app/admin/pagamentos/page.tsx
+
 'use client';
 
 import React, { useState, useEffect, useCallback, CSSProperties } from 'react';
+import LogoutButton from '@/components/auth/LogoutButton';
+import Link from 'next/link';
 
 // Tipagem baseada na resposta da sua API /api/admin/pending-payments
 interface PendingPayment {
@@ -52,12 +56,28 @@ const buttonConfirmStyle: CSSProperties = {
 };
 
 const buttonRejectStyle: CSSProperties = {
-    padding: '8px 12px',
-    backgroundColor: '#dc3545', // Vermelho
-    color: 'white',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
+  padding: '8px 12px',
+  backgroundColor: '#dc3545', // Vermelho
+  color: 'white',
+  border: 'none',
+  borderRadius: '4px',
+  cursor: 'pointer',
+};
+
+const cardContainerStyle: CSSProperties = {
+  display: 'flex',
+  gap: '20px',
+  marginBottom: '30px',
+  flexWrap: 'wrap', // Garante quebra de linha em telas pequenas
+};
+
+const cardBaseStyle: CSSProperties = {
+  padding: '20px',
+  backgroundColor: '#f8f9fa', // Fundo levemente cinza para destacar o card
+  borderRadius: '6px',
+  flex: 1,
+  minWidth: '300px',
+  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
 };
 
 
@@ -73,7 +93,7 @@ export default function AdminPagamentosPage() {
     try {
       // ⚠️ CHAMA O API ROUTE QUE FILTRA OS PENDING_REVIEW
       const response = await fetch('/api/admin/pending-payments');
-      
+
       if (!response.ok) {
         throw new Error('Falha ao carregar pagamentos pendentes. Talvez você não esteja logado como Admin.');
       }
@@ -95,9 +115,9 @@ export default function AdminPagamentosPage() {
 
   // Função para confirmar ou rejeitar um pagamento
   const handleAction = async (userId: number, action: 'confirmar' | 'rejeitar') => {
-    const confirmation = action === 'confirmar' 
-        ? 'Tem certeza que deseja confirmar esta assinatura?'
-        : 'Tem certeza que deseja REJEITAR este pagamento?';
+    const confirmation = action === 'confirmar'
+      ? 'Tem certeza que deseja confirmar esta assinatura?'
+      : 'Tem certeza que deseja REJEITAR este pagamento?';
 
     if (!window.confirm(confirmation)) {
       return;
@@ -131,66 +151,95 @@ export default function AdminPagamentosPage() {
   }
 
   if (error) {
-    return <div style={{...containerStyle, color: 'red'}}>Erro: {error}</div>;
+    return <div style={{ ...containerStyle, color: 'red' }}>Erro: {error}</div>;
   }
 
   return (
-    <div style={containerStyle}>
-      <h1 style={{ color: '#007bff', borderBottom: '2px solid #007bff', paddingBottom: '10px', marginBottom: '30px' }}>
-        💰 Pagamentos Pendentes de Revisão ({payments.length})
-      </h1>
+    // CORREÇÃO: Usando um Fragmento (<>) como elemento raiz para englobar todos os elementos
+    <>
+      {/* 1. HEADER E LOGOUT BUTTON (Movido para o topo para melhor acesso) */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', padding: '10px 30px', maxWidth: '1000px', margin: '0 auto', marginBottom: '-40px' }}>
+        <LogoutButton />
+      </div>
 
-      {payments.length === 0 ? (
-        <p style={{ fontSize: '1.2em', textAlign: 'center', padding: '50px', backgroundColor: '#e9f7ef', borderRadius: '5px' }}>
-          🎉 Não há pagamentos pendentes no momento.
-        </p>
-      ) : (
-        <table style={tableStyle}>
-          <thead>
-            <tr>
-              <th style={thStyle}>ID</th>
-              <th style={thStyle}>Nome</th>
-              <th style={thStyle}>Email</th>
-              <th style={thStyle}>Plano</th>
-              <th style={thStyle}>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {payments.map(payment => (
-              <tr key={payment.id}>
-                <td style={tdStyle}>{payment.id}</td>
-                <td style={tdStyle}>{payment.nomeCompleto}</td>
-                <td style={tdStyle}>{payment.email}</td>
-                <td style={tdStyle}>{payment.plano?.toUpperCase()}</td>
-                <td style={tdStyle}>
-                  {/* Simula o link do comprovante. Em um app real, abriria a imagem/pdf */}
-                  <a 
-                    href={`/comprovantes/${payment.comprovanteFileName}`} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    style={{ color: '#007bff', marginRight: '15px', textDecoration: 'underline' }}
-                  >
-                    Ver Comprovante
-                  </a>
+      <div style={containerStyle}>
+        <h1 style={{ color: '#007bff', borderBottom: '2px solid #007bff', paddingBottom: '10px', marginBottom: '30px' }}>
+          💰 Pagamentos Pendentes de Revisão ({payments.length})
+        </h1>
 
-                  <button 
-                    onClick={() => handleAction(payment.id, 'confirmar')} 
-                    style={buttonConfirmStyle}
-                  >
-                    Confirmar
-                  </button>
-                  <button 
-                    onClick={() => handleAction(payment.id, 'rejeitar')} 
-                    style={buttonRejectStyle}
-                  >
-                    Rejeitar
-                  </button>
-                </td>
+        {/* CARDS DE NAVEGAÇÃO */}
+        <div style={cardContainerStyle}>
+          {/* Card de Gerenciamento de Usuários */}
+          <div style={cardBaseStyle}>
+            <h2 style={{ color: '#333' }}>Usuários</h2>
+            <p>Visualize e gerencie todos os usuários cadastrados e seus planos.</p>
+            <Link href="/admin/users" style={{ display: 'inline-block', marginTop: '15px', color: '#fff', backgroundColor: '#6c757d', padding: '8px 15px', borderRadius: '4px', textDecoration: 'none' }}>
+              Gerenciamento de Usuários
+            </Link>
+          </div>
+          {/* Card de Gerador de Recibo Online */}
+          <div style={cardBaseStyle}>
+            <h2 style={{ color: '#333' }}>Recibos</h2>
+            <p>Gere recibo online para os usuários que solicitarem.</p>
+            <a href="/dashboard/gerador-de-recibo-online.html" target='_blank' rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '15px', color: '#fff', backgroundColor: '#6c757d', padding: '8px 15px', borderRadius: '4px', textDecoration: 'none' }}>
+              Gerar Recibo Online
+            </a>
+          </div>
+        </div>
+
+        {payments.length === 0 ? (
+          <p style={{ fontSize: '1.2em', textAlign: 'center', padding: '50px', backgroundColor: '#e9f7ef', borderRadius: '5px', marginTop: '20px' }}>
+            🎉 Não há pagamentos pendentes no momento.
+          </p>
+        ) : (
+          <table style={tableStyle}>
+            <thead>
+              <tr>
+                <th style={thStyle}>ID</th>
+                <th style={thStyle}>Nome</th>
+                <th style={thStyle}>Email</th>
+                <th style={thStyle}>Plano</th>
+                <th style={thStyle}>Ações</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-    </div>
+            </thead>
+            <tbody>
+              {payments.map(payment => (
+                <tr key={payment.id}>
+                  <td style={tdStyle}>{payment.id}</td>
+                  <td style={tdStyle}>{payment.nomeCompleto}</td>
+                  <td style={tdStyle}>{payment.email}</td>
+                  <td style={tdStyle}>{payment.plano?.toUpperCase()}</td>
+                  <td style={tdStyle}>
+                    {/* Simula o link do comprovante. */}
+                    <a
+                      href={`/comprovantes/${payment.comprovanteFileName}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ color: '#007bff', marginRight: '15px', textDecoration: 'underline' }}
+                    >
+                      Ver Comprovante
+                    </a>
+
+                    <button
+                      onClick={() => handleAction(payment.id, 'confirmar')}
+                      style={buttonConfirmStyle}
+                    >
+                      Confirmar
+                    </button>
+                    <button
+                      onClick={() => handleAction(payment.id, 'rejeitar')}
+                      style={buttonRejectStyle}
+                    >
+                      Rejeitar
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+      {/* O Fragmento fecha aqui */}
+    </>
   );
 }

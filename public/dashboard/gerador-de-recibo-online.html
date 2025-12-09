@@ -7,29 +7,29 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="title" content="SjrPovoaS | Criamos a solução que você procura">
     <meta name="author" content="SjrPovoaS">
-    <meta name="description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
-    <meta name="Keywords" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta name="description" content="Gerador de Recibo Online da SjrPovoaS">
+    <meta name="Keywords" content="Gerador de Recibo Online da SjrPovoaS">
     <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
     <meta name="robots" content="follow, index">
     <meta name="googlebot" content="all">
     <meta name="google-site-verification" content="">
-    <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
+    <title>Gerador de Recibo Online da SjrPovoaS</title>
     <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
     <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
     <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
     <link rel="mask-icon" href="/src/app/favicon.ico">
-    <link rel="canonical" href="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html/">
+    <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-recibo-online.html/">
     <!-- Open Graph tags are also recommended -->
     <meta property="og:locale" content="pt_BR">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="SjrPovoaS">
-    <meta property="og:url" content="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html">
-    <meta property="og:image" content="https://sjrpovoas.vercel.app/public/assets/img/logo-SjrPovoaS.png">
+    <meta property="og:url" content="https://sjrpovoas.vercel.app/dashboard/gerador-de-recibo-online.html">
+    <meta property="og:image" content="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png">
     <meta name="og:image:width" content="1200">
     <meta name="og:image:height" content="630">
-    <meta property="og:title" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
-    <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta property="og:title" content="Gerador de Recibo Online da SjrPovoaS">
+    <meta property="og:description" content="Gerador de Recibo Online da SjrPovoaS">
     <!-- Carrega o Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configuração do Tailwind para usar o tema de cores AGP -->
@@ -65,8 +65,8 @@
             width: 100%;
             transition: all 150ms ease-in-out; }
         .form-input:focus {
-             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5); /* focus:ring-2 focus:ring-green-500 */
-             border-color: #10b981; /* focus:border-green-500 */ }
+             box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5); /* focus:ring-2 focus:ring-green-500 */
+             border-color: gray; /* focus:border-green-500 */ }
         /* Estilos para mensagem de erro (substituindo o alert) */
         #errorMessage {
             color: #dc2626; /* red-600 */
@@ -98,13 +98,13 @@
     <!-- Cabeçalho (Branding) -->
     <header class="w-full max-w-4xl p-4 mb-6 bg-white rounded-xl shadow-md flex items-center justify-center space-x-4">
         <!-- Placeholder para o Logo da SjrPovoaS -->
-        <a href="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html" aria-label="Gerador Online de Documentos">
-            <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover"
-             onerror="this.onerror=null; this.src='/public/assets/img/logo-SjrPovoaS.png';">
+        <a href="https://sjrpovoas.vercel.app/dashboard/gerador-de-recibo-online.html" aria-label="Gerador de Recibo Online">
+            <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover"
+             onerror="this.onerror=null; this.src='/assets/img/logo-SjrPovoaS.png';">
         </a>
         <div class="text-left">
             <h1 class="text-3xl font-bold agp-text-gray">SjrPovoaS</h1>
-            <p class="text-gray-600 mt-1">Gerador Online de Documentos</p>
+            <p class="text-gray-600 mt-1">Gerador de Recibo Online</p>
         </div>
     </header>
 
@@ -212,7 +212,7 @@
             </form>
 
             <!-- Botão de Geração -->
-            <button id="generateButton" onclick="renderPreview()" class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50">
+            <button id="generateButton" onclick="renderPreview()" class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-highlightGray-700 focus:outline-none focus:ring-4 focus:ring-white-500 focus:ring-opacity-50">
                 Gerar Recibo para Visualização
             </button>
         </section>
@@ -241,7 +241,7 @@
 
     <footer class="w-full p-4 mb-1 rounded-x1 flex justify-center space-x-6">
         <a href="https://sjrpovoas.vercel.app" aria-label="Logo SjrPovoaS" target="_blank">
-            <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-12 h-12 rounded-full object-cover">
+            <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-12 h-12 rounded-full object-cover">
         </a>
         <div class="text-left">
             <p class="text-sm text-gray-400 mt-0">
@@ -257,7 +257,7 @@
 
         // Dados fixos da empresa (Almeida Gomes Paisagismo)
         const companyInfo = {
-            name: "ILVIO PÓVOAS DE CARVALHO JÚNIOR",
+            name: "SILVIO PÓVOAS DE CARVALHO JÚNIOR",
             cpf: "011.907.545-84",
             address: "Quadra 04 Lote 26 Condomínio Flores do Cerrado 2 - Recreio Mossoró. Cidade Ocidental - GO. Brasil",
             email: "sjrpovoas@gmail.com",
@@ -621,7 +621,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             return `
                 <div class="p-4 md:p-8 space-y-6">
                     <div class="text-center border-b pb-4">
-                        <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
+                        <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
                         <h1 class="text-2xl font-bold agp-text-gray">CONTRATO DE PRESTAÇÃO DE SERVIÇOS</h1>
                         <p class="text-sm text-gray-600">Documento gerado em: ${dataAtual}</p>
                     </div>
@@ -705,7 +705,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             return `
                 <div class="p-4 md:p-8 space-y-6">
                     <div class="text-center pb-4 border-b-4 agp-border-gray">
-                        <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
+                        <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
                         <h1 class="text-2xl font-bold agp-text-gray">PROPOSTA DE ORÇAMENTO Nº ${Math.floor(Math.random() * 9000) + 1000}</h1>
                         <p class="text-sm text-gray-600">Data de Emissão: ${dataAtualFormatada}</p>
                     </div>
@@ -782,7 +782,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             return `
                 <div class="p-4 md:p-8 space-y-6">
                     <div class="text-center border-b pb-4">
-                        <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
+                        <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
                         <h1 class="text-2xl font-bold agp-text-gray">RECIBO DE PAGAMENTO DE SERVIÇOS</h1>
                         <p class="text-sm text-gray-600">Referente ao serviço iniciado em: ${dataInicioFormatada}</p>
                     </div>
