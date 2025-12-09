@@ -61,7 +61,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
 
       if (response.ok) {
         // 🚨 CORREÇÃO CRÍTICA: path: '/'
-        // Isso garante que o middleware possa ler o cookie em TODAS as rotas
+        // Isso garante que o proxy possa ler o cookie em TODAS as rotas
         Cookies.set('userToken', result.token, { 
             expires: 7, 
             path: '/', 
@@ -71,7 +71,7 @@ export default function LoginForm({ setView }: LoginFormProps) {
         
         setStatus('✅ Login bem-sucedido! Redirecionando...');
         
-        // Redirecionamento condicional baseado no token para compatibilidade com o middleware
+        // Redirecionamento condicional baseado no token para compatibilidade com o proxy
         if (result.token.startsWith('ADMIN_JWT')) {
              router.push('/admin/dashboard');
         } else {

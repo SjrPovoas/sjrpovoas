@@ -9,7 +9,7 @@ const PROTECTED_ROUTES = ['/dashboard'];
 const ADMIN_ROUTES = ['/admin', '/admin/dashboard', '/admin/pagamentos'];
 
 /**
- * Função principal do Middleware, executada antes de cada rota correspondente no matcher.
+ * Função principal do Proxy, executada antes de cada rota correspondente no matcher.
  */
 export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
@@ -32,11 +32,11 @@ export function proxy(request: NextRequest) {
         // Se o usuário está logado, redireciona para o dashboard apropriado
         const redirectTo = token.startsWith('ADMIN_JWT') ? '/admin/dashboard' : '/dashboard';
         
-        console.log(`[MIDDLEWARE] Já logado. Redirecionando para ${redirectTo}.`);
+        console.log(`[PROXY] Já logado. Redirecionando para ${redirectTo}.`);
         return NextResponse.redirect(new URL(redirectTo, request.url));
     }
     // Permite acesso à página de login se não houver token.
-    console.log(`[MIDDLEWARE] Permitindo acesso a ${path}.`);
+    console.log(`[PROXY] Permitindo acesso a ${path}.`);
     return NextResponse.next();
   }
 
@@ -49,7 +49,7 @@ export function proxy(request: NextRequest) {
       // Determina para onde redirecionar com base no tipo de rota que tentou acessar
       const redirectTo = isAdminRoute ? '/admin/login' : '/login'; 
       
-      console.log(`[MIDDLEWARE] Token ausente. Acesso negado a ${path}. Redirecionando para ${redirectTo}.`);
+      console.log(`[PROXY] Token ausente. Acesso negado a ${path}. Redirecionando para ${redirectTo}.`);
       return NextResponse.redirect(new URL(redirectTo, request.url));
     }
     
@@ -58,24 +58,24 @@ export function proxy(request: NextRequest) {
     // ----------------------------------------------------------------------
     if (isAdminRoute && !token.startsWith('ADMIN_JWT')) {
         // Se o token existe, mas não é de administrador, e está tentando acessar rota admin
-        console.log(`[MIDDLEWARE] Acesso negado: Token comum tentando rota admin (${path}).`);
+        console.log(`[PROXY] Acesso negado: Token comum tentando rota admin (${path}).`);
         return NextResponse.redirect(new URL('/', request.url)); // Redireciona para Home ou outra página de erro
     }
     
     // Se chegou aqui, o token é válido e tem a permissão correta para a rota.
-    console.log(`[MIDDLEWARE] Token OK. Permitindo acesso a ${path}.`);
+    console.log(`[PROXY] Token OK. Permitindo acesso a ${path}.`);
     return NextResponse.next();
   }
   
   // ----------------------------------------------------------------------
   // 4. ROTAS PÚBLICAS (Qualquer outra rota que não está no matcher)
   // ----------------------------------------------------------------------
-  console.log(`[MIDDLEWARE] Rota pública (${path}). Permitindo acesso.`);
+  console.log(`[PROXY] Rota pública (${path}). Permitindo acesso.`);
   return NextResponse.next();
 }
 
 /**
- * Configuração que define quais rotas o middleware deve monitorar.
+ * Configuração que define quais rotas o Proxy deve monitorar.
  * O /:path* garante que todas as subrotas sejam monitoradas.
  */
 export const config = {

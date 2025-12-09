@@ -69,7 +69,7 @@ export async function POST(request: Request) {
         return NextResponse.json(
             { 
                 message: 'Login de administrador bem-sucedido!',
-                token: adminToken, // ⬅️ Essencial para o Middleware
+                token: adminToken, // ⬅️ Essencial para o Proxy
                 role: 'admin',
                 isAdmin: true 
             },
