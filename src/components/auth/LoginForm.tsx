@@ -4,8 +4,8 @@ import React, { useState, CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'; 
 import { AuthView } from './AuthContainer'; 
+import "./globals.css";
 
-// ⚠️ Definição dos estilos no escopo global para evitar erros de referência (Cannot find name '...')
 interface LoginFormProps {
     setView: (view: AuthView) => void;
 }

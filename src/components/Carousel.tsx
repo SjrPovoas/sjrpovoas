@@ -35,7 +35,7 @@ const titleStyle: React.CSSProperties = {
   fontSize: '1.7em',
   fontWeight: '700',
   marginBottom: '15px',
-  marginTop: '40px',
+  marginTop: '35px',
 };
 
 

@@ -2,6 +2,7 @@
 
 import React, { useState, CSSProperties } from 'react'; // Removido 'useCallback'
 import AuthContainer, { AuthView } from '@/components/auth/AuthContainer'; 
+import "./globals.css";
 
 // Estilos básicos
 const mainStyle: CSSProperties = {
