@@ -3,8 +3,7 @@
 import React, { useState, CSSProperties } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie'; 
-import { AuthView } from './AuthContainer'; 
-import "./globals.css";
+import { AuthView } from './AuthContainer';
 
 interface LoginFormProps {
     setView: (view: AuthView) => void;

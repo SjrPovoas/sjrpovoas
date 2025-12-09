@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import "./globals.css";
+// Importando tipos e estilos do seu arquivo central
 import { FormProps, LoginData, errorStyle } from './types'; 
 
 export default function InnerLoginForm({ setView }: FormProps) {
