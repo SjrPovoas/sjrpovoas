@@ -1,18 +1,11 @@
 // src/app/page.tsx
 
-// 'use client'; // MANTIDO COMO SERVER COMPONENT POR PADRÃO, se possível.
-
 import Link from 'next/link';
 import React from 'react'; 
-// IMPORTADO: O componente atualizado com CSS inline
 import AssinaturaForm from '@/components/AssinaturaForm';
-
-// Imports de componentes assumidos (Mantenha o caminho real do seu projeto, ex: '@/components/...')
-// NOTA: Assumo que '@/components/...' mapeia para './components/...' para simplificar a demonstração.
 import InteractiveCard from '@/components/InteractiveCard'; 
 import Carousel from '@/components/Carousel';
 import "./globals.css"; // Importação do CSS global
-
 
 // =======================================================================
 // ESTILOS E DADOS GLOBAIS
@@ -72,10 +65,7 @@ interface SocialIconProps {
 
 const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
   <Link href={href} target="_blank" style={{
-      color: '#aaa',
-      fontSize: '1.5em',
-      textDecoration: 'none',
-      transition: 'color 0.3s'
+      color: '#aaa', fontSize: '1.5em', textDecoration: 'none', transition: 'color 0.3s'
     }} title={label}><i className={`bi ${iconClass}`}></i>
   </Link>
 );
@@ -122,7 +112,6 @@ export default function Home() {
         <h1 style={{ fontSize: '2.5em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
 
         {/* 🔑 INTEGRAÇÃO DO FORMULÁRIO DE ASSINATURA AQUI */}
-        {/* O AssinaturaForm agora usa CSS inline para os dois cards. */}
         <AssinaturaForm /> 
 
       </div>
