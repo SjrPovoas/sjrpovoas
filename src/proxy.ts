@@ -11,7 +11,7 @@ const ADMIN_ROUTES = ['/admin', '/admin/dashboard', '/admin/pagamentos'];
 /**
  * Função principal do Middleware, executada antes de cada rota correspondente no matcher.
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
   
   // Lê o token do Cookie que foi definido no LoginForm com path: '/'
