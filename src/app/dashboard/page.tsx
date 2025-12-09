@@ -4,7 +4,6 @@ import React from 'react';
 import Link from 'next/link';
 import InteractiveCard from '@/components/InteractiveCard';
 import Carousel from '@/components/Carousel';
-import "./globals.css";
 import { AlignCenterHorizontal, Target } from 'lucide-react';
 
 // =======================================================================

@@ -5,7 +5,6 @@ import React from 'react';
 import AssinaturaForm from '@/components/AssinaturaForm';
 import InteractiveCard from '@/components/InteractiveCard'; 
 import Carousel from '@/components/Carousel';
-import "./globals.css"; // Importação do CSS global
 
 // =======================================================================
 // ESTILOS E DADOS GLOBAIS
