@@ -1,6 +1,6 @@
 'use client'; 
 
-import React, { useState, CSSProperties } from 'react'; // Removido 'useCallback'
+import React, { useState, CSSProperties } from 'react';
 import AuthContainer, { AuthView } from '@/components/auth/AuthContainer'; 
 
 // Estilos básicos

@@ -61,7 +61,7 @@ export default function Carousel({ title, children }: CarouselProps) {
     padding: '0 0',
     overflowX: 'scroll', // Permite rolagem com hack para ocultar barra
     display: 'flex',
-    gap: '15px',
+    gap: '10px',
     scrollBehavior: 'smooth',
     // Propriedades para ocultar a barra de rolagem em navegadores não-WebKit
     scrollbarWidth: 'none', // Firefox

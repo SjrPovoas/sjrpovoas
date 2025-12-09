@@ -26,8 +26,8 @@ function AssinaturaForm() {
     // --- ESTILO CARD 1: PLANO MENSAL (Padrão) ---
     const mensalStyle: React.CSSProperties = {
         ...cardBaseStyle,
-        backgroundColor: '#000000', 
-        borderColor: '#4a4a4a', // Cinza escuro na borda
+        backgroundColor: '#4a4a4a', // Cinza mais escuro para destaque
+        borderColor: '#8c92a6', // Cinza azulado na borda
         color: '#ffffff', 
     };
 

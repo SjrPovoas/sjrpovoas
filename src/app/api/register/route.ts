@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server';
-// ⚠️ IMPORTAÇÃO CORRIGIDA: Importamos a função getNextUserId
 import { usersDB, User, getNextUserId } from '@/lib/mockDatabase'; 
-
-// ⚠️ REMOVIDA: Variável 'currentId' não é mais necessária aqui
-// let currentId = 104; 
 
 export async function POST(request: Request) {
   try {

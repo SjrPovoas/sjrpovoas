@@ -26,7 +26,7 @@ const inputStyle: CSSProperties = {
 
 const buttonStyle: CSSProperties = {
     padding: '12px 20px',
-    backgroundColor: '#28a745', 
+    backgroundColor: '#007bff', 
     color: 'white',
     border: 'none',
     borderRadius: '5px',
@@ -93,7 +93,7 @@ export default function RegisterForm() {
 
   return (
     <div style={containerStyle}>
-      <h2 style={{ color: '#28a745', textAlign: 'center', marginBottom: '25px' }}>🚀 Criar Conta</h2>
+      <h2 style={{ color: '#007bff', textAlign: 'center', marginBottom: '25px', }}>🚀 Criar Conta</h2>
       
       <form onSubmit={handleSubmit}>
         
