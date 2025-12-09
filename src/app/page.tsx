@@ -1,21 +1,28 @@
-import Link from 'next/link';
-import React from 'react';
-import InteractiveCard from '@/components/InteractiveCard';
-import Carousel from '@/components/Carousel';
-import "./globals.css";
-import { AlignCenterHorizontal } from 'lucide-react';
+// src/app/page.tsx
 
-// IMPORTANTE: Assumimos que o Bootstrap Icons CSS está carregado globalmente no seu projeto.
+// 'use client'; // MANTIDO COMO SERVER COMPONENT POR PADRÃO, se possível.
+
+import Link from 'next/link';
+import React from 'react'; 
+// IMPORTADO: O componente atualizado com CSS inline
+import AssinaturaForm from '@/components/AssinaturaForm';
+
+// Imports de componentes assumidos (Mantenha o caminho real do seu projeto, ex: '@/components/...')
+// NOTA: Assumo que '@/components/...' mapeia para './components/...' para simplificar a demonstração.
+import InteractiveCard from '@/components/InteractiveCard'; 
+import Carousel from '@/components/Carousel';
+import "./globals.css"; // Importação do CSS global
+
 
 // =======================================================================
-// ESTILOS E DADOS
+// ESTILOS E DADOS GLOBAIS
 // =======================================================================
 
 const cardStyle: React.CSSProperties = {
   // Ajuste de width e minWidth para que o carrossel funcione bem
   flexShrink: 0,
-  width: '250px',
-  height: '150px',
+  width: '300px',
+  height: '350px',
   minWidth: '200px',
   backgroundColor: '#444',
   borderRadius: '8px',
@@ -32,7 +39,6 @@ const cardStyle: React.CSSProperties = {
   backgroundPosition: 'center',
 };
 
-// Dados separados por seção para o carrossel
 const trainingAreas = [
   { title: 'Treinamento Rápido', description: 'Uso de Tecnologia para Celulares.', href: '/login', image: 'url("/assets/img/card-treinamento1.png")' },
   { title: 'Treinamento Rápido', description: 'Uso de Tecnologia para Celulares.', href: '/login', image: 'url("/assets/img/card-treinamento2.png")' },
@@ -49,7 +55,6 @@ const vipContentAreas = [
   { title: 'Conteúdo VIP', description: 'Conteúdo exclusivo.', href: '/login', image: 'url("/assets/img/card-suporteVIP5.png")' },
 ];
 
-// URLs para mídias sociais
 const socialMediaLinks = {
   instagram: 'https://www.instagram.com/silviopovoasjunior/',
   facebook: 'https://www.facebook.com/sjrpovoas',
@@ -59,9 +64,6 @@ const socialMediaLinks = {
   linktree: 'https://linktr.ee/sjrpovoas',
 };
 
-// =======================================================================
-// NOVO COMPONENTE SOCIALICON USANDO CLASSES DO BOOTSTRAP ICONS
-// =======================================================================
 interface SocialIconProps {
   href: string;
   label: string;
@@ -69,22 +71,17 @@ interface SocialIconProps {
 }
 
 const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
-  <Link
-    href={href}
-    target="_blank"
-    style={{
-      color: '#aaa', // Cor dos ícones
+  <Link href={href} target="_blank" style={{
+      color: '#aaa',
       fontSize: '1.5em',
       textDecoration: 'none',
-      transition: 'color 0.3s' // Efeito de transição
-    }}
-    title={label}>
-      <i className={`bi ${iconClass}`}></i>
+      transition: 'color 0.3s'
+    }} title={label}><i className={`bi ${iconClass}`}></i>
   </Link>
 );
 
 // =======================================================================
-// COMPONENTE PRINCIPAL
+// COMPONENTE PRINCIPAL HOME
 // =======================================================================
 
 export default function Home() {
@@ -98,13 +95,11 @@ export default function Home() {
       }}>
         <Link href="/">
           <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
-            style={{ height: '60px', objectFit: 'contain' }} />
+            style={{ height: '60px', objectFit: 'contain', borderRadius: '48px' }} />
         </Link>
 
-        {/* 🚀 CALL TO ACTION (CTA) */}
-        <div style={{
-          marginTop: '20px', padding: '10px', backgroundColor: '#333', borderRadius: '8px', textAlign: 'center' }}>
-          {/* Botão Área Exclusiva */}
+        {/* 🚀 CALL TO ACTION (CTA) de Login */}
+        <div>
           <Link href="/login"
             style={{
               display: 'inline-block',
@@ -112,40 +107,26 @@ export default function Home() {
               backgroundColor: '#0070f3',
               color: 'white',
               textDecoration: 'none',
-              borderRadius: '4px',
+              borderRadius: '48px',
               fontWeight: 'bold',
             }}
           >
             Área Exclusiva!
           </Link>
-
-          {/* Texto Libere seu login agora! */}
-          <p style={{ margin: 0, fontSize: '1.1em', fontWeight: '500', marginTop: '5px' }}>
-            <small style={{ fontWeight: '400', color: '#aaa' }}>Liberar login!</small>
-          </p>
         </div>
       </header>
 
 
-      {/* TÍTULO, INTRODUÇÃO E CTA - Seção Principal */}
+      {/* TÍTULO, INTRODUÇÃO E FORMULÁRIO DE ASSINATURA INTEGRADO */}
       <div style={{ maxWidth: '1200px', margin: '60px auto 30px', color: 'white', textAlign: 'left' }}>
         <h1 style={{ fontSize: '2.5em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
 
-        {/* CTA Block Principal */}
-        <div style={{
-          marginTop: '30px',
-          padding: '20px',
-          backgroundColor: '#333',
-          borderRadius: '8px',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-          <h2 style={{ fontSize: '1.2em', fontWeight: '400', color: '#aaa', margin: 0 }}>
-            Acesso a conteúdos explicativos, interessantes e divertidos para usuários exclusivos.
-          </h2>
-        </div>
+        {/* 🔑 INTEGRAÇÃO DO FORMULÁRIO DE ASSINATURA AQUI */}
+        {/* O AssinaturaForm agora usa CSS inline para os dois cards. */}
+        <AssinaturaForm /> 
+
       </div>
+      {/* Fim da Seção Principal */}
 
 
       {/* ÁREA DOS CARROSSEIS */}
@@ -185,7 +166,7 @@ export default function Home() {
       {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
       <footer
         style={{
-          maxWidth: '1200px', backgroundColor: '#444', margin: '80px auto 0', padding: '30px auto 0', borderTop: '1px solid #333',
+          maxWidth: '1200px', backgroundColor: '#444', margin: '80px auto 0', padding: '30px', borderTop: '1px solid #333',
           color: '#888', fontSize: '0.9em', textAlign: 'center'
         }}
       >
@@ -195,7 +176,7 @@ export default function Home() {
             {/* Ícones do Bootstrap Icons */}
             <SocialIcon href={socialMediaLinks.instagram} label="Instagram" iconClass="bi-instagram" />
             <SocialIcon href={socialMediaLinks.facebook} label="Facebook" iconClass="bi-facebook" />
-            <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" /> {/* Ícone atualizado para 'X' */}
+            <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
             <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
             <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
             <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />

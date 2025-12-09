@@ -12,7 +12,7 @@ const config: Config = {
     extend: {
       colors: {
         // --- Adição da cor AGP ---
-        'agp-green': '#0b4e3e', // Verde Floresta Profundo
+        'agp-gray': 'gray', // Verde Floresta Profundo
         // ------------------------
       },
       // ... outras extensões

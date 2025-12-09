@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR" prefix="og: https://ogp.me/ns#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="title" content="SjrPovoaS | Criamos a solução que você procura">
+    <meta name="author" content="SjrPovoaS">
+    <meta name="description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta name="Keywords" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+    <meta name="robots" content="follow, index">
+    <meta name="googlebot" content="all">
+    <meta name="google-site-verification" content="">
+    <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
+    <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
+    <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
+    <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
+    <link rel="mask-icon" href="/src/app/favicon.ico">
+    <link rel="canonical" href="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html/">
+    <!-- Open Graph tags are also recommended -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SjrPovoaS">
+    <meta property="og:url" content="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html">
+    <meta property="og:image" content="https://sjrpovoas.vercel.app/public/assets/img/logo-SjrPovoaS.png">
+    <meta name="og:image:width" content="1200">
+    <meta name="og:image:height" content="630">
+    <meta property="og:title" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tailwind para usar o tema de cores AGP -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'agp-gray': '#888888', // Cinza
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
+        :root { font-family: 'Inter', sans-serif; }
+        /* Cores inspiradas no branding */
+        .agp-text-gray { color: gray; }
+        .agp-border-gray { border-color: gray; }
+        /* Estilos para inputs */
+        .form-input-label {
+            display: block;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            color: #374151; /* gray-700 */
+            padding-top: 0.5rem; }
+        /* Estilo base para todos os inputs do formulário */
+        .form-input {
+            padding: 0.75rem; /* p-3 */
+            border: 1px solid #d1d5db; /* border-gray-300 */
+            border-radius: 0.5rem; /* rounded-lg */
+            width: 100%;
+            transition: all 150ms ease-in-out; }
+        .form-input:focus {
+             box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.5); /* focus:ring-2 focus:ring-green-500 */
+             border-color: #10b981; /* focus:border-green-500 */ }
+        /* Estilos para mensagem de erro (substituindo o alert) */
+        #errorMessage {
+            color: #dc2626; /* red-600 */
+            background-color: #fee2e2; /* red-100 */
+            border: 1px solid #f87171; /* red-400 */
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500; }
+        /* Estilos específicos para a visualização de impressão */
+        @media print {
+            body * { visibility: hidden; }
+            .print-area, .print-area * { visibility: visible; }
+            .print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                font-size: 11pt; }
+            .no-print { display: none !important; }
+            .agp-text-gray { color: black !important; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
+    <!-- Cabeçalho (Branding) -->
+    <header class="w-full max-w-4xl p-4 mb-6 bg-white rounded-xl shadow-md flex items-center justify-center space-x-4">
+        <!-- Placeholder para o Logo da SjrPovoaS -->
+        <a href="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html" aria-label="Gerador Online de Documentos">
+            <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover"
+             onerror="this.onerror=null; this.src='/public/assets/img/logo-SjrPovoaS.png';">
+        </a>
+        <div class="text-left">
+            <h1 class="text-3xl font-bold agp-text-gray">SjrPovoaS</h1>
+            <p class="text-gray-600 mt-1">Gerador Online de Documentos</p>
+        </div>
+    </header>
+
+    <main class="w-full max-w-4xl bg-white rounded-xl shadow-2xl p-6 md:p-8">
+
+        <!-- Área de Controles e Formulário (Oculta na impressão) -->
+        <section id="form-section" class="no-print">
+            <div class="mb-6 flex flex-col sm:flex-row justify-between items-center border-b pb-4">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4 sm:mb-0">Detalhes do Documento</h2>
+                
+                <!-- Toggle Contrato / Recibo / Orçamento -->
+                <div class="flex p-1 rounded-full bg-gray-200 shadow-inner">
+                    <!--<button id="toggleContract" onclick="setDocType('contract')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                        Contrato
+                    </button>-->
+                    <button id="toggleReceipt" onclick="setDocType('receipt')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                        Recibo
+                    </button>
+                    <!--<button id="toggleBudget" onclick="setDocType('budget')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                        Orçamento
+                    </button>-->
+                </div>
+            </div>
+            
+            <!-- Mensagem de erro dinâmica -->
+            <div id="errorMessage" class="hidden"></div>
+
+
+            <!-- Formulário -->
+            <form id="docForm" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Informações do Cliente -->
+                <div class="md:col-span-2">
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Dados do Cliente</h3>
+                </div>
+                <!-- REMOVIDO 'REQUIRED' PARA DEIXAR O JAVASCRIPT CONTROLAR A VALIDAÇÃO TOTAL -->
+                <input type="text" id="nomeCliente" placeholder="Nome do Cliente/Empresa" class="form-input"> 
+                <input type="text" id="cpfCliente" placeholder="CPF/CNPJ do Cliente" class="form-input">
+                <input type="text" id="enderecoCliente" placeholder="Endereço Completo do Cliente" class="form-input md:col-span-2">
+
+                <!-- Informações do Serviço/Orçamento -->
+                <div class="md:col-span-2 mt-4">
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Título e Data</h3>
+                </div>
+                <input type="text" id="tituloServico" placeholder="Título Curto do Documento (Ex: Prestação de Serviço)" class="form-input md:col-span-2">
+                
+                <label class="form-input-label">Serviço Referente ao Período de:</label>
+                <input type="date" id="dataInicio" class="form-input">
+                
+                <label class="form-input-label">Serviço Referente ao Período ao:</label>
+                <input type="date" id="dataFim" class="form-input">
+                
+                <!-- Área de Itens do Orçamento (APENAS para Orçamento) -->
+                <!--<div class="md:col-span-2 mt-4" id="budgetItemsSection">
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Itens do Orçamento (Descrição Detalhada)</h3>
+                    
+                    <div class="grid grid-cols-12 gap-2 text-sm font-semibold text-gray-600 mb-2">
+                        <span class="col-span-4">Descrição de Item</span>
+                        <span class="col-span-2">Qtd</span>
+                        <span class="col-span-3 text-right">V. Unit (R$)</span>
+                        <span class="col-span-2 text-right">V. Total (R$)</span>
+                        <span class="col-span-1"></span>
+                    </div>-->
+
+                    <!-- Container para linhas de itens dinâmicas -->
+                    <div id="item-list-container" class="space-y-2">
+                        <!-- Itens serão inseridos aqui pelo JS -->
+                    </div>
+
+                    <button type="button" onclick="addItem()" class="mt-3 px-4 py-2 text-sm rounded-lg border border-agp-gray agp-text-gray hover:bg-agp-gray hover:text-white transition duration-200">
+                        + Adicionar Item
+                    </button>
+                    
+                    <div class="flex justify-end mt-4 border-t pt-4">
+                        <p class="text-xl font-bold agp-text-gray">
+                            TOTAL: <span id="displayTotal">R$ 0,00</span>
+                        </p>
+                    </div>
+                    
+                </div>
+                
+                <!-- Campos Simples (Usados por Contrato/Recibo) -->
+                <textarea id="descricaoServico" rows="4" placeholder="Descrição Detalhada do Serviço (Recibo)." class="form-input md:col-span-2"></textarea>
+                
+                <div class="flex flex-col">
+                    <label class="form-input-label" id="labelValorTotal">Valor Total (R$):</label>
+                    <input type="number" id="valorTotal" step="0.01" placeholder="Valor Total (R$)" class="form-input">
+                </div>
+                
+                <div class="flex flex-col">
+                    <label class="form-input-label" id="labelMetodoPagamento">Método de Pagamento (Recibo):</label>
+                    <select id="metodoPagamento" class="form-input">
+                        <option value="" disabled selected>Selecione o Método</option>
+                        <option value="Pix">Pix</option>
+                        <option value="Transferência Bancária">Transferência Bancária</option>
+                        <option value="Dinheiro">Dinheiro</option>
+                        <option value="Cartão de Crédito/Débito">Cartão de Crédito/Débito</option>
+                    </select>
+                </div>
+
+                <!-- Campo Adicional para Contrato / Orçamento -->
+                <!--<div class="md:col-span-2 mt-4" id="contractFields">
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3" id="additionalClausesTitle">Termos e Condições</h3>
+                    <textarea id="clausulasAdicionais" rows="12" placeholder="Insira quaisquer termos e condições aqui." class="form-input md:col-span-2"></textarea>
+                </div>-->
+            </form>
+
+            <!-- Botão de Geração -->
+            <button id="generateButton" onclick="renderPreview()" class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-500 focus:ring-opacity-50">
+                Gerar Recibo para Visualização
+            </button>
+        </section>
+
+        <!-- Área de Visualização e Impressão (Aparece após gerar) -->
+        <section id="preview-section" class="hidden mt-8 border-t pt-6">
+            <div class="flex justify-between items-center mb-4 no-print">
+                <h2 class="text-xl font-semibold text-gray-800">Visualização do Documento</h2>
+                <div class="space-x-2">
+                    <button onclick="printDocument()" class="px-4 py-2 text-sm font-medium rounded-lg text-white transition duration-200 bg-agp-gray hover:bg-green-700">
+                        Imprimir / Salvar PDF
+                    </button>
+                    <button onclick="hidePreview()" class="px-4 py-2 text-sm font-medium rounded-lg bg-gray-300 hover:bg-gray-400">
+                        Editar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Container do Documento Gerado -->
+            <div id="document-output" class="print-area bg-white p-6 border agp-border-gray rounded-lg shadow-inner">
+                <!-- O conteúdo HTML será inserido aqui pelo JavaScript -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full p-4 mb-1 rounded-x1 flex justify-center space-x-6">
+        <a href="https://sjrpovoas.vercel.app" aria-label="Logo SjrPovoaS" target="_blank">
+            <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-12 h-12 rounded-full object-cover">
+        </a>
+        <div class="text-left">
+            <p class="text-sm text-gray-400 mt-0">
+            <a href="https://sjrpovoas.vercel.app/" aria-label="Site da SjrPovoaS" target="_blank"> https://sjrpovoas.vercel.app</a><br>
+            © 2025 - Todos os direitos reservados - Desenvolvido por<a href="https://github.com/SjrPovoas" aria-label="SjrPovoaS" target="_blank"> SjrPovoaS</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Variáveis Globais de Estado
+        let currentDocType = 'contract'; // 'contract', 'receipt', ou 'budget'
+        let items = []; // Array para armazenar os itens do orçamento
+
+        // Dados fixos da empresa (Almeida Gomes Paisagismo)
+        const companyInfo = {
+            name: "ILVIO PÓVOAS DE CARVALHO JÚNIOR",
+            cpf: "011.907.545-84",
+            address: "Quadra 04 Lote 26 Condomínio Flores do Cerrado 2 - Recreio Mossoró. Cidade Ocidental - GO. Brasil",
+            email: "sjrpovoas@gmail.com",
+            representative: "Representante Legal",
+            tel: "(61) 98188-5715",
+            instagram: "@silviopovoasjunior",
+            email: "sjrpovoas@gmail.com",
+            site: "https://sjrpovoas.vercel.app"
+        };
+
+        // Elementos do DOM
+        const toggleButtons = {
+            contract: document.getElementById('toggleContract'),
+            receipt: document.getElementById('toggleReceipt'),
+            budget: document.getElementById('toggleBudget')
+        };
+        const paymentSelect = document.getElementById('metodoPagamento');
+        const contractFieldsDiv = document.getElementById('contractFields');
+        const additionalClausesTitle = document.getElementById('additionalClausesTitle');
+        const generateButton = document.getElementById('generateButton');
+        const clausulasAdicionais = document.getElementById('clausulasAdicionais');
+        const budgetItemsSection = document.getElementById('budgetItemsSection');
+        const itemContainer = document.getElementById('item-list-container');
+        const displayTotal = document.getElementById('displayTotal');
+        const descServicoField = document.getElementById('descricaoServico');
+        const valorTotalField = document.getElementById('valorTotal');
+        const labelValorTotal = document.getElementById('labelValorTotal');
+        const labelMetodoPagamento = document.getElementById('labelMetodoPagamento');
+        const errorMessageDiv = document.getElementById('errorMessage');
+
+
+        // Conteúdos padrão para o textarea de cláusulas
+        const defaultContractClauses = `CLÁUSULA DE MULTAS POR INADIMPLEMENTO:
+Em caso de atraso no pagamento superior a [X] dias, será aplicada multa de [Y]% sobre o valor em atraso, além de juros de 1% ao mês.
+
+CLÁUSULA DE GARANTIA:
+A Contratada (Almeida Gomes Paisagismo) oferece garantia de [Z] meses sobre a execução do serviço, excluindo-se danos por mau uso, falta de manutenção ou eventos naturais. O Contratante deve seguir o manual de manutenção.
+
+CLÁUSULA DE RESCISÃO:
+Qualquer parte poderá rescindir o contrato mediante aviso prévio por escrito de [W] dias. Se a rescisão for sem justa causa pelo Contratante após o início, este deverá pagar os serviços executados mais uma multa compensatória de [K]% do valor restante.`;
+
+        const defaultBudgetTerms = `VALIDADE DA PROPOSTA:
+Esta proposta de orçamento é válida por 10 (dez) dias corridos, a contar da data de emissão. Após esse prazo, os valores e prazos podem ser reavaliados.
+
+CONDIÇÕES DE PAGAMENTO:
+Pagamento em [X] parcelas, sendo [Y]% no aceite e [Z]% na conclusão.
+
+OBSERVAÇÕES:
+Os valores não incluem serviços não especificados na descrição do item.`;
+
+
+        // Estilo padrão para o botão ativo
+        const activeClass = 'bg-agp-gray text-white';
+        const inactiveClass = 'bg-gray-200 text-gray-700 hover:bg-gray-300';
+
+        /**
+         * Inicializa o estado visual do toggle e adiciona um item inicial no orçamento.
+         */
+        function initializeToggle() {
+            setDocType('contract', false); // Configura o estado inicial como Contrato
+            if (items.length === 0) {
+                 addItem(); // Adiciona um item inicial no carregamento para o orçamento
+            }
+        }
+        
+        /**
+         * Exibe uma mensagem de erro na UI.
+         */
+        function displayError(message) {
+            errorMessageDiv.textContent = message;
+            errorMessageDiv.classList.remove('hidden');
+            // Role para o topo da seção do formulário para ver o erro
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        /**
+         * Oculta a mensagem de erro da UI.
+         */
+        function clearError() {
+            errorMessageDiv.textContent = '';
+            errorMessageDiv.classList.add('hidden');
+        }
+
+
+        /**
+         * Altera o tipo de documento a ser gerado ('contract', 'receipt' ou 'budget').
+         */
+        function setDocType(type, updateButtonText = true) {
+            currentDocType = type;
+            clearError();
+
+            // 1. Atualiza a aparência dos botões de toggle
+            Object.keys(toggleButtons).forEach(key => {
+                toggleButtons[key].className = `px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200 ${type === key ? activeClass : inactiveClass}`;
+            });
+
+            const isBudget = type === 'budget';
+            const isReceipt = type === 'receipt';
+            const isContract = type === 'contract';
+            
+            // 2. Controla a visibilidade e desabilita os campos
+            
+            // Orçamento: Usa tabela, esconde campos simples
+            budgetItemsSection.classList.toggle('hidden', !isBudget);
+            
+            // Campos Simples: Usados por Contrato e Recibo. Desabilitados para Orçamento
+            descServicoField.classList.toggle('hidden', isBudget);
+            descServicoField.disabled = isBudget; 
+            
+            valorTotalField.classList.toggle('hidden', isBudget);
+            valorTotalField.disabled = isBudget; 
+            labelValorTotal.classList.toggle('hidden', isBudget);
+            
+            // Recibo: Precisa de pagamento
+            paymentSelect.classList.toggle('hidden', !isReceipt);
+            paymentSelect.disabled = !isReceipt;
+            labelMetodoPagamento.classList.toggle('hidden', !isReceipt);
+            
+            // Contrato/Orçamento vs. Recibo: Cláusulas
+            contractFieldsDiv.classList.toggle('hidden', isReceipt);
+            clausulasAdicionais.disabled = isReceipt; // Desabilita para Recibo
+            
+            
+            // 3. Ajusta o título das cláusulas e o conteúdo padrão
+            if (isBudget) {
+                additionalClausesTitle.textContent = 'Termos e Condições (Orçamento)';
+                clausulasAdicionais.value = defaultBudgetTerms;
+            } else if (isContract) {
+                additionalClausesTitle.textContent = 'Cláusulas Adicionais (Contrato)';
+                clausulasAdicionais.value = defaultContractClauses;
+            }
+
+            // 4. Atualiza o texto do botão de geração
+            if (updateButtonText) {
+                const docName = type === 'contract' ? 'Contrato' : (isReceipt ? 'Recibo' : 'Orçamento');
+                generateButton.textContent = `Gerar ${docName} para Visualização`;
+            }
+            
+            updateTotal();
+            renderItems(); // Garante que os itens do orçamento estejam visíveis se for o caso
+        }
+        
+        // --- Funções de Manipulação da Tabela de Itens (Orçamento) ---
+        
+        /**
+         * Adiciona uma nova linha de item ao formulário.
+         */
+        function addItem() {
+            const newItemId = Date.now(); // Usa timestamp para ID único
+            items.push({
+                id: newItemId,
+                description: '',
+                quantity: 1,
+                unitValue: 0,
+                total: 0
+            });
+            renderItems();
+        }
+
+        /**
+         * Remove uma linha de item do formulário.
+         */
+        function removeItem(id) {
+            items = items.filter(item => item.id !== id);
+            renderItems(); 
+            updateTotal();
+        }
+        
+        /**
+         * Renderiza todas as linhas de itens na interface.
+         */
+        function renderItems() {
+            itemContainer.innerHTML = items.map((item, index) => {
+                const totalValue = item.quantity * item.unitValue;
+                
+                // IMPORTANTE: Adiciona a classe 'budget-item-field' para validação
+                return `
+                    <div class="item-row grid grid-cols-12 gap-2">
+                        <input type="text" id="desc-${item.id}" value="${item.description}" placeholder="Item ${index + 1}: Criação de Site, Manutenção de Site, etc." oninput="updateItem(${item.id}, 'description', this.value)" class="col-span-4 form-input budget-item-field" data-item-type="description">
+                        <input type="number" id="qty-${item.id}" value="${item.quantity}" min="0.01" step="0.01" oninput="updateItem(${item.id}, 'quantity', parseFloat(this.value) || 0)" class="col-span-2 text-center form-input budget-item-field" data-item-type="quantity">
+                        <input type="number" id="unit-${item.id}" value="${item.unitValue.toFixed(2)}" min="0.00" step="0.01" oninput="updateItem(${item.id}, 'unitValue', parseFloat(this.value) || 0)" class="col-span-3 text-right form-input budget-item-field" data-item-type="unitValue">
+                        <span id="total-${item.id}" class="col-span-2 text-right p-2 font-medium">${formatCurrency(totalValue)}</span>
+                        <button type="button" onclick="removeItem(${item.id})" class="col-span-1 text-red-600 hover:text-red-800 text-lg transition duration-200">
+                            &times;
+                        </button>
+                    </div>
+                `;
+            }).join('');
+            updateTotal();
+        }
+        
+        /**
+         * Atualiza um valor de item no array e recalcula o total.
+         */
+        function updateItem(id, key, value) {
+            const itemIndex = items.findIndex(item => item.id === id);
+            if (itemIndex > -1) {
+                // Atualiza o valor no array
+                items[itemIndex][key] = value;
+                
+                const item = items[itemIndex];
+                // Certifica-se de que quantidade e valor unitário são números para o cálculo
+                const qty = parseFloat(item.quantity) || 0;
+                const unit = parseFloat(item.unitValue) || 0;
+                
+                const newTotal = qty * unit;
+                items[itemIndex].total = newTotal;
+                
+                // Atualiza o display do V. Total do item
+                document.getElementById(`total-${id}`).textContent = formatCurrency(newTotal);
+                
+                updateTotal();
+            }
+        }
+
+        /**
+         * Recalcula e exibe o valor total de todos os itens.
+         */
+        function updateTotal() {
+            const grandTotal = items.reduce((sum, item) => sum + (item.quantity * item.unitValue), 0);
+            displayTotal.textContent = formatCurrency(grandTotal);
+            
+            // Atualiza o campo valorTotal para que o getFormData possa usá-lo se necessário
+            valorTotalField.value = grandTotal.toFixed(2);
+        }
+
+        // --- Funções de Auxílio e Geração ---
+
+        /**
+         * Coleta os dados do formulário de forma robusta para todos os tipos de documentos.
+         */
+        function getFormData() {
+            const data = {};
+            
+            // 1. Coleta campos estáticos (todos)
+            const staticFields = ['nomeCliente', 'cpfCliente', 'enderecoCliente', 'tituloServico', 'dataInicio', 'dataFim', 'clausulasAdicionais', 'descricaoServico', 'valorTotal', 'metodoPagamento'];
+            staticFields.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) { 
+                    data[id] = element.value;
+                }
+            });
+
+            // 2. Processamento Específico para Orçamento
+            if (currentDocType === 'budget') {
+                // Coleta itens da tabela dinâmica
+                data.items = items.map(item => {
+                    const descElement = document.getElementById(`desc-${item.id}`);
+                    const qtyElement = document.getElementById(`qty-${item.id}`);
+                    const unitElement = document.getElementById(`unit-${item.id}`);
+
+                    const desc = descElement?.value || '';
+                    // Usar o valor do input, garantindo que seja um número ou 0
+                    const qty = parseFloat(qtyElement?.value) || 0; 
+                    const unit = parseFloat(unitElement?.value) || 0;
+
+                    return {
+                        description: desc,
+                        quantity: qty,
+                        unitValue: unit,
+                        total: qty * unit
+                    };
+                }).filter(item => item.description || item.total > 0); // Remove linhas vazias ou de valor zero
+                
+                // Usa o total calculado
+                data.valorTotal = data.items.reduce((sum, item) => sum + item.total, 0).toFixed(2);
+            }
+
+            return data;
+        }
+
+        /**
+         * Realiza a validação manual dos campos obrigatórios.
+         */
+        function validateForm(data) {
+            clearError();
+            
+            // Campos obrigatórios universais para qualquer documento
+            const requiredFields = {
+                nomeCliente: "Nome do Cliente",
+                enderecoCliente: "Endereço do Cliente",
+                tituloServico: "Título do Serviço",
+                dataInicio: "Data de Início Estimada",
+                dataFim: "Data de Conclusão Estimada"
+            };
+
+            for (const key in requiredFields) {
+                if (!data[key] || data[key].trim() === "") {
+                    return `Campo obrigatório não preenchido: ${requiredFields[key]}.`;
+                }
+            }
+            
+            if (currentDocType === 'contract') {
+                if (!data.descricaoServico || data.descricaoServico.trim() === "") {
+                    return "É obrigatório preencher a Descrição Detalhada do Serviço para o Contrato.";
+                }
+                if (!data.valorTotal || parseFloat(data.valorTotal) <= 0) {
+                    return "É obrigatório informar um Valor Total válido (> R$ 0,00) para o Contrato.";
+                }
+            } else if (currentDocType === 'receipt') {
+                if (!data.descricaoServico || data.descricaoServico.trim() === "") {
+                    return "É obrigatório preencher a Descrição Detalhada do Serviço/Referência para o Recibo.";
+                }
+                 if (!data.valorTotal || parseFloat(data.valorTotal) <= 0) {
+                    return "É obrigatório informar um Valor Total válido (> R$ 0,00) para o Recibo.";
+                }
+                if (!data.metodoPagamento || data.metodoPagamento.trim() === "") {
+                    return "É obrigatório selecionar o Método de Pagamento para o Recibo.";
+                }
+            } else if (currentDocType === 'budget') {
+                // Validação de itens para Orçamento
+                if (data.items.length === 0 || data.items.every(item => item.total === 0)) {
+                    return "O Orçamento deve conter pelo menos um item válido (Descrição e Valor Unitário > 0).";
+                }
+                
+                // Valida se todos os itens têm descrição e valor unitário preenchidos
+                for (const item of data.items) {
+                    if (!item.description || item.description.trim() === "") {
+                        return "Por favor, preencha a descrição para todos os itens do orçamento.";
+                    }
+                    if (parseFloat(item.unitValue) <= 0) {
+                         return `O item "${item.description}" deve ter um Valor Unitário maior que R$ 0,00.`;
+                    }
+                }
+            }
+
+            return null; // Nenhuma mensagem de erro, validação OK
+        }
+
+
+        /**
+         * Formata um valor numérico para o formato monetário Brasileiro (R$ X.XXX,XX).
+         */
+        function formatCurrency(value) {
+            const num = parseFloat(value);
+            if (isNaN(num)) return 'R$ 0,00';
+            return num.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        }
+
+        /**
+         * Formata uma data para o formato Brasileiro (DD/MM/AAAA).
+         */
+        function formatDate(dateString) {
+            if (!dateString) return 'Data não informada';
+            // Adiciona 'T00:00:00' para evitar problemas de fuso horário
+            const date = new Date(dateString + 'T00:00:00'); 
+            // Garante que a data seja válida antes de formatar
+            if (isNaN(date.getTime())) return 'Data Inválida';
+            return date.toLocaleDateString('pt-BR');
+        }
+
+        /**
+         * Gera o HTML do CONTRATO de Serviço.
+         */
+        function generateContractHTML(data) {
+            const valorFormatado = formatCurrency(data.valorTotal);
+            const dataInicioFormatada = formatDate(data.dataInicio);
+            const dataFimFormatada = formatDate(data.dataFim);
+            const dataAtual = formatDate(new Date().toISOString().split('T')[0]);
+            
+            return `
+                <div class="p-4 md:p-8 space-y-6">
+                    <div class="text-center border-b pb-4">
+                        <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
+                        <h1 class="text-2xl font-bold agp-text-gray">CONTRATO DE PRESTAÇÃO DE SERVIÇOS</h1>
+                        <p class="text-sm text-gray-600">Documento gerado em: ${dataAtual}</p>
+                    </div>
+
+                    <p class="text-sm text-justify leading-relaxed">
+                        Pelo presente instrumento particular, de um lado, a Contratada <strong>${companyInfo.name}</strong>, CPF n. ${companyInfo.cpf}, com sede em ${companyInfo.address}, neste ato representada por ${companyInfo.representative}, e, de outro lado, o Contratante <strong>${data.nomeCliente}</strong>, CPF/CNPJ n. ${data.cpfCliente || 'Não informado'}, residente e domiciliado(a) em ${data.enderecoCliente}, doravante denominado(a) simplesmente Contratante.
+                    </p>
+
+                    <h3 class="font-bold agp-text-gray text-lg border-b mt-4">CLÁUSULA PRIMEIRA - DO OBJETO</h3>
+                    <p class="text-sm text-justify leading-relaxed">
+                        O presente Contrato tem por objeto a prestação de serviços de **${data.tituloServico}**, conforme a descrição detalhada a seguir:<br>
+                        <div class="border border-gray-200 p-4 rounded-lg bg-gray-50 whitespace-pre-line">${data.descricaoServico}</div>
+                    </p>
+
+                    <h3 class="font-bold agp-text-gray text-lg border-b mt-4">CLÁUSULA SEGUNDA - PRAZOS E VALOR</h3>
+                    <ul class="list-disc ml-5 text-sm space-y-1">
+                        <li><strong>Serviço Referente ao Período de:</strong> ${dataInicioFormatada}</li>
+                        <li><strong>Serviço Referente ao Período ao:</strong> ${dataFimFormatada}</li>
+                        <li><strong>Valor Total:</strong> O Contratante pagará à Contratada o valor total de <strong>${valorFormatado}</strong> (${data.valorTotal} reais) pelos serviços descritos na Cláusula Primeira.</li>
+                    </ul>
+
+                    ${data.clausulasAdicionais ? `
+                        <h3 class="font-bold agp-text-gray text-lg border-b mt-4">CLÁUSULA TERCEIRA - DISPOSIÇÕES ADICIONAIS</h3>
+                        <p class="text-sm text-justify whitespace-pre-line">${data.clausulasAdicionais}</p>
+                    ` : ''}
+
+
+                    <p class="text-sm text-center pt-8">
+                        E, por estarem justos e contratados, assinam o presente em 02 (duas) vias de igual teor e forma, para que produza seus efeitos legais.
+                    </p>
+
+                    <div class="flex justify-around pt-12 text-center">
+                        <div>
+                            <div class="border-t border-gray-700 w-64 pt-2"></div>
+                            <p class="font-semibold text-sm">${companyInfo.name}</p>
+                            <p class="text-xs">Assinatura da Contratada</p>
+                        </div>
+                        <div>
+                            <div class="border-t border-gray-700 w-64 pt-2"></div>
+                            <p class="font-semibold text-sm">${data.nomeCliente}</p>
+                            <p class="text-xs">Assinatura do Contratante</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /**
+         * Gera o HTML do ORÇAMENTO de Serviço.
+         */
+        function generateBudgetHTML(data) {
+            const valorFormatado = formatCurrency(data.valorTotal);
+            const dataInicioFormatada = formatDate(data.dataInicio);
+            const dataFimFormatada = formatDate(data.dataFim);
+            const dataAtual = new Date();
+            const dataAtualFormatada = formatDate(dataAtual.toISOString().split('T')[0]);
+            
+            const validadeDate = new Date(dataAtual);
+            validadeDate.setDate(dataAtual.getDate() + 10);
+            const validadeFormatada = validadeDate.toLocaleDateString('pt-BR');
+
+            // Geração da Tabela de Itens
+            const itemRows = data.items.map((item, index) => {
+                const totalFormatado = formatCurrency(item.total);
+                // Remove R$ do valor unitário para ficar mais limpo na tabela
+                const unitFormatado = formatCurrency(item.unitValue).replace('R$', '').trim(); 
+                // Linhas com cores alternadas
+                const rowClass = index % 2 === 0 ? 'bg-gray-50' : 'bg-white';
+                
+                return `
+                    <tr class="${rowClass} border-b text-sm">
+                        <td class="w-10 text-center py-2">${index + 1}</td>
+                        <td class="w-1/2 p-2">${item.description || '-'}</td>
+                        <td class="w-10 text-center p-2">${item.quantity.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
+                        <td class="w-1/6 text-right p-2">${unitFormatado}</td>
+                        <td class="w-1/6 text-right p-2 font-semibold">${totalFormatado}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            return `
+                <div class="p-4 md:p-8 space-y-6">
+                    <div class="text-center pb-4 border-b-4 agp-border-gray">
+                        <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
+                        <h1 class="text-2xl font-bold agp-text-gray">PROPOSTA DE ORÇAMENTO Nº ${Math.floor(Math.random() * 9000) + 1000}</h1>
+                        <p class="text-sm text-gray-600">Data de Emissão: ${dataAtualFormatada}</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm border-b pb-4">
+                        <div class="space-y-1">
+                            <h3 class="font-bold agp-text-gray">PRESTADOR DE SERVIÇO</h3>
+                            <p>${companyInfo.name}</p>
+                            <p>CPF: ${companyInfo.cpf}</p>
+                            <p>Whatsapp: ${companyInfo.tel}</p>
+                            <p>Instagram: ${companyInfo.instagram}</p>
+                            <p>E-mail: ${companyInfo.email}</p>
+                            <p>Site: ${companyInfo.site}</p>
+                        </div>
+                        <div class="space-y-1">
+                            <h3 class="font-bold agp-text-gray">CLIENTE</h3>
+                            <p>${data.nomeCliente}</p>
+                            <p>CPF/CNPJ: ${data.cpfCliente || 'Não informado'}</p>
+                            <p>Endereço: ${data.enderecoCliente}</p>
+                        </div>
+                    </div>
+
+                    <h3 class="font-bold agp-text-gray text-lg border-b mt-4">TÍTULO DO ORÇAMENTO: ${data.tituloServico}</h3>
+                    
+                    <!-- Tabela de Detalhamento -->
+                    <div class="overflow-x-auto border agp-border-gray rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-agp-gray text-white text-xs uppercase tracking-wider">
+                                <tr>
+                                    <th class="w-10 text-center p-2">ÍTEM</th>
+                                    <th class="w-1/2 text-left p-2">DESCRIÇÃO DE ÍTEM</th>
+                                    <th class="w-10 text-center p-2">QTD</th>
+                                    <th class="w-1/6 text-right p-2">V. UNIT (R$)</th>
+                                    <th class="w-1/6 text-right p-2">V. TOTAL (R$)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                ${itemRows}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Resumo e Validade -->
+                    <div class="flex justify-between items-center mt-4 p-4 border-4 agp-border-gray rounded-lg bg-gray-50">
+                        <div>
+                            <p class="text-sm font-semibold">Prazo de Validade:</p>
+                            <p class="text-base font-bold text-red-600">${validadeFormatada} (10 dias corridos)</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-xl font-bold">VALOR TOTAL:</p>
+                            <p class="text-4xl font-extrabold agp-text-gray">${valorFormatado}</p>
+                            <p class="text-sm mt-1">Prazo Execução Estimado: ${dataInicioFormatada} a ${dataFimFormatada}</p>
+                        </div>
+                    </div>
+                    
+                    ${data.clausulasAdicionais ? `
+                        <h3 class="font-bold agp-text-gray text-lg border-b mt-4">TERMOS E CONDIÇÕES</h3>
+                        <p class="text-sm text-justify whitespace-pre-line leading-relaxed">${data.clausulasAdicionais}</p>
+                    ` : ''}
+
+                </div>
+            `;
+        }
+
+
+        /**
+         * Gera o HTML do RECIBO de Serviço.
+         */
+        function generateReceiptHTML(data) {
+            const valorFormatado = formatCurrency(data.valorTotal);
+            const dataInicioFormatada = formatDate(data.dataInicio);
+            const dataAtual = formatDate(new Date().toISOString().split('T')[0]);
+
+            return `
+                <div class="p-4 md:p-8 space-y-6">
+                    <div class="text-center border-b pb-4">
+                        <img src="/public/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover mx-auto mb-2" onerror="this.onerror=null; this.src='https://placehold.co/60x60/0b4e3e/ffffff?text=AGP';">
+                        <h1 class="text-2xl font-bold agp-text-gray">RECIBO DE PAGAMENTO DE SERVIÇOS</h1>
+                        <p class="text-sm text-gray-600">Referente ao serviço iniciado em: ${dataInicioFormatada}</p>
+                    </div>
+
+                    <div class="border-4 agp-border-gray p-6 rounded-lg text-center">
+                        <p class="text-4xl font-extrabold agp-text-gray">${valorFormatado}</p>
+                        <p class="text-lg mt-2">Valor Total Recebido</p>
+                    </div>
+
+                    <h3 class="font-bold agp-text-gray text-lg border-b mt-4">DETALHES DO PAGAMENTO</h3>
+                    <p class="text-base text-justify leading-relaxed">
+                        Recebi(emos) de <strong>${data.nomeCliente}</strong>, CPF/CNPJ n. ${data.cpfCliente || 'Não informado'}, a importância de <strong>${valorFormatado}</strong> (${data.valorTotal} reais), referente à prestação de serviços de <strong>${data.tituloServico}</strong>.
+                    </p>
+
+                    <ul class="list-disc ml-5 text-sm space-y-1">
+                        <li><strong>Serviço:</strong> ${data.tituloServico}</li>
+                        <li><strong>Detalhes:</strong> ${data.descricaoServico}</li>
+                        <li><strong>Método de Pagamento:</strong> ${data.metodoPagamento}</li>
+                        <li><strong>Data do Recibo:</strong> ${dataAtual}</li>
+                    </ul>
+
+                    <h3 class="font-bold agp-text-gray text-lg border-b mt-4">PRESTADOR DE SERVIÇO</h3>
+                    <p class="text-sm leading-relaxed">
+                        <strong>${companyInfo.name}</strong><br>
+                        CPF: ${companyInfo.cpf}<br>
+                        Endereço: ${companyInfo.address}<br>
+                        Whatsapp: ${companyInfo.tel}<br>
+                        Instagram: ${companyInfo.instagram}<br>
+                        E-mail: ${companyInfo.email}<br>
+                        Site: ${companyInfo.site}
+                    </p>
+
+                    <div class="flex justify-around pt-12 text-center">
+                        <div>
+                            <div class="border-t border-gray-700 w-64 pt-2"></div>
+                            <p class="font-semibold text-sm">${companyInfo.name}</p>
+                            <p class="text-xs">Assinatura da Contratada</p>
+                        </div>
+                        <div>
+                            <div class="border-t border-gray-700 w-64 pt-2"></div>
+                            <p class="font-semibold text-sm">${data.nomeCliente}</p>
+                            <p class="text-xs">Assinatura do Contratante</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+
+        /**
+         * Renderiza o preview do documento na área de output.
+         */
+        function renderPreview() {
+            const data = getFormData();
+            
+            // 1. Validação manual antes de gerar
+            const validationError = validateForm(data);
+            if (validationError) {
+                displayError(validationError);
+                // Permanece na seção do formulário
+                document.getElementById('form-section').classList.remove('hidden');
+                document.getElementById('preview-section').classList.add('hidden');
+                return;
+            }
+            
+            // Se a validação passou, limpa o erro e continua
+            clearError();
+
+            let outputHTML = '';
+            if (currentDocType === 'contract') {
+                outputHTML = generateContractHTML(data);
+            } else if (currentDocType === 'receipt') {
+                outputHTML = generateReceiptHTML(data);
+            } else if (currentDocType === 'budget') {
+                outputHTML = generateBudgetHTML(data);
+            }
+
+            document.getElementById('document-output').innerHTML = outputHTML;
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('preview-section').classList.remove('hidden');
+        }
+
+        /**
+         * Oculta o preview e volta ao formulário.
+         */
+        function hidePreview() {
+            document.getElementById('preview-section').classList.add('hidden');
+            document.getElementById('form-section').classList.remove('hidden');
+            clearError();
+        }
+
+        /**
+         * Chama a função de impressão do navegador.
+         */
+        function printDocument() {
+            window.print();
+        }
+
+        // Inicialização: configura o estado inicial do toggle e itens
+        window.onload = initializeToggle;
+    </script>
+</body>
+</html>

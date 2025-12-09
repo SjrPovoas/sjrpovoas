@@ -29,6 +29,14 @@ export default function AdminDashboardPage() {
             Gerenciar
           </a>
         </div>
+        {/* Card de Gerador de Recibo Online */}
+        <div style={{ padding: '20px', backgroundColor: '#fff', borderRadius: '6px', flex: 1, boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)' }}>
+          <h2 style={{ color: '#333' }}>Usuários</h2>
+          <p>Gere recibo online para os usuários que solicitarem.</p>
+          <a href="https://sjrpovoas.vercel.app/gerador-de-contrato-servico-orcamento.html" target='_blank' style={{ display: 'inline-block', marginTop: '15px', color: '#fff', backgroundColor: '#6c757d', padding: '8px 15px', borderRadius: '4px', textDecoration: 'none' }}>
+            Gerar Recibo Online
+          </a>
+        </div>
       </div>
     </div>
   );

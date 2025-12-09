@@ -112,7 +112,7 @@ export default function PaymentStep({ userId }: PaymentStepProps) {
       {/* --- Detalhes do PIX --- */}
       <div style={{ backgroundColor: '#e9e9e9', padding: '15px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #ddd' }}>
         <h3 style={{ marginBottom: '10px', color: '#333' }}>Dados PIX para Transferência</h3>
-        <p><strong>Chave PIX (E-mail):</strong> {PIX_KEY}</p>
+        <p><strong>Chave PIX (Celular):</strong> {PIX_KEY}</p>
         {/* --- <p><strong>CNPJ/Identificador:</strong> {PIX_CNPJ}</p> --- */}
         <p><strong>Instituição:</strong> {BANK_INFO}</p>
       </div>
