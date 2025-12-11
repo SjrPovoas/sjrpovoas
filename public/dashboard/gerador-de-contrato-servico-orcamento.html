@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR" prefix="og: https://ogp.me/ns#">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="title" content="SjrPovoaS | Criamos a solução que você procura">
-    <meta name="author" content="SjrPovoaS">
-    <meta name="description" content="Gerador de Recibo Online da SjrPovoaS">
-    <meta name="Keywords" content="Gerador de Recibo Online da SjrPovoaS">
-    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
-    <meta name="robots" content="follow, index">
-    <meta name="googlebot" content="all">
-    <meta name="google-site-verification" content="">
-    <title>Gerador de Recibo Online da SjrPovoaS</title>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="title" content="SjrPovoaS | Criamos a solução que você procura">
+        <meta name="author" content="SjrPovoaS">
+        <meta name="description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+        <meta name="Keywords" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+        <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+        <meta name="robots" content="follow, index">
+        <meta name="googlebot" content="all">
+        <meta name="google-site-verification" content="">
+    <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
     <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
     <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
     <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
     <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
     <link rel="mask-icon" href="/src/app/favicon.ico">
-    <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-recibo-online.html/">
+    <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
     <!-- Open Graph tags are also recommended -->
     <meta property="og:locale" content="pt_BR">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="SjrPovoaS">
-    <meta property="og:url" content="https://sjrpovoas.vercel.app/dashboard/gerador-de-recibo-online.html">
+    <meta property="og:site_name" content="SjrPovoaS | Criamos a solução que você procura">
+    <meta property="og:url" content="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
     <meta property="og:image" content="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png">
     <meta name="og:image:width" content="1200">
     <meta name="og:image:height" content="630">
-    <meta property="og:title" content="Gerador de Recibo Online da SjrPovoaS">
-    <meta property="og:description" content="Gerador de Recibo Online da SjrPovoaS">
+    <meta property="og:title" content="SjrPovoaS | Criamos a solução que você procura">
+    <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
     <!-- Carrega o Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Configuração do Tailwind para usar o tema de cores AGP -->
@@ -45,87 +46,87 @@
         }
     </script>
     <style>
-        /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
-        :root { font-family: 'Inter', sans-serif; }
-        /* Cores inspiradas no branding */
-        .agp-text-gray { color: gray; }
-        .agp-border-gray { border-color: gray; }
-        /* Estilos para inputs */
-        .form-input-label {
-            display: block;
-            font-size: 0.875rem; /* text-sm */
-            font-weight: 500; /* font-medium */
-            color: #374151; /* gray-700 */
-            padding-top: 0.5rem; }
-        /* Estilo base para todos os inputs do formulário */
-        .form-input {
-            padding: 0.75rem; /* p-3 */
-            border: 1px solid #d1d5db; /* border-gray-300 */
-            border-radius: 0.5rem; /* rounded-lg */
+    /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
+    :root { font-family: 'Inter', sans-serif; }
+    /* Cores inspiradas no branding */
+    .agp-text-gray { color: gray; }
+    .agp-border-gray { border-color: gray; }
+    /* Estilos para inputs */
+    .form-input-label {
+        display: block;
+        font-size: 0.875rem; /* text-sm */
+        font-weight: 500; /* font-medium */
+        color: #374151; /* gray-700 */
+        padding-top: 0.5rem; }
+    /* Estilo base para todos os inputs do formulário */
+    .form-input {
+        padding: 0.75rem; /* p-3 */
+        border: 1px solid #d1d5db; /* border-gray-300 */
+        border-radius: 0.5rem; /* rounded-lg */
+        width: 100%;
+        transition: all 150ms ease-in-out; }
+    .form-input:focus {
+         box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5); /* focus:ring-2 focus:ring-gray-500 */
+         border-color: gray; /* focus:border-gray-500 */ }
+    /* Estilos para mensagem de erro (substituindo o alert) */
+    #errorMessage {
+        color: #dc2626; /* red-600 */
+        background-color: #fee2e2; /* red-100 */
+        border: 1px solid #f87171; /* red-400 */
+        padding: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+        font-weight: 500; }
+    /* Estilos específicos para a visualização de impressão */
+    @media print {
+        body * { visibility: hidden; }
+        .print-area, .print-area * { visibility: visible; }
+        .print-area {
+            position: absolute;
+            left: 0;
+            top: 0;
             width: 100%;
-            transition: all 150ms ease-in-out; }
-        .form-input:focus {
-             box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5); /* focus:ring-2 focus:ring-green-500 */
-             border-color: gray; /* focus:border-green-500 */ }
-        /* Estilos para mensagem de erro (substituindo o alert) */
-        #errorMessage {
-            color: #dc2626; /* red-600 */
-            background-color: #fee2e2; /* red-100 */
-            border: 1px solid #f87171; /* red-400 */
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 0.5rem;
-            font-weight: 500; }
-        /* Estilos específicos para a visualização de impressão */
-        @media print {
-            body * { visibility: hidden; }
-            .print-area, .print-area * { visibility: visible; }
-            .print-area {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                padding: 0;
-                margin: 0;
-                box-shadow: none;
-                font-size: 11pt; }
-            .no-print { display: none !important; }
-            .agp-text-gray { color: black !important; }
-        }
-    </style>
+            padding: 0;
+            margin: 0;
+            box-shadow: none;
+            font-size: 11pt; }
+        .no-print { display: none !important; }
+        .agp-text-gray { color: black !important; }
+    }
+</style>
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
-    <!-- Cabeçalho (Branding) -->
-    <header class="w-full max-w-4xl p-4 mb-6 bg-white rounded-xl shadow-md flex items-center justify-center space-x-4">
-        <!-- Placeholder para o Logo da SjrPovoaS -->
-        <a href="https://sjrpovoas.vercel.app/dashboard/gerador-de-recibo-online.html" aria-label="Gerador de Recibo Online">
-            <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover"
-             onerror="this.onerror=null; this.src='/assets/img/logo-SjrPovoaS.png';">
-        </a>
-        <div class="text-left">
-            <h1 class="text-3xl font-bold agp-text-gray">SjrPovoaS</h1>
-            <p class="text-gray-600 mt-1">Gerador de Recibo Online</p>
-        </div>
-    </header>
+<!-- Cabeçalho (Branding) -->
+<header class="w-full max-w-4xl p-4 mb-6 bg-white rounded-xl shadow-md flex items-center justify-center space-x-4">
+    <!-- Placeholder para o Logo da SjrPovoaS -->
+    <a href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/" aria-label="Gerador de Recibo Online">
+        <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover"
+         onerror="this.onerror=null; this.src='/assets/img/logo-SjrPovoaS.png';">
+    </a>
+    <div class="text-left">
+        <h1 class="text-3xl font-bold agp-text-gray">SjrPovoaS</h1>
+        <p class="text-gray-600 mt-1">Gerador de Documentos Online</p>
+    </div>
+</header>
 
-    <main class="w-full max-w-4xl bg-white rounded-xl shadow-2xl p-6 md:p-8">
+<main class="w-full max-w-4xl bg-white rounded-xl shadow-2xl p-6 md:p-8">
 
-        <!-- Área de Controles e Formulário (Oculta na impressão) -->
+    <!-- Área de Controles e Formulário (Oculta na impressão) -->
         <section id="form-section" class="no-print">
             <div class="mb-6 flex flex-col sm:flex-row justify-between items-center border-b pb-4">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4 sm:mb-0">Detalhes do Documento</h2>
                 
                 <!-- Toggle Contrato / Recibo / Orçamento -->
                 <div class="flex p-1 rounded-full bg-gray-200 shadow-inner">
-                    <!--<button id="toggleContract" onclick="setDocType('contract')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                    <button id="toggleContract" onclick="setDocType('contract')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
                         Contrato
-                    </button>-->
+                    </button>
                     <button id="toggleReceipt" onclick="setDocType('receipt')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
                         Recibo
                     </button>
-                    <!--<button id="toggleBudget" onclick="setDocType('budget')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                    <button id="toggleBudget" onclick="setDocType('budget')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
                         Orçamento
-                    </button>-->
+                    </button>
                 </div>
             </div>
             
@@ -146,18 +147,18 @@
 
                 <!-- Informações do Serviço/Orçamento -->
                 <div class="md:col-span-2 mt-4">
-                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Título e Data</h3>
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Título e Prazos</h3>
                 </div>
-                <input type="text" id="tituloServico" placeholder="Título Curto do Documento (Ex: Prestação de Serviço)" class="form-input md:col-span-2">
+                <input type="text" id="tituloServico" placeholder="Título Curto do Documento (Ex: Criação de Site)" class="form-input md:col-span-2">
                 
-                <label class="form-input-label">Serviço Referente ao Período de:</label>
+                <label class="form-input-label">Prazo de Início Estimado:</label>
                 <input type="date" id="dataInicio" class="form-input">
                 
-                <label class="form-input-label">Serviço Referente ao Período ao:</label>
+                <label class="form-input-label">Prazo de Conclusão Estimado:</label>
                 <input type="date" id="dataFim" class="form-input">
                 
                 <!-- Área de Itens do Orçamento (APENAS para Orçamento) -->
-                <!--<div class="md:col-span-2 mt-4" id="budgetItemsSection">
+                <div class="md:col-span-2 mt-4" id="budgetItemsSection">
                     <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Itens do Orçamento (Descrição Detalhada)</h3>
                     
                     <div class="grid grid-cols-12 gap-2 text-sm font-semibold text-gray-600 mb-2">
@@ -165,8 +166,8 @@
                         <span class="col-span-2">Qtd</span>
                         <span class="col-span-3 text-right">V. Unit (R$)</span>
                         <span class="col-span-2 text-right">V. Total (R$)</span>
-                        <span class="col-span-1"></span>
-                    </div>-->
+                        <span class="col-span-1"></span> <!-- Ação -->
+                    </div>
 
                     <!-- Container para linhas de itens dinâmicas -->
                     <div id="item-list-container" class="space-y-2">
@@ -186,7 +187,7 @@
                 </div>
                 
                 <!-- Campos Simples (Usados por Contrato/Recibo) -->
-                <textarea id="descricaoServico" rows="4" placeholder="Descrição Detalhada do Serviço (Recibo)." class="form-input md:col-span-2"></textarea>
+                <textarea id="descricaoServico" rows="4" placeholder="Descrição Detalhada do Serviço (Contrato/Recibo)." class="form-input md:col-span-2"></textarea>
                 
                 <div class="flex flex-col">
                     <label class="form-input-label" id="labelValorTotal">Valor Total (R$):</label>
@@ -205,15 +206,15 @@
                 </div>
 
                 <!-- Campo Adicional para Contrato / Orçamento -->
-                <!--<div class="md:col-span-2 mt-4" id="contractFields">
+                <div class="md:col-span-2 mt-4" id="contractFields">
                     <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3" id="additionalClausesTitle">Termos e Condições</h3>
                     <textarea id="clausulasAdicionais" rows="12" placeholder="Insira quaisquer termos e condições aqui." class="form-input md:col-span-2"></textarea>
-                </div>-->
+                </div>
             </form>
 
             <!-- Botão de Geração -->
-            <button id="generateButton" onclick="renderPreview()" class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-highlightGray-700 focus:outline-none focus:ring-4 focus:ring-white-500 focus:ring-opacity-50">
-                Gerar Recibo para Visualização
+            <button id="generateButton" onclick="renderPreview()" class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50">
+                Gerar Contrato para Visualização
             </button>
         </section>
 
@@ -222,7 +223,7 @@
             <div class="flex justify-between items-center mb-4 no-print">
                 <h2 class="text-xl font-semibold text-gray-800">Visualização do Documento</h2>
                 <div class="space-x-2">
-                    <button onclick="printDocument()" class="px-4 py-2 text-sm font-medium rounded-lg text-white transition duration-200 bg-agp-gray hover:bg-green-700">
+                    <button onclick="printDocument()" class="px-4 py-2 text-sm font-medium rounded-lg text-white transition duration-200 bg-agp-gray hover:bg-gray-700">
                         Imprimir / Salvar PDF
                     </button>
                     <button onclick="hidePreview()" class="px-4 py-2 text-sm font-medium rounded-lg bg-gray-300 hover:bg-gray-400">
@@ -240,12 +241,12 @@
     </main>
 
     <footer class="w-full p-4 mb-1 rounded-x1 flex justify-center space-x-6">
-        <a href="https://sjrpovoas.vercel.app" aria-label="Logo SjrPovoaS" target="_blank">
+        <a href="https://sjrpovoas.vercel.app/" aria-label="Logo SjrPovoaS" target="_blank">
             <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-12 h-12 rounded-full object-cover">
         </a>
         <div class="text-left">
             <p class="text-sm text-gray-400 mt-0">
-            <a href="https://sjrpovoas.vercel.app/" aria-label="Site da SjrPovoaS" target="_blank"> https://sjrpovoas.vercel.app</a><br>
+            <a href="https://sjrpovoas.vercel.app/" aria-label="Site da SjrPovoaS" target="_blank"> https://sjrpovoas.vercel.app/</a><br>
             © 2025 - Todos os direitos reservados - Desenvolvido por<a href="https://github.com/SjrPovoas" aria-label="SjrPovoaS" target="_blank"> SjrPovoaS</a></p>
         </div>
     </footer>
@@ -255,17 +256,16 @@
         let currentDocType = 'contract'; // 'contract', 'receipt', ou 'budget'
         let items = []; // Array para armazenar os itens do orçamento
 
-        // Dados fixos da empresa (Almeida Gomes Paisagismo)
+        // Dados fixos da empresa (SjrPovoaS)
         const companyInfo = {
             name: "SILVIO PÓVOAS DE CARVALHO JÚNIOR",
-            cpf: "011.907.545-84",
-            address: "Quadra 04 Lote 26 Condomínio Flores do Cerrado 2 - Recreio Mossoró. Cidade Ocidental - GO. Brasil",
+            cpf: "011.97.545-84",
+            address: "Quadra 04 Lote 26 Condomínio Flores do Cerrado 2 Casa 63 - Recreio Mossoró. Cidade Ocidental - GO. Brasil",
             email: "sjrpovoas@gmail.com",
             representative: "Representante Legal",
             tel: "(61) 98188-5715",
             instagram: "@silviopovoasjunior",
-            email: "sjrpovoas@gmail.com",
-            site: "https://sjrpovoas.vercel.app"
+            site: "https://sjrpovoas.vercel.app/"
         };
 
         // Elementos do DOM
@@ -294,7 +294,7 @@
 Em caso de atraso no pagamento superior a [X] dias, será aplicada multa de [Y]% sobre o valor em atraso, além de juros de 1% ao mês.
 
 CLÁUSULA DE GARANTIA:
-A Contratada (Almeida Gomes Paisagismo) oferece garantia de [Z] meses sobre a execução do serviço, excluindo-se danos por mau uso, falta de manutenção ou eventos naturais. O Contratante deve seguir o manual de manutenção.
+A Contratada (SJRPOVOAS) oferece garantia de [Z] meses sobre a execução do serviço, excluindo-se danos por mau uso, falta de manutenção ou eventos naturais. O Contratante deve seguir o manual de manutenção.
 
 CLÁUSULA DE RESCISÃO:
 Qualquer parte poderá rescindir o contrato mediante aviso prévio por escrito de [W] dias. Se a rescisão for sem justa causa pelo Contratante após o início, este deverá pagar os serviços executados mais uma multa compensatória de [K]% do valor restante.`;
@@ -638,8 +638,8 @@ Os valores não incluem serviços não especificados na descrição do item.`;
 
                     <h3 class="font-bold agp-text-gray text-lg border-b mt-4">CLÁUSULA SEGUNDA - PRAZOS E VALOR</h3>
                     <ul class="list-disc ml-5 text-sm space-y-1">
-                        <li><strong>Serviço Referente ao Período de:</strong> ${dataInicioFormatada}</li>
-                        <li><strong>Serviço Referente ao Período ao:</strong> ${dataFimFormatada}</li>
+                        <li><strong>Prazo de Início:</strong> ${dataInicioFormatada}</li>
+                        <li><strong>Prazo de Conclusão Estimado:</strong> ${dataFimFormatada}</li>
                         <li><strong>Valor Total:</strong> O Contratante pagará à Contratada o valor total de <strong>${valorFormatado}</strong> (${data.valorTotal} reais) pelos serviços descritos na Cláusula Primeira.</li>
                     </ul>
 

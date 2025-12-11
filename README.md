@@ -102,10 +102,20 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 ## Getting Started
 
 First, run the development server:
-
+# 1. Limpe a pasta de binários e locks
+rm -rf node_modules
+rm -f package-lock.json
+# 2. Instale todas as dependências do package.json
+npm install
 ```bash
 npm run dev
 ```
+```bash
+npm install --save-dev @types/estree
+```
+# Apaga a pasta de cache do Next.js
+rm -rf .next
+Ctrl+Shift+P :: TypeScript: Restart TS Server
 ```bash
 npm install bootstrap
 ```
@@ -121,6 +131,11 @@ npm install js-cookie
 ```bash
 npm install lucide-react
 ```
+```bash
+npm install mongoose
+```
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

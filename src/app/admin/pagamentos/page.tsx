@@ -166,26 +166,31 @@ export default function AdminPagamentosPage() {
         <h1 style={{ color: '#007bff', borderBottom: '2px solid #007bff', paddingBottom: '10px', marginBottom: '30px' }}>
           💰 Pagamentos Pendentes de Revisão ({payments.length})
         </h1>
+                    {/* Card: Gerenciamento de Usuários */}
+                    <div style={cardBaseStyle}>
+                        <h2 style={{ color: '#333' }}>Usuários</h2>
+                        <p>Visualize e gerencie todos os usuários cadastrados e seus planos.</p>
+                        <Link href="/admin/users" style={{
+                            display: 'inline-block',
+                            marginTop: '15px',
+                            color: '#fff',
+                            backgroundColor: '#6c757d',
+                            padding: '8px 15px',
+                            borderRadius: '4px',
+                            textDecoration: 'none',
+                        }}>
+                            Gerenciamento de Usuários
+                        </Link>
+                    </div>
 
-        {/* CARDS DE NAVEGAÇÃO */}
-        <div style={cardContainerStyle}>
-          {/* Card de Gerenciamento de Usuários */}
-          <div style={cardBaseStyle}>
-            <h2 style={{ color: '#333' }}>Usuários</h2>
-            <p>Visualize e gerencie todos os usuários cadastrados e seus planos.</p>
-            <Link href="/admin/users" style={{ display: 'inline-block', marginTop: '15px', color: '#fff', backgroundColor: '#6c757d', padding: '8px 15px', borderRadius: '4px', textDecoration: 'none' }}>
-              Gerenciamento de Usuários
-            </Link>
-          </div>
-          {/* Card de Gerador de Recibo Online */}
-          <div style={cardBaseStyle}>
-            <h2 style={{ color: '#333' }}>Recibos</h2>
-            <p>Gere recibo online para os usuários que solicitarem.</p>
-            <a href="/dashboard/gerador-de-recibo-online.html" target='_blank' rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '15px', color: '#fff', backgroundColor: '#6c757d', padding: '8px 15px', borderRadius: '4px', textDecoration: 'none' }}>
-              Gerar Recibo Online
-            </a>
-          </div>
-        </div>
+                    {/* Card: Gerador de Documentos Online */}
+                    <div style={cardBaseStyle}>
+                        <h2 style={{ color: '#0056b3' }}>Gerar Documento Online</h2>
+                        <p>Gere Contrato, Recibo e/ou Orçamento Online.</p>
+                        <a href="/dashboard/gerador-de-contrato-servico-orcamento.html" target='_blank' rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '15px', color: '#fff', backgroundColor: '#007bff', padding: '8px 15px', borderRadius: '4px', textDecoration: 'none' }}>
+                            Gerar Documento Online
+                        </a>
+                    </div>
 
         {payments.length === 0 ? (
           <p style={{ fontSize: '1.2em', textAlign: 'center', padding: '50px', backgroundColor: '#e9f7ef', borderRadius: '5px', marginTop: '20px' }}>
