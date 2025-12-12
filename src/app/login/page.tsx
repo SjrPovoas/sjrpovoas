@@ -111,6 +111,11 @@ export default function UserLoginPage() {
                     Ainda não é assinante? Cadastre-se
                 </Link>
             </div>
+            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px' }}>
+                <Link href="/recuperar-senha" style={{ color: '#0070f3', textDecoration: 'none' }}>
+                    Esqueci minha senha
+                </Link>
+            </div>
         </div>
     );
 }

@@ -139,6 +139,10 @@ npm install mongoose
 npm install jsonwebtoken
 ```
 npm install --save-dev @types/jsonwebtoken
+```bash
+npm install nodemailer
+```
+npm install --save-dev @types/nodemailer
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
