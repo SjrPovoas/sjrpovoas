@@ -1,6 +1,7 @@
 // src/components/InteractiveCard.tsx
 
-// 🚨 CORREÇÃO 1: Importar useState do 'react'
+'use client';
+
 import React, { CSSProperties, useState, AnchorHTMLAttributes, HTMLAttributes } from 'react';
 import Link, { LinkProps } from 'next/link';
 
