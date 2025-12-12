@@ -1,57 +1,109 @@
 // src/components/InteractiveCard.tsx
 
-'use client'; 
+// 🚨 CORREÇÃO 1: Importar useState do 'react'
+import React, { CSSProperties, useState, AnchorHTMLAttributes, HTMLAttributes } from 'react';
+import Link, { LinkProps } from 'next/link';
 
-import Link from 'next/link';
-import React, { useState } from 'react';
+// =======================================================================
+// INTERFACE DE PROPRIEDADES
+// =======================================================================
 
-// Define os tipos das props
-interface InteractiveCardProps {
-    href: string;
+export interface InteractiveCardProps {
     title: string;
     description: string;
-    image: string;
-    baseStyle: React.CSSProperties; 
+    image: string; // URL para o background-image (miniatura do vídeo)
+    baseStyle: CSSProperties;
+    
+    // Propriedades Opcionais:
+    href?: string;         // Usado se o card deve ser um link (ex: para páginas externas)
+    onClick?: () => void;  // Usado se o card deve acionar um modal ou função
 }
 
-export default function InteractiveCard({ href, title, description, image, baseStyle }: InteractiveCardProps) {
+// =======================================================================
+// COMPONENTE INTERACTIVE CARD
+// =======================================================================
+
+const InteractiveCard: React.FC<InteractiveCardProps> = ({ 
+    title, 
+    description, 
+    image, 
+    baseStyle, 
+    href, 
+    onClick 
+}) => {
     
+    // Estado para o efeito visual de hover
     const [isHovered, setIsHovered] = useState(false);
 
-    const dynamicStyle: React.CSSProperties = {
-        transform: isHovered ? 'scale(0.90)' : 'scale(1)', // Aumentei um pouco o scale no hover
-        zIndex: isHovered ? 10 : 1,
-        boxShadow: isHovered ? '0 10px 20px rgba(0, 0, 0, 0.8)' : '0 4px 8px rgba(0, 0, 0, 0.5)',
-    };
+    // 🚨 CORREÇÃO 2: Lógica de renderização mais segura para o TypeScript
+    // Se href for fornecido, renderizamos o Link do Next.js
+    if (href) {
+        return (
+            <Link 
+                href={href}
+                onClick={onClick}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                // Define o target="_blank" para links externos, se necessário
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                
+                style={{
+                    ...baseStyle, 
+                    backgroundImage: image,
+                    cursor: 'pointer',
+                    transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                    transform: isHovered ? 'scale(1.03)' : 'scale(1)',
+                    boxShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.5)' : '0 4px 12px rgba(0,0,0,0.2)',
+                    textDecoration: 'none',
+                    color: 'white', 
+                }}
+            >
+                {/* Overlay e Conteúdo */}
+                <div style={{ 
+                    position: 'absolute', 
+                    top: 0, left: 0, right: 0, bottom: 0, 
+                    background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)' 
+                }} />
+                
+                <div style={{ position: 'relative', zIndex: 2, padding: '15px' }}>
+                    <h4 style={{ margin: 0, fontSize: '1.4em' }}>{title}</h4>
+                    <p style={{ fontSize: '0.9em', margin: '5px 0 0' }}>{description}</p>
+                </div>
+            </Link>
+        );
+    }
 
+    // Se NÃO houver href (mas provavelmente há onClick para o modal), renderizamos um <div>
     return (
-        <Link 
-            href={href} 
-            style={{ 
-                ...baseStyle, 
-                ...dynamicStyle, 
-                backgroundImage: image,
-                textDecoration: 'none',
-            }}
-            onMouseEnter={() => setIsHovered(true)} 
+        <div
+            onClick={onClick}
+            onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+
+            style={{
+                ...baseStyle, 
+                backgroundImage: image,
+                cursor: onClick ? 'pointer' : 'default',
+                transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+                transform: isHovered ? 'scale(1.03)' : 'scale(1)',
+                boxShadow: isHovered ? '0 10px 20px rgba(0,0,0,0.5)' : '0 4px 12px rgba(0,0,0,0.2)',
+                color: 'white', 
+            }}
         >
-            {/* Overlay Escuro para Legibilidade */}
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.4)', 
-            }}></div>
+            {/* Overlay e Conteúdo */}
+            <div style={{ 
+                position: 'absolute', 
+                top: 0, left: 0, right: 0, bottom: 0, 
+                background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)' 
+            }} />
             
-            {/* Conteúdo do Card */}
-            <div style={{ position: 'relative', zIndex: 2 }}>
-                {/* 💡 AJUSTE DE FONTE para melhor visualização em cards menores */}
-                <h3 style={{ margin: 0, fontSize: '1.1em', marginBottom: '5px' }}>{title}</h3> 
-                <p style={{ margin: 0, fontSize: '0.9em', marginBottom: '5px', color: '#bbb' }}>{description}</p>
+            <div style={{ position: 'relative', zIndex: 2, padding: '15px' }}>
+                <h4 style={{ margin: 0, fontSize: '1.4em' }}>{title}</h4>
+                <p style={{ fontSize: '0.9em', margin: '5px 0 0' }}>{description}</p>
             </div>
-        </Link>
+        </div>
     );
-}
+};
+
+export default InteractiveCard;

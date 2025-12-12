@@ -8,7 +8,7 @@ interface AssinantePendente {
     nomeCompleto: string;
     email: string;
     plano: 'mensal' | 'anual';
-    dataRegisto: string; 
+    dataRegisto: string;
     statusPagamento: string;
     cpf: string; // Adicionando CPF para visualização administrativa
     telefone: string; // Adicionando Telefone
@@ -28,13 +28,13 @@ export default function AdminDashboardPage() {
             const response = await fetch('/api/admin/listar-pendentes', {
                 method: 'GET',
                 // Envia o cookie 'adminToken' para autenticação
-                credentials: 'include', 
+                credentials: 'include',
             });
 
             if (response.status === 403 || response.status === 401) {
                 // Acesso negado: Token ausente ou inválido. Redireciona para o login de Admin.
                 console.log('Acesso não autorizado. Redirecionando para login admin.');
-                router.push('/login-admin'); 
+                router.push('/login-admin');
                 return;
             }
 
@@ -72,13 +72,13 @@ export default function AdminDashboardPage() {
                 body: JSON.stringify({ email: assinante.email, plano: assinante.plano }),
                 credentials: 'include',
             });
-            
+
             const result = await response.json();
 
             if (response.ok) {
                 alert(`Sucesso: ${result.message}`);
                 // Recarrega a lista para remover o usuário ativado
-                fetchPendentes(); 
+                fetchPendentes();
             } else {
                 alert(`Falha na Ativação: ${result.message}`);
             }
@@ -93,22 +93,39 @@ export default function AdminDashboardPage() {
     const tableStyle = { width: '100%', borderCollapse: 'collapse' as const, marginTop: '20px', fontSize: '14px' };
     const thTdStyle = { border: '1px solid #ddd', padding: '10px', textAlign: 'left' as const };
     const buttonStyle = { padding: '8px 12px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' };
-    
+
     return (
         <div>
             <header style={headerStyle}>
                 <h2>Painel de Administração</h2>
                 <p>Gestão de Usuários e Ativações Pendentes</p>
             </header>
-
+            <div style={containerStyle}>
+                {/* Card: Gerador de Documento Online (Mantido inalterado) */}
+                <div style={{  textAlign: 'center' }}>
+                    <h2 style={{ color: '#0070f3' }}>Gerar Documento Online</h2>
+                    <p>Gere contrato, recibo e orçamento online.</p>
+                    <a href="/dashboard/gerador-de-contrato-servico-orcamento.html" target='_blank' rel='noopener noreferrer' style={{
+                        display: 'inline-block',
+                        marginTop: '15px',
+                        color: '#fff',
+                        backgroundColor: '#0070f3',
+                        padding: '8px 15px',
+                        borderRadius: '4px',
+                        textDecoration: 'none',
+                    }}>
+                        Gerar Documento Online
+                    </a>
+                </div>
+            </div>
             <div style={containerStyle}>
                 {loading && <p style={{ textAlign: 'center' }}>Carregando usuários pendentes...</p>}
                 {error && <p style={{ color: 'red', textAlign: 'center' }}>Erro: {error}</p>}
-                
+
                 {!loading && !error && (
                     <>
                         <h3>Usuários Pendentes de Confirmação de Pagamento ({pendentes.length})</h3>
-                        
+
                         {pendentes.length === 0 ? (
                             <p style={{ marginTop: '15px', padding: '15px', backgroundColor: '#e9ecef', borderRadius: '4px' }}>
                                 🎉 Não há usuários pendentes de ativação.
@@ -134,7 +151,7 @@ export default function AdminDashboardPage() {
                                             <td style={thTdStyle}>{assinante.plano.toUpperCase()}</td>
                                             <td style={thTdStyle}>{new Date(assinante.dataRegisto).toLocaleDateString()}</td>
                                             <td style={thTdStyle}>
-                                                <button 
+                                                <button
                                                     style={buttonStyle}
                                                     onClick={() => handleAtivarAssinante(assinante)}
                                                 >
@@ -148,17 +165,17 @@ export default function AdminDashboardPage() {
                         )}
                     </>
                 )}
-                
+
                 <div style={{ textAlign: 'right', marginTop: '30px' }}>
                     {/* Botão de Logout que limpa o cookie 'adminToken' */}
-                    <button 
+                    <button
                         onClick={() => router.push('/logout-admin')}
                         style={{ ...buttonStyle, backgroundColor: '#0070f3', marginRight: '10px' }}
                     >
                         Sair (Logout Admin)
                     </button>
                     {/* Botão de Recarregar */}
-                    <button 
+                    <button
                         onClick={fetchPendentes}
                         style={{ ...buttonStyle, backgroundColor: '#0070f3' }}
                     >
