@@ -65,9 +65,9 @@ export default function AdminDashboardPage() {
     // Adicionado
 
     const socialMediaLinks = {
-        instagram: 'https://www.instagram.com/silviopovoasjunior/',
+        instagram: 'https://www.instagram.com/silviopovoasjunior',
         facebook: 'https://www.facebook.com/sjrpovoas',
-        twitter: 'https://www.twitter.com/sjrpovaoas',
+        twitter: 'https://www.twitter.com/sjrpovoas',
         linkedin: 'https://www.linkedin.com/in/sjrpovoas',
         discord: 'https://discord.com/invite/8QKN7R5dt5',
         linktree: 'https://linktr.ee/sjrpovoas',
