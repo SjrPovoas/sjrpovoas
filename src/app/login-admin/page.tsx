@@ -1,12 +1,10 @@
-// src/app/login/page.tsx
-
+// src/app/login-admin/page.tsx
 'use client';
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
-export default function UserLoginPage() {
+export default function LoginAdminPage() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [loading, setLoading] = useState(false);
@@ -20,31 +18,27 @@ export default function UserLoginPage() {
         setError(null);
 
         try {
-            const response = await fetch('/api/auth/assinante', {
+            // 🚀 Chamada para a Rota de API do Admin
+            const response = await fetch('/api/auth/login-admin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email, senha }),
-                
-                // 🚀 CRÍTICO: Permite que o navegador aceite e envie o cookie
-                credentials: 'include' 
             });
 
             const data = await response.json();
 
-            if (response.ok && data.success) {
-                console.log("Login de assinante bem-sucedido.");
+            if (response.ok) {
+                // Login bem-sucedido: o cookie 'adminToken' foi setado pelo servidor.
+                alert('Login de Admin bem-sucedido! Redirecionando...');
                 
-                // Limpa o cache de navegação do Next.js para forçar a verificação do cookie
+                // 🚀 Redireciona para o Painel de Administração
+                router.push('/admin'); 
                 router.refresh(); 
                 
-                // Redireciona para a área protegida do assinante
-                router.push('/minha-area'); 
-                
             } else {
-                // Tratar falha de credenciais (401) ou outros erros
-                setError(data.message || 'Credenciais inválidas. Tente novamente.');
+                setError(data.message || 'Erro ao fazer login.');
             }
 
         } catch (err) {
@@ -55,14 +49,19 @@ export default function UserLoginPage() {
         }
     };
 
+    // --- Estilos básicos ---
+    const inputStyle = { width: '100%', padding: '10px', margin: '5px 0 15px 0', border: '1px solid #ccc', borderRadius: '4px' };
+    const boxStyle = { padding: '20px', maxWidth: '400px', margin: '50px auto', border: '1px solid #0070f3', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' };
+    const buttonStyle = { width: '100%', padding: '12px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' };
+
+
     return (
-        <div style={{ padding: '20px', maxWidth: '400px', margin: '50px auto', border: '1px solid #0070f3', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-            <h1 style={{ textAlign: 'center', color: '#0070f3' }}>Área Exclusiva</h1>
-            <p style={{ textAlign: 'center', marginBottom: '20px' }}>Acesse seu conteúdo como assinante.</p>
+        <div style={boxStyle}>
+            <h1 style={{ textAlign: 'center', color: '#0070f3' }}>Acesso Administrativo</h1>
             
             <form onSubmit={handleLoginSubmit}>
                 <div>
-                    <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>Email:</label>
+                    <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>Email Admin:</label>
                     <input
                         type="email"
                         id="email"
@@ -70,10 +69,9 @@ export default function UserLoginPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         required
                         disabled={loading}
-                        style={{ width: '100%', padding: '10px', margin: '5px 0 15px 0', border: '1px solid #ccc', borderRadius: '4px' }}
+                        style={inputStyle}
                     />
                 </div>
-                
                 <div>
                     <label htmlFor="senha" style={{ display: 'block', marginBottom: '5px' }}>Senha:</label>
                     <input
@@ -83,28 +81,24 @@ export default function UserLoginPage() {
                         onChange={(e) => setSenha(e.target.value)}
                         required
                         disabled={loading}
-                        style={{ width: '100%', padding: '10px', margin: '5px 0 20px 0', border: '1px solid #ccc', borderRadius: '4px' }}
+                        style={inputStyle}
                     />
                 </div>
                 
                 {error && (
-                    <p style={{ color: 'red', marginBottom: '15px', padding: '10px', border: '1px solid red', backgroundColor: '#fee' }}>{error}</p>
+                    <p style={{ color: 'red', marginBottom: '15px', padding: '10px', border: '1px solid red', backgroundColor: '#fee' }}>
+                        {error}
+                    </p>
                 )}
                 
                 <button 
                     type="submit" 
                     disabled={loading}
-                    style={{ width: '100%', padding: '12px', backgroundColor: '#0070f3', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', fontSize: '16px' }}
+                    style={buttonStyle}
                 >
-                    {loading ? 'Entrando...' : 'Acessar Conteúdo'}
+                    {loading ? 'A processar...' : 'Login Admin'}
                 </button>
             </form>
-
-            <div style={{ textAlign: 'center', marginTop: '20px', fontSize: '14px' }}>
-                <Link href="/cadastro" style={{ color: '#0070f3', textDecoration: 'none' }}>
-                    Ainda não é assinante? Cadastre-se
-                </Link>
-            </div>
         </div>
     );
 }

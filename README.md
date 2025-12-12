@@ -125,6 +125,7 @@ npm install bootstrap-icons
 ```bash
 npm install bcryptjs
 ```
+npm install --save-dev @types/bcryptjs
 ```bash
 npm install js-cookie
 ```
@@ -134,7 +135,10 @@ npm install lucide-react
 ```bash
 npm install mongoose
 ```
-
+```bash
+npm install jsonwebtoken
+```
+npm install --save-dev @types/jsonwebtoken
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
