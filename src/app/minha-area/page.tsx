@@ -290,7 +290,7 @@ export default function MinhaAreaPage() {
             </div>
             {/* Fim da Área dos Carrosseis */}
 
-            {/* --- RODAPÉ COM MÍDIAS SOCIAIS (Mantido inalterado) --- */}
+            {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
             <footer
                 style={{
                     maxWidth: '1200px', backgroundColor: '#444', margin: '80px auto 0', padding: '30px', borderTop: '1px solid #333',

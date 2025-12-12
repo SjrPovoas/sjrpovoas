@@ -57,6 +57,7 @@ export default function LoginAdminPage() {
 
     return (
         <div style={boxStyle}>
+            <div style={{ textAlign: 'center' }}><img src="/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover' }}></img></div>
             <h1 style={{ textAlign: 'center', color: '#0070f3' }}>Acesso Administrativo</h1>
             
             <form onSubmit={handleLoginSubmit}>

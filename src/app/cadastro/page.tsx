@@ -15,10 +15,10 @@ export default function UserRegisterPage() {
     const [dataNascimento, setDataNascimento] = useState('');
     const [telefone, setTelefone] = useState('');
     const [plano, setPlano] = useState('mensal');
-    
+
     // Novo estado para controlar a visualização de pagamento após o envio
     const [isRegistered, setIsRegistered] = useState(false);
-    
+
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [successMessage, setSuccessMessage] = useState<string | null>(null);
@@ -43,14 +43,14 @@ export default function UserRegisterPage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ 
-                    nomeCompleto, 
-                    email, 
-                    senha, 
-                    cpf, 
-                    dataNascimento, 
+                body: JSON.stringify({
+                    nomeCompleto,
+                    email,
+                    senha,
+                    cpf,
+                    dataNascimento,
                     telefone,
-                    plano 
+                    plano
                 }),
             });
 
@@ -58,9 +58,9 @@ export default function UserRegisterPage() {
 
             if (response.ok) {
                 // 🚀 CAPTURA A MENSAGEM DO SERVIDOR (com PIX e aviso)
-                setSuccessMessage(data.message); 
+                setSuccessMessage(data.message);
                 setIsRegistered(true); // Exibe a tela de pagamento
-                
+
             } else {
                 setError(data.message || 'Erro ao processar o registro.');
             }
@@ -91,7 +91,7 @@ export default function UserRegisterPage() {
                     {successMessage.split('\n').map((line, index) => {
                         const isPixKey = line.includes('PIX (Celular)');
                         const isAlert = line.includes('ALERTA');
-                        
+
                         // Formatação customizada para a chave PIX e o Alerta
                         if (isPixKey) {
                             return <p key={index} style={{ fontSize: '1.2em', fontWeight: 'bold', color: '#0070f3', marginTop: '15px' }}>{line.trim()}</p>;
@@ -103,9 +103,9 @@ export default function UserRegisterPage() {
                         return <p key={index} style={{ margin: '5px 0' }}>{line.trim()}</p>;
                     })}
                 </div>
-                
+
                 <div style={{ textAlign: 'center', marginTop: '30px' }}>
-                    <p style={{marginBottom: '10px'}}>Obrigado por se juntar à nossa comunidade!</p>
+                    <p style={{ marginBottom: '10px' }}>Obrigado por se juntar à nossa comunidade!</p>
                     <Link href="/login" style={{ color: '#0070f3', textDecoration: 'none', fontWeight: 'bold' }}>
                         Ir para a página de Login (Aguardando Ativação)
                     </Link>
@@ -118,16 +118,22 @@ export default function UserRegisterPage() {
     // 🚀 TELA DE FORMULÁRIO (Inicial)
     return (
         <div style={boxStyle}>
+            <div style={{ textAlign: 'center' }}>
+                <Link href="/" passHref style={{ display: 'inline-block', margin: '10px 0' }}>
+                    <img src="/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS"
+                        style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: 'none', textDecoration: 'none' }} />
+                </Link>
+            </div>
             <h1 style={{ textAlign: 'center', color: '#0070f3' }}>Registro de Assinante</h1>
-            
+
             <form onSubmit={handleRegisterSubmit}>
                 {/* Campos do Formulário */}
-                <div><label htmlFor="nomeCompleto" style={{ display: 'block', marginBottom: '5px' }}>Nome Completo:</label><input type="text" id="nomeCompleto" value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} required disabled={loading} style={inputStyle}/></div>
-                <div><label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>Email:</label><input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={loading} style={inputStyle}/></div>
-                <div><label htmlFor="senha" style={{ display: 'block', marginBottom: '5px' }}>Senha:</label><input type="password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required disabled={loading} style={inputStyle} minLength={6}/></div>
-                <div><label htmlFor="cpf" style={{ display: 'block', marginBottom: '5px' }}>CPF:</label><input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} required disabled={loading} style={inputStyle} placeholder="Ex: 000.000.000-00"/></div>
-                <div><label htmlFor="dataNascimento" style={{ display: 'block', marginBottom: '5px' }}>Data de Nascimento:</label><input type="date" id="dataNascimento" value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} required disabled={loading} style={inputStyle}/></div>
-                <div><label htmlFor="telefone" style={{ display: 'block', marginBottom: '5px' }}>Telefone (com DDD):</label><input type="text" id="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required disabled={loading} style={inputStyle} placeholder="Ex: (99) 99999-9999"/></div>
+                <div><label htmlFor="nomeCompleto" style={{ display: 'block', marginBottom: '5px' }}>Nome Completo:</label><input type="text" id="nomeCompleto" value={nomeCompleto} onChange={(e) => setNomeCompleto(e.target.value)} required disabled={loading} style={inputStyle} /></div>
+                <div><label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>Email:</label><input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required disabled={loading} style={inputStyle} /></div>
+                <div><label htmlFor="senha" style={{ display: 'block', marginBottom: '5px' }}>Senha:</label><input type="password" id="senha" value={senha} onChange={(e) => setSenha(e.target.value)} required disabled={loading} style={inputStyle} minLength={6} /></div>
+                <div><label htmlFor="cpf" style={{ display: 'block', marginBottom: '5px' }}>CPF:</label><input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} required disabled={loading} style={inputStyle} placeholder="Ex: 000.000.000-00" /></div>
+                <div><label htmlFor="dataNascimento" style={{ display: 'block', marginBottom: '5px' }}>Data de Nascimento:</label><input type="date" id="dataNascimento" value={dataNascimento} onChange={(e) => setDataNascimento(e.target.value)} required disabled={loading} style={inputStyle} /></div>
+                <div><label htmlFor="telefone" style={{ display: 'block', marginBottom: '5px' }}>Telefone (com DDD):</label><input type="text" id="telefone" value={telefone} onChange={(e) => setTelefone(e.target.value)} required disabled={loading} style={inputStyle} placeholder="Ex: (99) 99999-9999" /></div>
 
                 <div>
                     <label htmlFor="plano" style={{ display: 'block', marginBottom: '5px' }}>Plano:</label>
@@ -136,15 +142,15 @@ export default function UserRegisterPage() {
                         <option value="anual">Anual</option>
                     </select>
                 </div>
-                
+
                 {error && (
                     <p style={{ color: 'red', marginBottom: '15px', padding: '10px', border: '1px solid red', backgroundColor: '#fee' }}>{error}</p>
                 )}
-                
-                <button 
-                    type="submit" 
+
+                <button
+                    type="submit"
                     disabled={loading}
-                    style={{...buttonStyle, marginTop: '20px'}}
+                    style={{ ...buttonStyle, marginTop: '20px' }}
                 >
                     {loading ? 'A processar...' : 'Registrar e Pagar'}
                 </button>

@@ -1,7 +1,12 @@
+// src/app/admin/page.tsx
+
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 interface AssinantePendente {
     _id: string;
@@ -57,6 +62,28 @@ export default function AdminDashboardPage() {
         fetchPendentes();
     }, [fetchPendentes]);
 
+    // Adicionado
+
+    const socialMediaLinks = {
+        instagram: 'https://www.instagram.com/silviopovoasjunior/',
+        facebook: 'https://www.facebook.com/sjrpovoas',
+        twitter: 'https://www.twitter.com/sjrpovaoas',
+        linkedin: 'https://www.linkedin.com/in/sjrpovoas',
+        discord: 'https://discord.com/invite/8QKN7R5dt5',
+        linktree: 'https://linktr.ee/sjrpovoas',
+    };
+
+    interface SocialIconProps {
+        href: string;
+        label: string;
+        iconClass: string;
+    }
+
+    const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
+        <Link href={href} target="_blank" style={{ color: '#aaa', fontSize: '1.5em', textDecoration: 'none', transition: 'color 0.3s' }} title={label}>
+            <i className={`bi ${iconClass}`}></i>
+        </Link>
+    );
 
     // Função para ATIVAR um assinante
     const handleAtivarAssinante = async (assinante: AssinantePendente) => {
@@ -97,12 +124,18 @@ export default function AdminDashboardPage() {
     return (
         <div>
             <header style={headerStyle}>
-                <h2>Painel de Administração</h2>
+                <div style={{ textAlign: 'center' }}>
+                    <Link href="/" passHref style={{ display: 'inline-block', margin: '10px 0' }}>
+                        <img src="/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS"
+                            style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: 'none', textDecoration: 'none' }} />
+                    </Link>
+                </div>
+                <h2>Painel de Administração SjrPovoaS</h2>
                 <p>Gestão de Usuários e Ativações Pendentes</p>
             </header>
             <div style={containerStyle}>
-                {/* Card: Gerador de Documento Online (Mantido inalterado) */}
-                <div style={{  textAlign: 'center' }}>
+                {/* Card: Gerador de Documento Online */}
+                <div style={{ textAlign: 'center' }}>
                     <h2 style={{ color: '#0070f3' }}>Gerar Documento Online</h2>
                     <p>Gere contrato, recibo e orçamento online.</p>
                     <a href="/dashboard/gerador-de-contrato-servico-orcamento.html" target='_blank' rel='noopener noreferrer' style={{
@@ -183,6 +216,46 @@ export default function AdminDashboardPage() {
                     </button>
                 </div>
             </div>
+            {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
+            <footer
+                style={{
+                    maxWidth: '1200px', backgroundColor: 'white', margin: '80px auto 0', padding: '30px',
+                    color: '#888', fontSize: '0.9em', textAlign: 'center'
+                }}
+            >
+                <div style={{ marginBottom: '20px' }}>
+                    <p style={{ margin: '0 0 10px 0', fontSize: '1em', color: '#888' }}>Siga-nos nas Redes Sociais:</p>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+                        <SocialIcon href={socialMediaLinks.instagram} label="Instagram" iconClass="bi-instagram" />
+                        <SocialIcon href={socialMediaLinks.facebook} label="Facebook" iconClass="bi-facebook" />
+                        <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
+                        <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
+                        <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
+                        <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />
+                    </div>
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '15px' }}>
+                    <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
+                        Contato
+                    </Link>
+                    <Link href="#" style={{ color: '#888', textDecoration: 'none' }}>
+                        Termos de Uso
+                    </Link>
+                    <Link href="#" style={{ color: '#888', textDecoration: 'none' }}>
+                        Política de Privacidade
+                    </Link>
+                </div>
+
+                <p style={{ margin: '10px 0 0' }}>
+                    &copy; {new Date().getFullYear()} SjrPovoaS. Todos os direitos reservados.
+                </p>
+                <p style={{ margin: '5px 0 0', fontSize: '0.8em', color: '#777' }}>
+                    Plataforma de acesso exclusivo.
+                </p>
+
+            </footer>
+            {/* --- FIM DO RODAPÉ --- */}
         </div>
     );
 }
