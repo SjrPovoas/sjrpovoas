@@ -313,10 +313,10 @@ export default function MinhaAreaPage() {
                     <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
                         Contato
                     </Link>
-                    <Link href="#" style={{ color: '#888', textDecoration: 'none' }}>
+                    <Link href="/termos-de-uso" style={{ color: '#888', textDecoration: 'none' }}>
                         Termos de Uso
                     </Link>
-                    <Link href="#" style={{ color: '#888', textDecoration: 'none' }}>
+                    <Link href="/politica-de-privacidade" style={{ color: '#888', textDecoration: 'none' }}>
                         Política de Privacidade
                     </Link>
                 </div>

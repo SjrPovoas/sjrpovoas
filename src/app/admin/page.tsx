@@ -13,10 +13,11 @@ interface AssinantePendente {
     nomeCompleto: string;
     email: string;
     plano: 'mensal' | 'anual';
-    dataRegisto: string;
-    statusPagamento: string;
-    cpf: string; // Adicionando CPF para visualização administrativa
-    telefone: string; // Adicionando Telefone
+    valorPlano: number; // Campo para exibir o valor escolhido
+    dataRegistro: string;
+    statusPagamento: string; // Teoricamente 'pendente'
+    cpf: string; 
+    telefone: string; 
 }
 
 export default function AdminDashboardPage() {
@@ -32,12 +33,10 @@ export default function AdminDashboardPage() {
         try {
             const response = await fetch('/api/admin/listar-pendentes', {
                 method: 'GET',
-                // Envia o cookie 'adminToken' para autenticação
                 credentials: 'include',
             });
 
             if (response.status === 403 || response.status === 401) {
-                // Acesso negado: Token ausente ou inválido. Redireciona para o login de Admin.
                 console.log('Acesso não autorizado. Redirecionando para login admin.');
                 router.push('/login-admin');
                 return;
@@ -46,7 +45,14 @@ export default function AdminDashboardPage() {
             const result = await response.json();
 
             if (response.ok) {
-                setPendentes(result.data || []);
+                // Mapeia os dados, garantindo que o valorPlano esteja presente 
+                // (padrão assumido se o backend não retornar explicitamente).
+                const mappedData = (result.data || []).map((p: any) => ({
+                    ...p,
+                    // Garante que o valor do plano seja exibido.
+                    valorPlano: p.plano.includes('anual') ? 49.00 : 4.90, 
+                })) as AssinantePendente[];
+                setPendentes(mappedData);
             } else {
                 setError(result.message || 'Erro ao carregar lista de pendentes.');
             }
@@ -61,8 +67,6 @@ export default function AdminDashboardPage() {
     useEffect(() => {
         fetchPendentes();
     }, [fetchPendentes]);
-
-    // Adicionado
 
     const socialMediaLinks = {
         instagram: 'https://www.instagram.com/silviopovoasjunior',
@@ -87,7 +91,7 @@ export default function AdminDashboardPage() {
 
     // Função para ATIVAR um assinante
     const handleAtivarAssinante = async (assinante: AssinantePendente) => {
-        if (!confirm(`Tem certeza que deseja ATIVAR e confirmar o pagamento para o usuário ${assinante.email}?`)) {
+        if (!confirm(`Tem certeza que deseja ATIVAR e confirmar o pagamento de R$ ${assinante.valorPlano.toFixed(2).replace('.', ',')} para o usuário ${assinante.email}?`)) {
             return;
         }
 
@@ -95,7 +99,6 @@ export default function AdminDashboardPage() {
             const response = await fetch('/api/admin/ativar-assinante', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                // Envia email e plano para que o backend defina a role correta ('assinante_mensal' ou 'assinante_anual')
                 body: JSON.stringify({ email: assinante.email, plano: assinante.plano }),
                 credentials: 'include',
             });
@@ -104,7 +107,6 @@ export default function AdminDashboardPage() {
 
             if (response.ok) {
                 alert(`Sucesso: ${result.message}`);
-                // Recarrega a lista para remover o usuário ativado
                 fetchPendentes();
             } else {
                 alert(`Falha na Ativação: ${result.message}`);
@@ -113,13 +115,51 @@ export default function AdminDashboardPage() {
             alert('Erro de rede ao tentar ativar o assinante.');
         }
     };
+    
+    // Função para REJEITAR um assinante
+    const handleRejeitarAssinante = async (assinante: AssinantePendente) => {
+        if (!confirm(`Tem certeza que deseja REJEITAR o cadastro (e remover o usuário) para ${assinante.email}? Esta ação é irreversível.`)) {
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/admin/rejeitar-assinante', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: assinante.email }), // Apenas email é suficiente para exclusão
+                credentials: 'include',
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert(`Rejeição bem-sucedida: ${result.message}`);
+                fetchPendentes(); // Recarrega a lista para remover o usuário rejeitado
+            } else {
+                alert(`Falha na Rejeição: ${result.message}`);
+            }
+        } catch (err) {
+            alert('Erro de rede ao tentar rejeitar o assinante.');
+        }
+    };
 
     // --- Estilos para o Painel ---
+    // Usando 'as const' para garantir tipos literais onde apropriado
     const headerStyle = { backgroundColor: '#0070f3', color: 'white', padding: '15px', textAlign: 'center' } as const;
     const containerStyle = { maxWidth: '1200px', margin: '40px auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' };
-    const tableStyle = { width: '100%', borderCollapse: 'collapse' as const, marginTop: '20px', fontSize: '14px' };
-    const thTdStyle = { border: '1px solid #ddd', padding: '10px', textAlign: 'left' as const };
-    const buttonStyle = { padding: '8px 12px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' };
+    
+    // CORREÇÃO TypeScript: Usando React.CSSProperties para overflowX
+    const tableContainerStyle: React.CSSProperties = { 
+        overflowX: 'auto', 
+        marginTop: '20px' 
+    };
+    
+    // MinWidth para forçar scroll em telas pequenas (responsividade da tabela)
+    const tableStyle = { width: '100%', minWidth: '700px', borderCollapse: 'collapse' as const, fontSize: '14px' };
+    const thTdStyle = { border: '1px solid #ddd', padding: '10px', textAlign: 'left' as const, verticalAlign: 'middle' as const };
+    const buttonAtivarStyle = { padding: '8px 10px', backgroundColor: '#28a745', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', whiteSpace: 'nowrap' as const };
+    const buttonRejeitarStyle = { padding: '8px 10px', backgroundColor: '#dc3545', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', whiteSpace: 'nowrap' as const, marginLeft: '5px' };
+
 
     return (
         <div>
@@ -134,7 +174,7 @@ export default function AdminDashboardPage() {
                 <p>Gestão de Usuários e Ativações Pendentes</p>
             </header>
             <div style={containerStyle}>
-                {/* Card: Gerador de Documento Online */}
+                {/* Card: Gerador de Documento Online (Mantido) */}
                 <div style={{ textAlign: 'center' }}>
                     <h2 style={{ color: '#0070f3' }}>Gerar Documento Online</h2>
                     <p>Gere contrato, recibo e orçamento online.</p>
@@ -164,55 +204,76 @@ export default function AdminDashboardPage() {
                                 🎉 Não há usuários pendentes de ativação.
                             </p>
                         ) : (
-                            <table style={tableStyle}>
-                                <thead>
-                                    <tr>
-                                        <th style={thTdStyle}>Nome Completo</th>
-                                        <th style={thTdStyle}>Email</th>
-                                        <th style={thTdStyle}>CPF / Telefone</th>
-                                        <th style={thTdStyle}>Plano</th>
-                                        <th style={thTdStyle}>Registro</th>
-                                        <th style={thTdStyle}>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {pendentes.map((assinante) => (
-                                        <tr key={assinante._id}>
-                                            <td style={thTdStyle}>{assinante.nomeCompleto}</td>
-                                            <td style={thTdStyle}>{assinante.email}</td>
-                                            <td style={thTdStyle}>{assinante.cpf} / {assinante.telefone}</td>
-                                            <td style={thTdStyle}>{assinante.plano.toUpperCase()}</td>
-                                            <td style={thTdStyle}>{new Date(assinante.dataRegisto).toLocaleDateString()}</td>
-                                            <td style={thTdStyle}>
-                                                <button
-                                                    style={buttonStyle}
-                                                    onClick={() => handleAtivarAssinante(assinante)}
-                                                >
-                                                    Confirmar e Ativar
-                                                </button>
-                                            </td>
+                            <div style={tableContainerStyle}> {/* Container para scroll horizontal em telas pequenas */}
+                                <table style={tableStyle}>
+                                    <thead>
+                                        <tr>
+                                            <th style={thTdStyle}>Nome Completo</th>
+                                            <th style={thTdStyle}>Email</th>
+                                            <th style={thTdStyle}>CPF / Telefone</th>
+                                            <th style={thTdStyle}>Plano (Valor)</th> 
+                                            <th style={thTdStyle}>Registro</th>
+                                            <th style={thTdStyle}>Ações</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {pendentes.map((assinante) => (
+                                            <tr key={assinante._id}>
+                                                <td style={thTdStyle}>{assinante.nomeCompleto}</td>
+                                                <td style={thTdStyle}>{assinante.email}</td>
+                                                <td style={thTdStyle}>
+                                                    {assinante.cpf}
+                                                    <br />
+                                                    {assinante.telefone}
+                                                </td>
+                                                <td style={thTdStyle}>
+                                                    {assinante.plano.toUpperCase()}
+                                                    <br />
+                                                    <strong style={{ color: '#0070f3' }}>R$ {assinante.valorPlano.toFixed(2).replace('.', ',')}</strong>
+                                                </td>
+                                                <td style={thTdStyle}>{new Date(assinante.dataRegistro).toLocaleDateString()}</td>
+                                                <td style={thTdStyle}>
+                                                    <div style={{ display: 'flex', gap: '5px' }}>
+                                                        <button
+                                                            style={buttonAtivarStyle}
+                                                            onClick={() => handleAtivarAssinante(assinante)}
+                                                        >
+                                                            <i className="bi bi-check-circle-fill"></i> Ativar
+                                                        </button>
+                                                        {/* Botão Rejeitar */}
+                                                        <button
+                                                            style={buttonRejeitarStyle}
+                                                            onClick={() => handleRejeitarAssinante(assinante)}
+                                                        >
+                                                            <i className="bi bi-x-octagon-fill"></i> Rejeitar
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         )}
                     </>
                 )}
 
                 <div style={{ textAlign: 'right', marginTop: '30px' }}>
-                    {/* Botão de Logout que limpa o cookie 'adminToken' */}
+                    {/* Botão de Logout */}
                     <button
                         onClick={() => router.push('/logout-admin')}
-                        style={{ ...buttonStyle, backgroundColor: '#0070f3', marginRight: '10px' }}
+                        style={{ ...buttonAtivarStyle, backgroundColor: '#0070f3', marginRight: '10px' }}
                     >
-                        Sair (Logout Admin)
+                        <i className="bi bi-box-arrow-right"></i> Sair (Logout Admin)
                     </button>
                     {/* Botão de Recarregar */}
                     <button
                         onClick={fetchPendentes}
-                        style={{ ...buttonStyle, backgroundColor: '#0070f3' }}
+                        style={{ ...buttonAtivarStyle, backgroundColor: '#0070f3' }}
+                        disabled={loading}
                     >
-                        Recarregar Lista
+                        <i className={`bi bi-arrow-clockwise ${loading ? 'spinner-border spinner-border-sm' : ''}`}></i>
+                        {' '}Recarregar Lista
                     </button>
                 </div>
             </div>
@@ -239,10 +300,10 @@ export default function AdminDashboardPage() {
                     <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
                         Contato
                     </Link>
-                    <Link href="#" style={{ color: '#888', textDecoration: 'none' }}>
+                    <Link href="/termos-de-uso" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
                         Termos de Uso
                     </Link>
-                    <Link href="#" style={{ color: '#888', textDecoration: 'none' }}>
+                    <Link href="/politica-de-privacidade" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
                         Política de Privacidade
                     </Link>
                 </div>

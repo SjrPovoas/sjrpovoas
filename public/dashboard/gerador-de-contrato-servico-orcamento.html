@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR" prefix="og: https://ogp.me/ns#">
+
 <head>
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -14,122 +16,171 @@
         <meta name="robots" content="follow, index">
         <meta name="googlebot" content="all">
         <meta name="google-site-verification" content="">
-    <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
-    <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
-    <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
-    <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
-    <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
-    <link rel="mask-icon" href="/src/app/favicon.ico">
-    <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
-    <!-- Open Graph tags are also recommended -->
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="SjrPovoaS | Criamos a solução que você procura">
-    <meta property="og:url" content="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
-    <meta property="og:image" content="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png">
-    <meta name="og:image:width" content="1200">
-    <meta name="og:image:height" content="630">
-    <meta property="og:title" content="SjrPovoaS | Criamos a solução que você procura">
-    <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
-    <!-- Carrega o Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuração do Tailwind para usar o tema de cores AGP -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'agp-gray': '#888888', // Cinza
-                    },
+        <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
+        <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
+        <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
+        <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
+        <link rel="mask-icon" href="/src/app/favicon.ico">
+        <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
+        <!-- Open Graph tags are also recommended -->
+        <meta property="og:locale" content="pt_BR">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="SjrPovoaS | Criamos a solução que você procura">
+        <meta property="og:url"
+            content="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
+        <meta property="og:image" content="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png">
+        <meta name="og:image:width" content="1200">
+        <meta name="og:image:height" content="630">
+        <meta property="og:title" content="SjrPovoaS | Criamos a solução que você procura">
+        <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+        <!-- Carrega o Tailwind CSS -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- Configuração do Tailwind para usar o tema de cores AGP -->
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            'agp-gray': '#888888', // Cinza
+                        },
+                    }
                 }
             }
-        }
-    </script>
-    <style>
-    /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
-    :root { font-family: 'Inter', sans-serif; }
-    /* Cores inspiradas no branding */
-    .agp-text-gray { color: gray; }
-    .agp-border-gray { border-color: gray; }
-    /* Estilos para inputs */
-    .form-input-label {
-        display: block;
-        font-size: 0.875rem; /* text-sm */
-        font-weight: 500; /* font-medium */
-        color: #374151; /* gray-700 */
-        padding-top: 0.5rem; }
-    /* Estilo base para todos os inputs do formulário */
-    .form-input {
-        padding: 0.75rem; /* p-3 */
-        border: 1px solid #d1d5db; /* border-gray-300 */
-        border-radius: 0.5rem; /* rounded-lg */
-        width: 100%;
-        transition: all 150ms ease-in-out; }
-    .form-input:focus {
-         box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5); /* focus:ring-2 focus:ring-gray-500 */
-         border-color: gray; /* focus:border-gray-500 */ }
-    /* Estilos para mensagem de erro (substituindo o alert) */
-    #errorMessage {
-        color: #dc2626; /* red-600 */
-        background-color: #fee2e2; /* red-100 */
-        border: 1px solid #f87171; /* red-400 */
-        padding: 1rem;
-        margin-bottom: 1rem;
-        border-radius: 0.5rem;
-        font-weight: 500; }
-    /* Estilos específicos para a visualização de impressão */
-    @media print {
-        body * { visibility: hidden; }
-        .print-area, .print-area * { visibility: visible; }
-        .print-area {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
-            padding: 0;
-            margin: 0;
-            box-shadow: none;
-            font-size: 11pt; }
-        .no-print { display: none !important; }
-        .agp-text-gray { color: black !important; }
-    }
-</style>
-</head>
+        </script>
+        <style>
+            /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
+            :root {
+                font-family: 'Inter', sans-serif;
+            }
+
+            /* Cores inspiradas no branding */
+            .agp-text-gray {
+                color: gray;
+            }
+
+            .agp-border-gray {
+                border-color: gray;
+            }
+
+            /* Estilos para inputs */
+            .form-input-label {
+                display: block;
+                font-size: 0.875rem;
+                /* text-sm */
+                font-weight: 500;
+                /* font-medium */
+                color: #374151;
+                /* gray-700 */
+                padding-top: 0.5rem;
+            }
+
+            /* Estilo base para todos os inputs do formulário */
+            .form-input {
+                padding: 0.75rem;
+                /* p-3 */
+                border: 1px solid #d1d5db;
+                /* border-gray-300 */
+                border-radius: 0.5rem;
+                /* rounded-lg */
+                width: 100%;
+                transition: all 150ms ease-in-out;
+            }
+
+            .form-input:focus {
+                box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5);
+                /* focus:ring-2 focus:ring-gray-500 */
+                border-color: gray;
+                /* focus:border-gray-500 */
+            }
+
+            /* Estilos para mensagem de erro (substituindo o alert) */
+            #errorMessage {
+                color: #dc2626;
+                /* red-600 */
+                background-color: #fee2e2;
+                /* red-100 */
+                border: 1px solid #f87171;
+                /* red-400 */
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: 0.5rem;
+                font-weight: 500;
+            }
+
+            /* Estilos específicos para a visualização de impressão */
+            @media print {
+                body * {
+                    visibility: hidden;
+                }
+
+                .print-area,
+                .print-area * {
+                    visibility: visible;
+                }
+
+                .print-area {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                    box-shadow: none;
+                    font-size: 11pt;
+                }
+
+                .no-print {
+                    display: none !important;
+                }
+
+                .agp-text-gray {
+                    color: black !important;
+                }
+            }
+        </style>
+    </head>
+
 <body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
-<!-- Cabeçalho (Branding) -->
-<header class="w-full max-w-4xl p-4 mb-6 bg-white rounded-xl shadow-md flex items-center justify-center space-x-4">
-    <!-- Placeholder para o Logo da SjrPovoaS -->
-    <a href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/" aria-label="Gerador de Recibo Online">
-        <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-16 h-16 rounded-full object-cover"
-         onerror="this.onerror=null; this.src='/assets/img/logo-SjrPovoaS.png';">
-    </a>
-    <div class="text-left">
-        <h1 class="text-3xl font-bold agp-text-gray">SjrPovoaS</h1>
-        <p class="text-gray-600 mt-1">Gerador de Documentos Online</p>
-    </div>
-</header>
+    <!-- Cabeçalho (Branding) -->
+    <header class="w-full max-w-4xl p-4 mb-6 bg-white rounded-xl shadow-md flex items-center justify-center space-x-4">
+        <!-- Placeholder para o Logo da SjrPovoaS -->
+        <a href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/"
+            aria-label="Gerador de Recibo Online">
+            <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS"
+                class="w-16 h-16 rounded-full object-cover"
+                onerror="this.onerror=null; this.src='/assets/img/logo-SjrPovoaS.png';">
+        </a>
+        <div class="text-left">
+            <h1 class="text-3xl font-bold agp-text-gray">SjrPovoaS</h1>
+            <p class="text-gray-600 mt-1">Gerador de Documentos Online</p>
+        </div>
+    </header>
 
-<main class="w-full max-w-4xl bg-white rounded-xl shadow-2xl p-6 md:p-8">
+    <main class="w-full max-w-4xl bg-white rounded-xl shadow-2xl p-6 md:p-8">
 
-    <!-- Área de Controles e Formulário (Oculta na impressão) -->
+        <!-- Área de Controles e Formulário (Oculta na impressão) -->
         <section id="form-section" class="no-print">
             <div class="mb-6 flex flex-col sm:flex-row justify-between items-center border-b pb-4">
                 <h2 class="text-2xl font-semibold text-gray-800 mb-4 sm:mb-0">Detalhes do Documento</h2>
-                
+
                 <!-- Toggle Contrato / Recibo / Orçamento -->
                 <div class="flex p-1 rounded-full bg-gray-200 shadow-inner">
-                    <button id="toggleContract" onclick="setDocType('contract')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                    <button id="toggleContract" onclick="setDocType('contract')"
+                        class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
                         Contrato
                     </button>
-                    <button id="toggleReceipt" onclick="setDocType('receipt')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                    <button id="toggleReceipt" onclick="setDocType('receipt')"
+                        class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
                         Recibo
                     </button>
-                    <button id="toggleBudget" onclick="setDocType('budget')" class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
+                    <button id="toggleBudget" onclick="setDocType('budget')"
+                        class="px-4 py-2 text-sm font-medium rounded-full transition-colors duration-200">
                         Orçamento
                     </button>
                 </div>
             </div>
-            
+
             <!-- Mensagem de erro dinâmica -->
             <div id="errorMessage" class="hidden"></div>
 
@@ -141,26 +192,29 @@
                     <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Dados do Cliente</h3>
                 </div>
                 <!-- REMOVIDO 'REQUIRED' PARA DEIXAR O JAVASCRIPT CONTROLAR A VALIDAÇÃO TOTAL -->
-                <input type="text" id="nomeCliente" placeholder="Nome do Cliente/Empresa" class="form-input"> 
+                <input type="text" id="nomeCliente" placeholder="Nome do Cliente/Empresa" class="form-input">
                 <input type="text" id="cpfCliente" placeholder="CPF/CNPJ do Cliente" class="form-input">
-                <input type="text" id="enderecoCliente" placeholder="Endereço Completo do Cliente" class="form-input md:col-span-2">
+                <input type="text" id="enderecoCliente" placeholder="Endereço Completo do Cliente"
+                    class="form-input md:col-span-2">
 
                 <!-- Informações do Serviço/Orçamento -->
                 <div class="md:col-span-2 mt-4">
                     <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Título e Prazos</h3>
                 </div>
-                <input type="text" id="tituloServico" placeholder="Título Curto do Documento (Ex: Criação de Site)" class="form-input md:col-span-2">
-                
+                <input type="text" id="tituloServico" placeholder="Título Curto do Documento (Ex: Criação de Site)"
+                    class="form-input md:col-span-2">
+
                 <label class="form-input-label">Prazo de Início Estimado:</label>
                 <input type="date" id="dataInicio" class="form-input">
-                
+
                 <label class="form-input-label">Prazo de Conclusão Estimado:</label>
                 <input type="date" id="dataFim" class="form-input">
-                
+
                 <!-- Área de Itens do Orçamento (APENAS para Orçamento) -->
                 <div class="md:col-span-2 mt-4" id="budgetItemsSection">
-                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Itens do Orçamento (Descrição Detalhada)</h3>
-                    
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3">Itens do Orçamento (Descrição
+                        Detalhada)</h3>
+
                     <div class="grid grid-cols-12 gap-2 text-sm font-semibold text-gray-600 mb-2">
                         <span class="col-span-4">Descrição de Item</span>
                         <span class="col-span-2">Qtd</span>
@@ -174,26 +228,28 @@
                         <!-- Itens serão inseridos aqui pelo JS -->
                     </div>
 
-                    <button type="button" onclick="addItem()" class="mt-3 px-4 py-2 text-sm rounded-lg border border-agp-gray agp-text-gray hover:bg-agp-gray hover:text-white transition duration-200">
+                    <button type="button" onclick="addItem()"
+                        class="mt-3 px-4 py-2 text-sm rounded-lg border border-agp-gray agp-text-gray hover:bg-agp-gray hover:text-white transition duration-200">
                         + Adicionar Item
                     </button>
-                    
+
                     <div class="flex justify-end mt-4 border-t pt-4">
                         <p class="text-xl font-bold agp-text-gray">
                             TOTAL: <span id="displayTotal">R$ 0,00</span>
                         </p>
                     </div>
-                    
+
                 </div>
-                
+
                 <!-- Campos Simples (Usados por Contrato/Recibo) -->
-                <textarea id="descricaoServico" rows="4" placeholder="Descrição Detalhada do Serviço (Contrato/Recibo)." class="form-input md:col-span-2"></textarea>
-                
+                <textarea id="descricaoServico" rows="4" placeholder="Descrição Detalhada do Serviço (Contrato/Recibo)."
+                    class="form-input md:col-span-2"></textarea>
+
                 <div class="flex flex-col">
                     <label class="form-input-label" id="labelValorTotal">Valor Total (R$):</label>
                     <input type="number" id="valorTotal" step="0.01" placeholder="Valor Total (R$)" class="form-input">
                 </div>
-                
+
                 <div class="flex flex-col">
                     <label class="form-input-label" id="labelMetodoPagamento">Método de Pagamento (Recibo):</label>
                     <select id="metodoPagamento" class="form-input">
@@ -207,13 +263,16 @@
 
                 <!-- Campo Adicional para Contrato / Orçamento -->
                 <div class="md:col-span-2 mt-4" id="contractFields">
-                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3" id="additionalClausesTitle">Termos e Condições</h3>
-                    <textarea id="clausulasAdicionais" rows="12" placeholder="Insira quaisquer termos e condições aqui." class="form-input md:col-span-2"></textarea>
+                    <h3 class="text-lg font-medium agp-text-gray border-b pb-1 mb-3" id="additionalClausesTitle">Termos
+                        e Condições</h3>
+                    <textarea id="clausulasAdicionais" rows="12" placeholder="Insira quaisquer termos e condições aqui."
+                        class="form-input md:col-span-2"></textarea>
                 </div>
             </form>
 
             <!-- Botão de Geração -->
-            <button id="generateButton" onclick="renderPreview()" class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50">
+            <button id="generateButton" onclick="renderPreview()"
+                class="w-full mt-8 py-3 rounded-lg text-white font-bold transition duration-300 bg-agp-gray hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-500 focus:ring-opacity-50">
                 Gerar Contrato para Visualização
             </button>
         </section>
@@ -223,10 +282,12 @@
             <div class="flex justify-between items-center mb-4 no-print">
                 <h2 class="text-xl font-semibold text-gray-800">Visualização do Documento</h2>
                 <div class="space-x-2">
-                    <button onclick="printDocument()" class="px-4 py-2 text-sm font-medium rounded-lg text-white transition duration-200 bg-agp-gray hover:bg-gray-700">
+                    <button onclick="printDocument()"
+                        class="px-4 py-2 text-sm font-medium rounded-lg text-white transition duration-200 bg-agp-gray hover:bg-gray-700">
                         Imprimir / Salvar PDF
                     </button>
-                    <button onclick="hidePreview()" class="px-4 py-2 text-sm font-medium rounded-lg bg-gray-300 hover:bg-gray-400">
+                    <button onclick="hidePreview()"
+                        class="px-4 py-2 text-sm font-medium rounded-lg bg-gray-300 hover:bg-gray-400">
                         Editar
                     </button>
                 </div>
@@ -242,12 +303,16 @@
 
     <footer class="w-full p-4 mb-1 rounded-x1 flex justify-center space-x-6">
         <a href="https://sjrpovoas.vercel.app/" aria-label="Logo SjrPovoaS" target="_blank">
-            <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS" class="w-12 h-12 rounded-full object-cover">
+            <img src="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png" alt="Logo SjrPovoaS"
+                class="w-12 h-12 rounded-full object-cover">
         </a>
         <div class="text-left">
             <p class="text-sm text-gray-400 mt-0">
-            <a href="https://sjrpovoas.vercel.app/" aria-label="Site da SjrPovoaS" target="_blank"> https://sjrpovoas.vercel.app/</a><br>
-            © 2025 - Todos os direitos reservados - Desenvolvido por<a href="https://github.com/SjrPovoas" aria-label="SjrPovoaS" target="_blank"> SjrPovoaS</a></p>
+                <a href="https://sjrpovoas.vercel.app/" aria-label="Site da SjrPovoaS" target="_blank">
+                    https://sjrpovoas.vercel.app/</a><br>
+                © 2025 - Todos os direitos reservados - Desenvolvido por<a href="https://github.com/SjrPovoas"
+                    aria-label="SjrPovoaS" target="_blank"> SjrPovoaS</a>
+            </p>
         </div>
     </footer>
 
@@ -319,10 +384,10 @@ Os valores não incluem serviços não especificados na descrição do item.`;
         function initializeToggle() {
             setDocType('contract', false); // Configura o estado inicial como Contrato
             if (items.length === 0) {
-                 addItem(); // Adiciona um item inicial no carregamento para o orçamento
+                addItem(); // Adiciona um item inicial no carregamento para o orçamento
             }
         }
-        
+
         /**
          * Exibe uma mensagem de erro na UI.
          */
@@ -332,7 +397,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             // Role para o topo da seção do formulário para ver o erro
             document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
         }
-        
+
         /**
          * Oculta a mensagem de erro da UI.
          */
@@ -357,30 +422,30 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             const isBudget = type === 'budget';
             const isReceipt = type === 'receipt';
             const isContract = type === 'contract';
-            
+
             // 2. Controla a visibilidade e desabilita os campos
-            
+
             // Orçamento: Usa tabela, esconde campos simples
             budgetItemsSection.classList.toggle('hidden', !isBudget);
-            
+
             // Campos Simples: Usados por Contrato e Recibo. Desabilitados para Orçamento
             descServicoField.classList.toggle('hidden', isBudget);
-            descServicoField.disabled = isBudget; 
-            
+            descServicoField.disabled = isBudget;
+
             valorTotalField.classList.toggle('hidden', isBudget);
-            valorTotalField.disabled = isBudget; 
+            valorTotalField.disabled = isBudget;
             labelValorTotal.classList.toggle('hidden', isBudget);
-            
+
             // Recibo: Precisa de pagamento
             paymentSelect.classList.toggle('hidden', !isReceipt);
             paymentSelect.disabled = !isReceipt;
             labelMetodoPagamento.classList.toggle('hidden', !isReceipt);
-            
+
             // Contrato/Orçamento vs. Recibo: Cláusulas
             contractFieldsDiv.classList.toggle('hidden', isReceipt);
             clausulasAdicionais.disabled = isReceipt; // Desabilita para Recibo
-            
-            
+
+
             // 3. Ajusta o título das cláusulas e o conteúdo padrão
             if (isBudget) {
                 additionalClausesTitle.textContent = 'Termos e Condições (Orçamento)';
@@ -395,13 +460,13 @@ Os valores não incluem serviços não especificados na descrição do item.`;
                 const docName = type === 'contract' ? 'Contrato' : (isReceipt ? 'Recibo' : 'Orçamento');
                 generateButton.textContent = `Gerar ${docName} para Visualização`;
             }
-            
+
             updateTotal();
             renderItems(); // Garante que os itens do orçamento estejam visíveis se for o caso
         }
-        
+
         // --- Funções de Manipulação da Tabela de Itens (Orçamento) ---
-        
+
         /**
          * Adiciona uma nova linha de item ao formulário.
          */
@@ -422,17 +487,17 @@ Os valores não incluem serviços não especificados na descrição do item.`;
          */
         function removeItem(id) {
             items = items.filter(item => item.id !== id);
-            renderItems(); 
+            renderItems();
             updateTotal();
         }
-        
+
         /**
          * Renderiza todas as linhas de itens na interface.
          */
         function renderItems() {
             itemContainer.innerHTML = items.map((item, index) => {
                 const totalValue = item.quantity * item.unitValue;
-                
+
                 // IMPORTANTE: Adiciona a classe 'budget-item-field' para validação
                 return `
                     <div class="item-row grid grid-cols-12 gap-2">
@@ -448,7 +513,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             }).join('');
             updateTotal();
         }
-        
+
         /**
          * Atualiza um valor de item no array e recalcula o total.
          */
@@ -457,18 +522,18 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             if (itemIndex > -1) {
                 // Atualiza o valor no array
                 items[itemIndex][key] = value;
-                
+
                 const item = items[itemIndex];
                 // Certifica-se de que quantidade e valor unitário são números para o cálculo
                 const qty = parseFloat(item.quantity) || 0;
                 const unit = parseFloat(item.unitValue) || 0;
-                
+
                 const newTotal = qty * unit;
                 items[itemIndex].total = newTotal;
-                
+
                 // Atualiza o display do V. Total do item
                 document.getElementById(`total-${id}`).textContent = formatCurrency(newTotal);
-                
+
                 updateTotal();
             }
         }
@@ -479,7 +544,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
         function updateTotal() {
             const grandTotal = items.reduce((sum, item) => sum + (item.quantity * item.unitValue), 0);
             displayTotal.textContent = formatCurrency(grandTotal);
-            
+
             // Atualiza o campo valorTotal para que o getFormData possa usá-lo se necessário
             valorTotalField.value = grandTotal.toFixed(2);
         }
@@ -491,12 +556,12 @@ Os valores não incluem serviços não especificados na descrição do item.`;
          */
         function getFormData() {
             const data = {};
-            
+
             // 1. Coleta campos estáticos (todos)
             const staticFields = ['nomeCliente', 'cpfCliente', 'enderecoCliente', 'tituloServico', 'dataInicio', 'dataFim', 'clausulasAdicionais', 'descricaoServico', 'valorTotal', 'metodoPagamento'];
             staticFields.forEach(id => {
                 const element = document.getElementById(id);
-                if (element) { 
+                if (element) {
                     data[id] = element.value;
                 }
             });
@@ -511,7 +576,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
 
                     const desc = descElement?.value || '';
                     // Usar o valor do input, garantindo que seja um número ou 0
-                    const qty = parseFloat(qtyElement?.value) || 0; 
+                    const qty = parseFloat(qtyElement?.value) || 0;
                     const unit = parseFloat(unitElement?.value) || 0;
 
                     return {
@@ -521,7 +586,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
                         total: qty * unit
                     };
                 }).filter(item => item.description || item.total > 0); // Remove linhas vazias ou de valor zero
-                
+
                 // Usa o total calculado
                 data.valorTotal = data.items.reduce((sum, item) => sum + item.total, 0).toFixed(2);
             }
@@ -534,7 +599,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
          */
         function validateForm(data) {
             clearError();
-            
+
             // Campos obrigatórios universais para qualquer documento
             const requiredFields = {
                 nomeCliente: "Nome do Cliente",
@@ -549,7 +614,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
                     return `Campo obrigatório não preenchido: ${requiredFields[key]}.`;
                 }
             }
-            
+
             if (currentDocType === 'contract') {
                 if (!data.descricaoServico || data.descricaoServico.trim() === "") {
                     return "É obrigatório preencher a Descrição Detalhada do Serviço para o Contrato.";
@@ -561,7 +626,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
                 if (!data.descricaoServico || data.descricaoServico.trim() === "") {
                     return "É obrigatório preencher a Descrição Detalhada do Serviço/Referência para o Recibo.";
                 }
-                 if (!data.valorTotal || parseFloat(data.valorTotal) <= 0) {
+                if (!data.valorTotal || parseFloat(data.valorTotal) <= 0) {
                     return "É obrigatório informar um Valor Total válido (> R$ 0,00) para o Recibo.";
                 }
                 if (!data.metodoPagamento || data.metodoPagamento.trim() === "") {
@@ -572,14 +637,14 @@ Os valores não incluem serviços não especificados na descrição do item.`;
                 if (data.items.length === 0 || data.items.every(item => item.total === 0)) {
                     return "O Orçamento deve conter pelo menos um item válido (Descrição e Valor Unitário > 0).";
                 }
-                
+
                 // Valida se todos os itens têm descrição e valor unitário preenchidos
                 for (const item of data.items) {
                     if (!item.description || item.description.trim() === "") {
                         return "Por favor, preencha a descrição para todos os itens do orçamento.";
                     }
                     if (parseFloat(item.unitValue) <= 0) {
-                         return `O item "${item.description}" deve ter um Valor Unitário maior que R$ 0,00.`;
+                        return `O item "${item.description}" deve ter um Valor Unitário maior que R$ 0,00.`;
                     }
                 }
             }
@@ -603,7 +668,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
         function formatDate(dateString) {
             if (!dateString) return 'Data não informada';
             // Adiciona 'T00:00:00' para evitar problemas de fuso horário
-            const date = new Date(dateString + 'T00:00:00'); 
+            const date = new Date(dateString + 'T00:00:00');
             // Garante que a data seja válida antes de formatar
             if (isNaN(date.getTime())) return 'Data Inválida';
             return date.toLocaleDateString('pt-BR');
@@ -617,7 +682,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             const dataInicioFormatada = formatDate(data.dataInicio);
             const dataFimFormatada = formatDate(data.dataFim);
             const dataAtual = formatDate(new Date().toISOString().split('T')[0]);
-            
+
             return `
                 <div class="p-4 md:p-8 space-y-6">
                     <div class="text-center border-b pb-4">
@@ -678,7 +743,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             const dataFimFormatada = formatDate(data.dataFim);
             const dataAtual = new Date();
             const dataAtualFormatada = formatDate(dataAtual.toISOString().split('T')[0]);
-            
+
             const validadeDate = new Date(dataAtual);
             validadeDate.setDate(dataAtual.getDate() + 10);
             const validadeFormatada = validadeDate.toLocaleDateString('pt-BR');
@@ -687,10 +752,10 @@ Os valores não incluem serviços não especificados na descrição do item.`;
             const itemRows = data.items.map((item, index) => {
                 const totalFormatado = formatCurrency(item.total);
                 // Remove R$ do valor unitário para ficar mais limpo na tabela
-                const unitFormatado = formatCurrency(item.unitValue).replace('R$', '').trim(); 
+                const unitFormatado = formatCurrency(item.unitValue).replace('R$', '').trim();
                 // Linhas com cores alternadas
                 const rowClass = index % 2 === 0 ? 'bg-gray-50' : 'bg-white';
-                
+
                 return `
                     <tr class="${rowClass} border-b text-sm">
                         <td class="w-10 text-center py-2">${index + 1}</td>
@@ -837,7 +902,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
          */
         function renderPreview() {
             const data = getFormData();
-            
+
             // 1. Validação manual antes de gerar
             const validationError = validateForm(data);
             if (validationError) {
@@ -847,7 +912,7 @@ Os valores não incluem serviços não especificados na descrição do item.`;
                 document.getElementById('preview-section').classList.add('hidden');
                 return;
             }
-            
+
             // Se a validação passou, limpa o erro e continua
             clearError();
 
@@ -885,4 +950,5 @@ Os valores não incluem serviços não especificados na descrição do item.`;
         window.onload = initializeToggle;
     </script>
 </body>
+
 </html>

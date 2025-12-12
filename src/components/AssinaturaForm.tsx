@@ -87,10 +87,10 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>Mensal</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Plano Mensal</span>
                                     <span style={whitePriceStyle}>R$ 4,90</span>
                                     <span style={savingsTextStyle}>Acesso Flexível!</span>
-                                    <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> (sem fidelidade)</span>
+                                    <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( sem fidelidade )</span>
                                 </div>
                             </div>
                         </Link>
@@ -103,10 +103,10 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.25rem' }}>Anual</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Plano Anual</span>
                                     <span style={whitePriceStyle}>R$ 49,00</span>
                                     <span style={savingsTextStyle}>Economize R$ 9,80!</span>
-                                    <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> (2 meses grátis)</span>
+                                    <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Economize 2 meses! )</span>
                                 </div>
                             </div>
                         </Link>
