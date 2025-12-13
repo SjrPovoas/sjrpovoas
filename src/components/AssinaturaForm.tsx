@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ShoppingCart } from 'lucide-react'; 
+import { ShoppingCart } from 'lucide-react';
 
 /**
  * Componente que exibe os dois cards de planos (Mensal e Anual)
@@ -13,58 +13,62 @@ function AssinaturaForm() {
 
     // --- ESTILOS BASE ---
     const cardBaseStyle: React.CSSProperties = {
-        flex: 1, 
-        padding: '1.5rem', 
+        flex: 1,
+        padding: '1rem',
         border: '2px solid',
-        borderRadius: '0.5rem', 
+        borderRadius: '0.5rem',
         cursor: 'pointer',
-        transition: 'transform 0.3s ease-in-out', 
-        textDecoration: 'none', 
-        display: 'block', 
+        transition: 'transform 0.3s ease-in-out',
+        textDecoration: 'none',
+        display: 'block',
     };
 
     // --- ESTILO CARD 1: PLANO MENSAL (Padrão) ---
     const mensalStyle: React.CSSProperties = {
         ...cardBaseStyle,
-        backgroundColor: '#4a4a4a', // Cinza mais escuro para destaque
-        borderColor: '#8c92a6', // Cinza azulado na borda
-        color: '#ffffff', 
+        backgroundColor: '#e6f0ff', // Cinza mais escuro para destaque
+        borderColor: '#0278FFFF', // Cinza azulado na borda
+        color: '#0070f3',
     };
 
     // --- ESTILO CARD 2: PLANO ANUAL (DESTAQUE em Cinza Escuro) ---
     const anualStyle: React.CSSProperties = {
         ...cardBaseStyle,
-        backgroundColor: '#4a4a4a', // Cinza mais escuro para destaque
-        borderColor: '#8c92a6', // Cinza azulado na borda
-        color: '#ffffff', 
+        backgroundColor: '#e6f0ff', // Cinza mais escuro para destaque
+        borderColor: '#0278FFFF', // Cinza azulado na borda
+        color: '#0070f3',
     };
-    
+
     // --- ESTILOS DE TEXTO ---
     const highlightPriceStyle: React.CSSProperties = {
-        fontWeight: '600', 
-        fontSize: '1.875rem', 
+        fontWeight: '600',
+        fontSize: '1.875rem',
         color: '#8c92a6', // Cinza Azulado (destaque suave)
     };
     const whitePriceStyle: React.CSSProperties = {
         ...highlightPriceStyle,
-        color: '#ffffff', 
+        fontSize: '1.5rem',
+        color: '#000000',
     };
     const savingsTextStyle: React.CSSProperties = {
         fontWeight: 'bold',
-        color: '#199619FF', // Mantendo o vermelho para a economia (pois é um alerta/benefício)
-        fontSize: '0.875rem', 
+        color: '#199619FF', // Mantendo o verde (alerta/benefício)
+        fontSize: '0.8rem',
     };
     const lightGrayTextStyle: React.CSSProperties = {
         color: '#d1d5db', // Cinza claro
-        fontSize: '0.75rem', 
+        fontSize: '0.75rem',
     };
 
 
     return (
         <div style={{ width: '100%', maxWidth: '500px', margin: 'auto', padding: '2rem 0' }}>
             {/* Bloco principal */}
-            <div style={{ padding: '2rem', backgroundColor: '#000', borderRadius: '0.75rem', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)', border: '1px solid #4a4a4a', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-                
+            <div style={{
+                padding: '2rem', backgroundColor: '#000', borderRadius: '0.75rem',
+                boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+                border: '1px solid #4a4a4a', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+
                 {/* Cabeçalho */}
                 <div style={{ textAlign: 'center' }}>
                     {/* Ícone em Cinza Azulado para combinar com o destaque */}
@@ -80,8 +84,8 @@ function AssinaturaForm() {
                     <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
 
                         {/* 💳 CARD 1: PLANO MENSAL */}
-                        <Link 
-                            href="/login?plano=mensal" 
+                        <Link
+                            href="/login?plano=mensal"
                             style={mensalStyle}
                             className="card-hover-effect-dark" // Classe customizada para hover (em gray)
                         >
@@ -89,15 +93,15 @@ function AssinaturaForm() {
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                     <span style={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Plano Mensal</span>
                                     <span style={whitePriceStyle}>R$ 4,90</span>
-                                    <span style={savingsTextStyle}>Acesso Flexível!</span>
-                                    <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( sem fidelidade )</span>
+                                    <span style={savingsTextStyle}>Sem fidelidade!</span>
+                                    {/*<span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Sem fidelidade )</span>*/}
                                 </div>
                             </div>
                         </Link>
 
                         {/* 🌟 CARD 2: PLANO ANUAL (DESTAQUE) */}
-                        <Link 
-                            href="/login?plano=anual" 
+                        <Link
+                            href="/login?plano=anual"
                             style={anualStyle}
                             className="card-hover-effect-dark" // Classe customizada para hover (em dark gray)
                         >
@@ -105,8 +109,8 @@ function AssinaturaForm() {
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
                                     <span style={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Plano Anual</span>
                                     <span style={whitePriceStyle}>R$ 49,00</span>
-                                    <span style={savingsTextStyle}>Economize R$ 9,80!</span>
-                                    <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Economize 2 meses! )</span>
+                                    <span style={savingsTextStyle}>Economize 2 meses!</span>
+                                   {/* <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Economize 2 meses! )</span>*/}
                                 </div>
                             </div>
                         </Link>

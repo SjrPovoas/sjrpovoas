@@ -5,6 +5,7 @@ import React from 'react';
 import AssinaturaForm from '@/components/AssinaturaForm';
 import InteractiveCard from '@/components/InteractiveCard'; 
 import Carousel from '@/components/Carousel';
+import "./globals.css";
 
 // =======================================================================
 // ESTILOS E DADOS GLOBAIS
@@ -78,28 +79,17 @@ export default function Home() {
     <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '30px 10px 10px 10px' }}>
 
       {/* HEADER: LOGOMARCA E BOTÃO DE LOGIN */}
-      <header style={{
-        maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
-        alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333'
-      }}>
+      <header style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
+        alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333' }}>
         <Link href="/">
           <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
             style={{ height: '60px', objectFit: 'contain', borderRadius: '48px' }} />
         </Link>
-
         {/* 🚀 CALL TO ACTION (CTA) de Login */}
         <div>
           <Link href="/login"
-            style={{
-              display: 'inline-block',
-              padding: '10px 15px',
-              backgroundColor: '#0070f3',
-              color: 'white',
-              textDecoration: 'none',
-              borderRadius: '48px',
-              fontWeight: 'bold',
-            }}
-          >
+            style={{ display: 'inline-block', padding: '10px 15px', backgroundColor: '#0070f3',
+              color: 'white', textDecoration: 'none', borderRadius: '48px', fontWeight: 'bold', }} className="card-hover-effect-blue">
             Área Exclusiva!
           </Link>
         </div>
@@ -109,10 +99,8 @@ export default function Home() {
       {/* TÍTULO, INTRODUÇÃO E FORMULÁRIO DE ASSINATURA INTEGRADO */}
       <div style={{ maxWidth: '1200px', margin: '60px auto 30px', color: 'white', textAlign: 'left' }}>
         <h1 style={{ fontSize: '2.5em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
-
         {/* 🔑 INTEGRAÇÃO DO FORMULÁRIO DE ASSINATURA AQUI */}
         <AssinaturaForm /> 
-
       </div>
       {/* Fim da Seção Principal */}
 
