@@ -67,7 +67,7 @@ function AssinaturaForm() {
             <div style={{
                 padding: '2rem', backgroundColor: '#000', borderRadius: '0.75rem',
                 boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                border: '1px solid #4a4a4a', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                border: '1px solid #0070f3', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
                 {/* Cabeçalho */}
                 <div style={{ textAlign: 'center' }}>
@@ -91,7 +91,7 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Plano Mensal</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>MENSAL</span>
                                     <span style={whitePriceStyle}>R$ 4,90</span>
                                     <span style={savingsTextStyle}>Sem fidelidade!</span>
                                     {/*<span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Sem fidelidade )</span>*/}
@@ -107,7 +107,7 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.4rem' }}>Plano Anual</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>ANUAL</span>
                                     <span style={whitePriceStyle}>R$ 49,00</span>
                                     <span style={savingsTextStyle}>Economize 2 meses!</span>
                                    {/* <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Economize 2 meses! )</span>*/}
