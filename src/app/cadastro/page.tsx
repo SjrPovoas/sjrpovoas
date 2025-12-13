@@ -31,8 +31,8 @@ export default function CadastroPage() {
 
     // --- 2. DADOS DOS PLANOS ---
     const planos: Plano[] = [
-        { tipo: 'mensal', valor: 4.90, detalhes: '( Sem Fidelidade )' },
-        { tipo: 'anual', valor: 49.00, detalhes: '( Economize 2 meses )' },
+        { tipo: 'mensal', valor: 4.90, detalhes: 'Sem Fidelidade' },
+        { tipo: 'anual', valor: 49.00, detalhes: 'Economize 2 meses' },
     ];
 
     // --- 3. FUNÇÃO DE CADASTRO ---
@@ -171,7 +171,7 @@ export default function CadastroPage() {
                             onClick={() => setPlanoSelecionado(plano.tipo)}
                         >
                             <h4 style={{ color: plano.tipo === 'anual' ? '#28a745' : '#0070f3' }}>
-                                Plano {plano.tipo.toUpperCase()} 
+                                {plano.tipo.toUpperCase()} 
                             </h4>
                             <p style={{ fontSize: '2em', fontWeight: 'bold', margin: '10px 0' }}>
                                 R$ {plano.valor.toFixed(2).replace('.', ',')}
