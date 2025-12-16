@@ -3,91 +3,86 @@
 
 import Link from 'next/link';
 import React, { useState } from 'react';
-import { Target } from 'lucide-react';
 
-// Assumindo que estes componentes existem no seu projeto
+// Certifique-se de que esses arquivos existem em src/components/
+import InteractiveCard from '@/components/InteractiveCard'; 
 import Carousel from '@/components/Carousel';
-import InteractiveCard from '@/components/InteractiveCard';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-
 // =======================================================================
-// INTERFACES E TIPOS
+// INTERFACES
 // =======================================================================
-
 interface ContentItem {
-    id?: number;
-    title: string;
-    description: string;
-    videoUrl: string;
-    thumbnail: string;
-    categoria?: string;
+  title: string;
+  description: string;
+  videoUrl: string;
+  thumbnail: string;
+  categoria?: string;
 }
 
 interface VideoModalProps {
-    url: string;
-    onClose: () => void;
-    title: string;
+  url: string;
+  onClose: () => void;
+  title: string;
 }
 
 interface SocialIconProps {
-    href: string;
-    label: string;
-    iconClass: string;
+  href: string;
+  label: string;
+  iconClass: string;
 }
 
 // =======================================================================
-// COMPONENTES AUXILIARES
+// COMPONENTES AUXILIARES (Fora do componente principal para evitar bugs)
 // =======================================================================
 
 const VideoModal: React.FC<VideoModalProps> = ({ url, onClose, title }) => {
-    const iframeUrl = url.includes('?') ? `${url}&enablejsapi=1` : `${url}?enablejsapi=1`;
+  const iframeUrl = url.includes('?') ? `${url}&enablejsapi=1` : `${url}?enablejsapi=1`;
 
-    return (
-        <div
-            style={{
-                position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, 0.9)', zIndex: 1000,
-                display: 'flex', justifyContent: 'center', alignItems: 'center'
-            }}
-            onClick={onClose}
-        >
-            <div
-                style={{
-                    position: 'relative', width: '90%', maxWidth: '800px',
-                    backgroundColor: '#000', borderRadius: '8px', padding: '20px'
-                }}
-                onClick={e => e.stopPropagation()}
-            >
-                <button onClick={onClose} style={{
-                    position: 'absolute', top: '10px', right: '10px',
-                    background: 'none', border: 'none', color: 'white',
-                    fontSize: '1.5em', cursor: 'pointer', zIndex: 10
-                }}>
-                    &times;
-                </button>
-                <h3 style={{ color: 'white', marginBottom: '15px' }}>{title}</h3>
-                <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
-                    <iframe
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                        src={iframeUrl}
-                        title={title}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
-                </div>
-            </div>
+  return (
+    <div
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.9)', zIndex: 1000,
+        display: 'flex', justifyContent: 'center', alignItems: 'center'
+      }}
+      onClick={onClose}
+    >
+      <div
+        style={{
+          position: 'relative', width: '90%', maxWidth: '800px',
+          backgroundColor: '#000', borderRadius: '8px', padding: '20px'
+        }}
+        onClick={e => e.stopPropagation()}
+      >
+        <button onClick={onClose} style={{
+          position: 'absolute', top: '10px', right: '10px',
+          background: 'none', border: 'none', color: 'white',
+          fontSize: '1.5em', cursor: 'pointer', zIndex: 10
+        }}>
+          &times;
+        </button>
+        <h3 style={{ color: 'white', marginBottom: '15px' }}>{title}</h3>
+        <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%' }}>
+          <iframe
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+            src={iframeUrl}
+            title={title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
-    <Link href={href} target="_blank" style={{
-        color: '#aaa', fontSize: '1.5em', textDecoration: 'none', transition: 'color 0.3s'
-    }} title={label}>
-        <i className={`bi ${iconClass}`}></i>
-    </Link>
+  <Link href={href} target="_blank" style={{
+    color: '#aaa', fontSize: '1.5em', textDecoration: 'none', transition: 'color 0.3s'
+  }} title={label}>
+    <i className={`bi ${iconClass}`}></i>
+  </Link>
 );
 
 // =======================================================================
@@ -180,143 +175,138 @@ export default function MinhaAreaPage() {
         }
     ];
 
-    const socialMediaLinks = {
-        instagram: 'https://www.instagram.com/silviopovoasjunior',
-        facebook: 'https://www.facebook.com/sjrpovoas',
-        twitter: 'https://www.twitter.com/sjrpovoas',
-        linkedin: 'https://www.linkedin.com/in/sjrpovoas',
-        discord: 'https://discord.com/invite/8QKN7R5dt5',
-        linktree: 'https://linktr.ee/sjrpovoas',
-    };
+  const socialMediaLinks = {
+    instagram: 'https://www.instagram.com/silviopovoasjunior',
+    facebook: 'https://www.facebook.com/sjrpovoas',
+    twitter: 'https://www.twitter.com/sjrpovoas',
+    linkedin: 'https://www.linkedin.com/in/sjrpovoas',
+    discord: 'https://discord.com/invite/8QKN7R5dt5',
+    linktree: 'https://linktr.ee/sjrpovoas',
+};
 
-    const cardStyle: React.CSSProperties = {
-        flexShrink: 0, width: '300px', height: '350px', backgroundColor: '#444',
-        borderRadius: '8px', overflow: 'hidden', cursor: 'pointer', display: 'flex',
-        flexDirection: 'column', justifyContent: 'flex-end', position: 'relative',
-        padding: '10px', textAlign: 'left', color: 'white', backgroundSize: 'cover',
-        backgroundPosition: 'center',
-    };
+  // Estilo base do Card
+  const cardStyle: React.CSSProperties = {
+    flexShrink: 0, width: '300px', height: '350px', backgroundColor: '#444',
+    borderRadius: '8px', overflow: 'hidden', cursor: 'pointer', display: 'flex',
+    flexDirection: 'column', justifyContent: 'flex-end', position: 'relative',
+    padding: '10px', textAlign: 'left', color: 'white', backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
 
-    // FUNÇÕES
-    const handleCardClick = (item: ContentItem) => {
-        if (item.videoUrl) {
-            setCurrentVideoUrl(item.videoUrl);
-            setCurrentVideoTitle(item.title);
-            setModalOpen(true);
-        }
-    };
+  // Handlers
+  const handleCardClick = (item: ContentItem) => {
+    setCurrentVideoUrl(item.videoUrl);
+    setCurrentVideoTitle(item.title);
+    setModalOpen(true);
+  };
 
-    const enviarSugestao = async () => {
-        setLoadingSugestao(true);
-        try {
-            await fetch('/api/sugestoes', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ termo: busca }),
-            });
-            setSugestaoEnviada(true);
-        } catch (err) {
-            console.error("Erro ao enviar sugestão");
-        } finally {
-            setLoadingSugestao(false);
-        }
-    };
+  const enviarSugestao = async () => {
+    setLoadingSugestao(true);
+    try {
+      await fetch('/api/sugestoes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ termo: busca }),
+      });
+      setSugestaoEnviada(true);
+    } catch (err) {
+      console.error("Erro ao enviar sugestão", err);
+    } finally {
+      setLoadingSugestao(false);
+    }
+  };
 
-    const resultados = [...trainingAreas, ...vipContentAreas].filter(item =>
-        item.title.toLowerCase().includes(busca.toLowerCase()) ||
-        item.description.toLowerCase().includes(busca.toLowerCase())
-    );
+  const resultadosBusca = [...trainingAreas, ...vipContentAreas].filter(item =>
+    item.title.toLowerCase().includes(busca.toLowerCase()) ||
+    item.description.toLowerCase().includes(busca.toLowerCase())
+  );
 
-    return (
-        <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '20px', color: 'white' }}>
-            
-            {/* HEADER */}
-            <header style={{
-                maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
-                alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333'
-            }}>
-                <Link href="/">
-                    <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
-                        style={{ height: '60px', objectFit: 'contain', borderRadius: '48px' }} />
-                </Link>
-                <Link href="/logout" style={{
-                    padding: '10px 20px', backgroundColor: '#dc3545', color: 'white',
-                    textDecoration: 'none', borderRadius: '5px'
-                }}>
-                    Sair (Logout)
-                </Link>
-            </header>
+  return (
+    <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '20px', color: 'white' }}>
+      
+      {/* HEADER */}
+      <header style={{
+        maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
+        alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333'
+      }}>
+        <Link href="/">
+          <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
+            style={{ height: '60px', objectFit: 'contain', borderRadius: '48px' }} />
+        </Link>
+        <Link href="/logout" style={{
+          padding: '10px 20px', backgroundColor: '#dc3545', color: 'white',
+          textDecoration: 'none', borderRadius: '5px'
+        }}>
+          Sair
+        </Link>
+      </header>
 
-            {/* BUSCA */}
-            <div style={{ maxWidth: '800px', margin: '40px auto', textAlign: 'center' }}>
-                <input
-                    type="text"
-                    placeholder="Pesquise aqui o conteúdo desejado ..."
-                    value={busca}
-                    onChange={(e) => { setBusca(e.target.value); setSugestaoEnviada(false); }}
-                    style={{
-                        width: '100%', padding: '15px', borderRadius: '10px',
-                        border: 'none', fontSize: '16px', color: '#333'
-                    }}
-                />
+      {/* ÁREA DE BUSCA */}
+      <section style={{ maxWidth: '800px', margin: '40px auto', textAlign: 'center' }}>
+        <h2 style={{ marginBottom: '20px' }}>O que você deseja aprender hoje?</h2>
+        <input
+          type="text"
+          placeholder="Pesquisar aulas..."
+          value={busca}
+          onChange={(e) => { setBusca(e.target.value); setSugestaoEnviada(false); }}
+          style={{
+            width: '100%', padding: '15px', borderRadius: '10px',
+            border: 'none', fontSize: '16px', color: '#333'
+          }}
+        />
 
-                {busca !== '' && (
-                    <div style={{ marginTop: '20px', textAlign: 'left', background: '#111', padding: '20px', borderRadius: '10px' }}>
-                        {resultados.length > 0 ? (
-                            resultados.map((item, idx) => (
-                                <div key={idx} onClick={() => handleCardClick(item)} style={{ cursor: 'pointer', padding: '10px', borderBottom: '1px solid #333' }}>
-                                    <strong>{item.title}</strong> {item.categoria && `- ${item.categoria}`}
-                                </div>
-                            ))
-                        ) : (
-                            <div>
-                                <p>Não encontramos nada sobre "{busca}".</p>
-                                {!sugestaoEnviada ? (
-                                    <button onClick={enviarSugestao} disabled={loadingSugestao} style={{ background: 'green', color: 'white', padding: '10px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
-                                        {loadingSugestao ? 'Enviando...' : 'Adicionar sugestão de pesquisa +'}
-                                    </button>
-                                ) : (
-                                    <p style={{ color: 'lightgreen' }}>✅ Sugestão enviada!</p>
-                                )}
-                            </div>
-                        )}
-                    </div>
+        {busca !== '' && (
+          <div style={{ marginTop: '20px', textAlign: 'left', background: '#111', padding: '20px', borderRadius: '10px' }}>
+            {resultadosBusca.length > 0 ? (
+              resultadosBusca.map((item, idx) => (
+                <div key={idx} onClick={() => handleCardClick(item)} style={{ cursor: 'pointer', padding: '10px', borderBottom: '1px solid #333' }}>
+                  <strong>{item.title}</strong>
+                </div>
+              ))
+            ) : (
+              <div>
+                <p>Nenhum resultado para "{busca}".</p>
+                {!sugestaoEnviada ? (
+                  <button onClick={enviarSugestao} disabled={loadingSugestao} style={{ background: 'green', color: 'white', padding: '10px', borderRadius: '5px', border: 'none', cursor: 'pointer', marginTop: '10px' }}>
+                    {loadingSugestao ? 'Enviando...' : 'Sugerir este tema +'}
+                  </button>
+                ) : (
+                  <p style={{ color: 'lightgreen' }}>✅ Sugestão enviada!</p>
                 )}
-            </div>
+              </div>
+            )}
+          </div>
+        )}
+      </section>
 
-            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-                <h1 style={{ color: 'green' }}>✅ ACESSO EXCLUSIVO CONCEDIDO!</h1>
-                <p>Bem-vindo(a) à área exclusiva dos assinantes.</p>
-            </div>
+      {/* CONTEÚDO */}
+      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <Carousel title="🎓 Treinamento Rápido">
+          {trainingAreas.map((area, index) => (
+            <InteractiveCard
+              key={index}
+              title={area.title}
+              description={area.description}
+              image={area.thumbnail}
+              baseStyle={cardStyle}
+              onClick={() => handleCardClick(area)}
+            />
+          ))}
+        </Carousel>
 
-            {/* CARROSSEIS */}
-            <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-                <Carousel title="🎓 Treinamento Rápido">
-                    {trainingAreas.map((area, index) => (
-                        <InteractiveCard
-                            key={index}
-                            title={area.title}
-                            description={area.description}
-                            image={area.thumbnail}
-                            baseStyle={cardStyle}
-                            onClick={() => handleCardClick(area)}
-                        />
-                    ))}
-                </Carousel>
-
-                <Carousel title="🌟 Conteúdo VIP">
-                    {vipContentAreas.map((area, index) => (
-                        <InteractiveCard
-                            key={index}
-                            title={area.title}
-                            description={area.description}
-                            image={area.thumbnail}
-                            baseStyle={cardStyle}
-                            onClick={() => handleCardClick(area)}
-                        />
-                    ))}
-                </Carousel>
-            </div>
+        <Carousel title="🌟 Conteúdo VIP">
+          {vipContentAreas.map((area, index) => (
+            <InteractiveCard
+              key={index}
+              title={area.title}
+              description={area.description}
+              image={area.thumbnail}
+              baseStyle={cardStyle}
+              onClick={() => handleCardClick(area)}
+            />
+          ))}
+        </Carousel>
+      </div>
 
             {/* RODAPÉ */}
             <footer style={{
@@ -337,14 +327,14 @@ export default function MinhaAreaPage() {
                 <p>&copy; {new Date().getFullYear()} SjrPovoaS. Todos os direitos reservados.</p>
             </footer>
 
-            {/* MODAL DE VÍDEO */}
-            {modalOpen && (
-                <VideoModal
-                    url={currentVideoUrl}
-                    title={currentVideoTitle}
-                    onClose={() => setModalOpen(false)}
-                />
-            )}
-        </main>
-    );
+      {/* MODAL RENDERIZADO NO FINAL */}
+      {modalOpen && (
+        <VideoModal
+          url={currentVideoUrl}
+          title={currentVideoTitle}
+          onClose={() => setModalOpen(false)}
+        />
+      )}
+    </main>
+  );
 }
