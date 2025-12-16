@@ -8,6 +8,8 @@ import { Target } from 'lucide-react';
 // Assumindo que estes componentes existem no seu projeto
 import Carousel from '@/components/Carousel';
 import InteractiveCard from '@/components/InteractiveCard';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+
 
 // =======================================================================
 // INTERFACES E TIPOS
