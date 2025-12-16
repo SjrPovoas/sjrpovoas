@@ -74,7 +74,7 @@ function AssinaturaForm() {
                     {/* Ícone em Cinza Azulado para combinar com o destaque */}
                     <ShoppingCart style={{ width: '2.5rem', height: '2.5rem', margin: '0 auto 0.75rem', color: '#8c92a6' }} />
                     <h2 style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#fff' }}>
-                        Escolha seu Plano Ideal
+                    Pare de brigar com seu celular. Aprenda a dominar cada ferramenta e use a tecnologia a seu favor.
                     </h2>
                 </div>
 
@@ -91,7 +91,7 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>MENSAL</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>Quero dominar meus dispositivos</span>
                                     <span style={whitePriceStyle}>R$ 4,90</span>
                                     <span style={savingsTextStyle}>Sem fidelidade!</span>
                                     {/*<span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Sem fidelidade )</span>*/}
@@ -107,9 +107,9 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>ANUAL</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>Domine a tecnologia o ano todo</span>
                                     <span style={whitePriceStyle}>R$ 49,00</span>
-                                    <span style={savingsTextStyle}>Economize 2 meses!</span>
+                                    <span style={savingsTextStyle}>Assine o plano anual e ganhe 2 meses de bônus</span>
                                    {/* <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Economize 2 meses! )</span>*/}
                                 </div>
                             </div>

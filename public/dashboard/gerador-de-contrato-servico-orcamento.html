@@ -2,144 +2,142 @@
 <html lang="pt-BR" prefix="og: https://ogp.me/ns#">
 
 <head>
-
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="title" content="SjrPovoaS | Criamos a solução que você procura">
-        <meta name="author" content="SjrPovoaS">
-        <meta name="description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
-        <meta name="Keywords" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
-        <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
-        <meta name="robots" content="follow, index">
-        <meta name="googlebot" content="all">
-        <meta name="google-site-verification" content="">
-        <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
-        <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
-        <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
-        <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
-        <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
-        <link rel="mask-icon" href="/src/app/favicon.ico">
-        <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
-        <!-- Open Graph tags are also recommended -->
-        <meta property="og:locale" content="pt_BR">
-        <meta property="og:type" content="website">
-        <meta property="og:site_name" content="SjrPovoaS | Criamos a solução que você procura">
-        <meta property="og:url"
-            content="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
-        <meta property="og:image" content="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png">
-        <meta name="og:image:width" content="1200">
-        <meta name="og:image:height" content="630">
-        <meta property="og:title" content="SjrPovoaS | Criamos a solução que você procura">
-        <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
-        <!-- Carrega o Tailwind CSS -->
-        <script src="https://cdn.tailwindcss.com"></script>
-        <!-- Configuração do Tailwind para usar o tema de cores AGP -->
-        <script>
-            tailwind.config = {
-                theme: {
-                    extend: {
-                        colors: {
-                            'agp-gray': '#888888', // Cinza
-                        },
-                    }
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="title" content="SjrPovoaS | Criamos a solução que você procura">
+    <meta name="author" content="SjrPovoaS">
+    <meta name="description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta name="Keywords" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+    <meta name="robots" content="follow, index">
+    <meta name="googlebot" content="all">
+    <meta name="google-site-verification" content="">
+    <title>Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS</title>
+    <link rel="icon" sizes="32x32" href="/src/app/favicon.ico">
+    <link rel="icon" sizes="192x192" href="/src/app/favicon.ico">
+    <link rel="apple-touch-icon" type="image/x-icon" href="/src/app/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="/src/app/favicon.ico">
+    <link rel="mask-icon" href="/src/app/favicon.ico">
+    <link rel="canonical" href="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
+    <!-- Open Graph tags are also recommended -->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="SjrPovoaS | Criamos a solução que você procura">
+    <meta property="og:url"
+        content="https://sjrpovoas.vercel.app/dashboard/gerador-de-contrato-servico-orcamento.html/">
+    <meta property="og:image" content="https://sjrpovoas.vercel.app/assets/img/logo-SjrPovoaS.png">
+    <meta name="og:image:width" content="1200">
+    <meta name="og:image:height" content="630">
+    <meta property="og:title" content="SjrPovoaS | Criamos a solução que você procura">
+    <meta property="og:description" content="Gerador Online de Contratos, Recibos e Orçamentos da SjrPovoaS">
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tailwind para usar o tema de cores AGP -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'agp-gray': '#888888', // Cinza
+                    },
                 }
             }
-        </script>
-        <style>
-            /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
-            :root {
-                font-family: 'Inter', sans-serif;
+        }
+    </script>
+    <style>
+        /* Configuração de Fonte padrão (Inter é um bom sans-serif profissional) */
+        :root {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Cores inspiradas no branding */
+        .agp-text-gray {
+            color: gray;
+        }
+
+        .agp-border-gray {
+            border-color: gray;
+        }
+
+        /* Estilos para inputs */
+        .form-input-label {
+            display: block;
+            font-size: 0.875rem;
+            /* text-sm */
+            font-weight: 500;
+            /* font-medium */
+            color: #374151;
+            /* gray-700 */
+            padding-top: 0.5rem;
+        }
+
+        /* Estilo base para todos os inputs do formulário */
+        .form-input {
+            padding: 0.75rem;
+            /* p-3 */
+            border: 1px solid #d1d5db;
+            /* border-gray-300 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
+            width: 100%;
+            transition: all 150ms ease-in-out;
+        }
+
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5);
+            /* focus:ring-2 focus:ring-gray-500 */
+            border-color: gray;
+            /* focus:border-gray-500 */
+        }
+
+        /* Estilos para mensagem de erro (substituindo o alert) */
+        #errorMessage {
+            color: #dc2626;
+            /* red-600 */
+            background-color: #fee2e2;
+            /* red-100 */
+            border: 1px solid #f87171;
+            /* red-400 */
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Estilos específicos para a visualização de impressão */
+        @media print {
+            body * {
+                visibility: hidden;
             }
 
-            /* Cores inspiradas no branding */
-            .agp-text-gray {
-                color: gray;
+            .print-area,
+            .print-area * {
+                visibility: visible;
             }
 
-            .agp-border-gray {
-                border-color: gray;
-            }
-
-            /* Estilos para inputs */
-            .form-input-label {
-                display: block;
-                font-size: 0.875rem;
-                /* text-sm */
-                font-weight: 500;
-                /* font-medium */
-                color: #374151;
-                /* gray-700 */
-                padding-top: 0.5rem;
-            }
-
-            /* Estilo base para todos os inputs do formulário */
-            .form-input {
-                padding: 0.75rem;
-                /* p-3 */
-                border: 1px solid #d1d5db;
-                /* border-gray-300 */
-                border-radius: 0.5rem;
-                /* rounded-lg */
+            .print-area {
+                position: absolute;
+                left: 0;
+                top: 0;
                 width: 100%;
-                transition: all 150ms ease-in-out;
+                padding: 0;
+                margin: 0;
+                box-shadow: none;
+                font-size: 11pt;
             }
 
-            .form-input:focus {
-                box-shadow: 0 0 0 3px rgba(137, 145, 142, 0.5);
-                /* focus:ring-2 focus:ring-gray-500 */
-                border-color: gray;
-                /* focus:border-gray-500 */
+            .no-print {
+                display: none !important;
             }
 
-            /* Estilos para mensagem de erro (substituindo o alert) */
-            #errorMessage {
-                color: #dc2626;
-                /* red-600 */
-                background-color: #fee2e2;
-                /* red-100 */
-                border: 1px solid #f87171;
-                /* red-400 */
-                padding: 1rem;
-                margin-bottom: 1rem;
-                border-radius: 0.5rem;
-                font-weight: 500;
+            .agp-text-gray {
+                color: black !important;
             }
-
-            /* Estilos específicos para a visualização de impressão */
-            @media print {
-                body * {
-                    visibility: hidden;
-                }
-
-                .print-area,
-                .print-area * {
-                    visibility: visible;
-                }
-
-                .print-area {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    padding: 0;
-                    margin: 0;
-                    box-shadow: none;
-                    font-size: 11pt;
-                }
-
-                .no-print {
-                    display: none !important;
-                }
-
-                .agp-text-gray {
-                    color: black !important;
-                }
-            }
-        </style>
-    </head>
+        }
+    </style>
+</head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col items-center p-4">
     <!-- Cabeçalho (Branding) -->

@@ -197,11 +197,11 @@ export default function AdminDashboardPage() {
 
                 {!loading && !error && (
                     <>
-                        <h3>Usuários Pendentes de Confirmação de Pagamento ({pendentes.length})</h3>
+                        <h3><i className="bi bi-clock-history"></i> Usuários Pendentes de Confirmação de Pagamento ({pendentes.length})</h3>
 
                         {pendentes.length === 0 ? (
                             <p style={{ marginTop: '15px', padding: '15px', backgroundColor: '#e9ecef', borderRadius: '4px' }}>
-                                🎉 Não há usuários pendentes de ativação.
+                                <i className="bi bi-exclamation-triangle"></i> 🎉 Não há <i className="bi bi-people"></i> usuários pendentes de ativação.
                             </p>
                         ) : (
                             <div style={tableContainerStyle}> {/* Container para scroll horizontal em telas pequenas */}
