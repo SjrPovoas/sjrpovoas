@@ -296,7 +296,7 @@ export default function AdminDashboardPage() {
                     </div>
                 </div>
 
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '15px' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '15px' }}>
                     <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
                         Contato
                     </Link>

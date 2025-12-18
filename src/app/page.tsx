@@ -77,23 +77,32 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
 
 export default function Home() {
   return (
-    <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '30px 10px 10px 10px' }}>
+    <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '20px', color: 'white' }}>
 
       {/* HEADER: LOGOMARCA E BOTÃO DE LOGIN */}
       <header style={{
         maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
         alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333'
       }}>
-        <Link href="/">
+        {/*<Link href="/">
           <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
-            style={{ height: '60px', objectFit: 'contain', borderRadius: '48px' }} />
-        </Link>
+            style={{ height: '40px', objectFit: 'contain', borderRadius: '48px' }} />
+        </Link> */}
+        <div>
+          <Link href="/"
+            style={{
+              display: 'flex', justifyContent: 'space-between', padding: '10px 15px', fontSize: '1.5rem', backgroundColor: '#000000',
+              color: '#FFFFFF', textDecoration: 'none', borderRadius: '48px', fontWeight: 'bold'
+            }}>
+            SjrPovoaS
+          </Link>
+        </div>
         {/* 🚀 CALL TO ACTION (CTA) de Login */}
         <div>
           <Link href="/login"
             style={{
               display: 'inline-block', padding: '10px 15px', backgroundColor: '#0070f3',
-              color: 'white', textDecoration: 'none', borderRadius: '48px', fontWeight: 'bold',
+              color: 'white', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold'
             }} className="card-hover-effect-blue">
             Área Exclusiva!
           </Link>
@@ -102,7 +111,7 @@ export default function Home() {
 
       {/* TÍTULO, INTRODUÇÃO E FORMULÁRIO DE ASSINATURA INTEGRADO */}
       <div style={{ maxWidth: '1200px', margin: '60px auto 30px', color: 'white', textAlign: 'left' }}>
-        <h1 style={{ fontSize: '2.5em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
+        <h1 style={{ fontSize: '2em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
       </div>
       {/* Fim da Seção Principal */}
 
@@ -168,7 +177,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '15px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '15px' }}>
           <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
             Contato
           </Link>

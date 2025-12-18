@@ -235,14 +235,23 @@ export default function MinhaAreaPage() {
                 maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
                 alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333'
             }}>
-                <Link href="/">
-                    <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
-                        style={{ height: '60px', objectFit: 'contain', borderRadius: '48px' }} />
-                </Link>
+        {/*<Link href="/">
+          <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
+            style={{ height: '40px', objectFit: 'contain', borderRadius: '48px' }} />
+        </Link>  }} className="card-hover-effect-blue"> */}
+        <div>
+          <Link href="/"
+            style={{
+              display: 'flex', justifyContent: 'space-between', padding: '10px 15px', fontSize: '1.5rem', backgroundColor: '#000000',
+              color: '#FFFFFF', textDecoration: 'none', borderRadius: '48px', fontWeight: 'bold'
+            }}>
+            SjrPovoaS
+          </Link>
+        </div>
                 <Link href="/logout" style={{
                     padding: '10px 20px', backgroundColor: '#dc3545', color: 'white',
                     textDecoration: 'none', borderRadius: '5px'
-                }}>
+                }} className="card-hover-effect-red">
                     Sair (Logout)
                 </Link>
             </header>
@@ -318,24 +327,47 @@ export default function MinhaAreaPage() {
                 </Carousel>
             </div>
 
-            {/* RODAPÉ */}
-            <footer style={{
-                maxWidth: '1200px', backgroundColor: '#111', margin: '80px auto 0', padding: '30px', 
-                borderTop: '1px solid #333', color: '#888', textAlign: 'center'
-            }}>
-                <div style={{ marginBottom: '20px' }}>
-                    <p style={{ margin: '0 0 10px 0', color: 'white' }}>Siga-nos nas Redes Sociais:</p>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-                        <SocialIcon href={socialMediaLinks.instagram} label="Instagram" iconClass="bi-instagram" />
-                        <SocialIcon href={socialMediaLinks.facebook} label="Facebook" iconClass="bi-facebook" />
-                        <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
-                        <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
-                        <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
-                        <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />
-                    </div>
-                </div>
-                <p>&copy; {new Date().getFullYear()} SjrPovoaS. Todos os direitos reservados.</p>
-            </footer>
+      {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
+      <footer
+        style={{
+          maxWidth: '1200px', backgroundColor: '#444', margin: '80px auto 0', padding: '30px', borderTop: '1px solid #333',
+          color: '#888', fontSize: '0.9em', textAlign: 'center'
+        }}
+      >
+        <div style={{ marginBottom: '20px' }}>
+          <p style={{ margin: '0 0 10px 0', fontSize: '1em', color: 'white' }}>Siga-nos nas Redes Sociais:</p>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+            {/* Ícones do Bootstrap Icons */}
+            <SocialIcon href={socialMediaLinks.instagram} label="Instagram" iconClass="bi-instagram" />
+            <SocialIcon href={socialMediaLinks.facebook} label="Facebook" iconClass="bi-facebook" />
+            <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
+            <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
+            <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
+            <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '15px' }}>
+          <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
+            Contato
+          </Link>
+          <Link href="/termos-de-uso" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
+            Termos de Uso
+          </Link>
+          <Link href="/politica-de-privacidade" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
+            Política de Privacidade
+          </Link>
+        </div>
+
+        <p style={{ margin: '10px 0 0' }}>
+          &copy; {new Date().getFullYear()} SjrPovoaS. Todos os direitos reservados.
+        </p>
+        <p style={{ margin: '5px 0 0', fontSize: '0.8em', color: '#777' }}>
+          Plataforma de acesso exclusivo.
+        </p>
+
+      </footer>
+      {/* --- FIM DO RODAPÉ --- */}
 
             {/* MODAL DE VÍDEO */}
             {modalOpen && (

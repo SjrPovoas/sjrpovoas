@@ -121,11 +121,20 @@
   background-color: #ddd !important;
 }
 
-/* Efeito Hover Específico para o Botão Área Exclusiva */
+/* Efeito Hover Específico para o Botão Login da Área Exclusiva */
 .card-hover-effect-blue:hover {
 
   /* Sombra azulada mais forte para destaque */
-  box-shadow: 0 25px 50px -12px rgba(127, 217, 240, 0.45), 0 0 15px rgba(248, 248, 248, 0.5); 
+  box-shadow: 0 25px 50px -12px rgba(255, 255, 255, 0.45), 0 0 15px rgba(248, 248, 248, 0.5); 
   /* Escurece levemente o fundo cinza de destaque */
-  /* background-color: #56bbe2 !important; */
+  background-color:  rgba(3, 58, 240, 0.884) !important; 
+}
+
+/* Efeito Hover Específico para o Botão Logout da Área Exclusiva */
+.card-hover-effect-red:hover {
+
+  /* Sombra azulada mais forte para destaque */
+  box-shadow: 0 25px 50px -12px rgba(255, 255, 255, 0.45), 0 0 15px rgba(248, 248, 248, 0.5); 
+  /* Escurece levemente o fundo cinza de destaque */
+  background-color:  rgba(221, 54, 25, 0.877) !important; 
 }
