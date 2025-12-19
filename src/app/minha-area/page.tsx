@@ -343,14 +343,11 @@ export default function MinhaAreaPage() {
             <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
             <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
             <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
-            <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />
+            <SocialIcon href={socialMediaLinks.linktree} label="Linktr.ee" iconClass="bi-tree-fill" />
           </div>
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '15px' }}>
-          <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
-            Contato
-          </Link>
           <Link href="/termos-de-uso" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
             Termos de Uso
           </Link>

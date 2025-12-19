@@ -27,7 +27,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
 );
 
 export default function PoliticaDePrivacidadePage() {
-    // Conteúdo HTML da Política de Privacidade fornecido pelo usuário
+
     const politicaHtmlContent = `
         <h2><span style="color: rgb(68, 68, 68);">Política Privacidade</span></h2>
         <p><span style="color: rgb(68, 68, 68);">A sua privacidade é importante para nós. É política do SjrPovoaS | Criamos a solução que você procura respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar no site <a href="https://sjrpovoas.vercel.app">SjrPovoaS | Criamos a solução que você procura</a>, e outros sites que possuímos e operamos.</span></p>
@@ -50,7 +50,7 @@ export default function PoliticaDePrivacidadePage() {
         <h3><span style="color: rgb(68, 68, 68);">Mais informações</span></h3>
         <p><span style="color: rgb(68, 68, 68);">Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que você não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies ativados, caso interaja com um dos recursos que você usa em nosso site.</span></p>
         
-        <p><span style="color: rgb(68, 68, 68);">Esta política é efetiva a partir de&nbsp;12 December 2025 18:33</span></p>
+        <p><span style="color: rgb(68, 68, 68);">Esta política é efetiva a partir de&nbsp;12 de Dezembro de 2025 18:33</span></p>
     `;
 
     // Estilos básicos para o container (mantendo a consistência com os Termos)
@@ -90,14 +90,11 @@ export default function PoliticaDePrivacidadePage() {
                         <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
                         <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
                         <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
-                        <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />
+                        <SocialIcon href={socialMediaLinks.linktree} label="Linktr.ee" iconClass="bi-tree-fill" />
                     </div>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '15px' }}>
-                    <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
-                        Contato
-                    </Link>
                     <Link href="/termos-de-uso" style={{ color: '#888', textDecoration: 'none' }}>
                         Termos de Uso
                     </Link>

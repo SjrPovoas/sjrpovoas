@@ -27,13 +27,7 @@ const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
 );
 
 export default function TermosDeServicoPage() {
-    // ⚠️ Importante: O texto que você forneceu já está formatado
-    // com tags HTML (h2, p, ol, li, strong, span style, etc.).
-    // Para renderizar este HTML puro com segurança no React,
-    // precisamos usar a propriedade 'dangerouslySetInnerHTML'.
 
-    // O texto foi limpo das tags <h2> e <p> HTML que já estavam
-    // no começo/fim para evitar duplicidade, mas o restante foi mantido.
     const termosHtmlContent = `
         <h2><span style="color: rgb(68, 68, 68);">1. Termos</span></h2>
         <p><span style="color: rgb(68, 68, 68);">Ao acessar ao site <a href="https://sjrpovoas.vercel.app">SjrPovoaS | Criamos a solução que você procura</a>, concorda em cumprir estes termos de serviço, todas as leis e regulamentos aplicáveis ​​e concorda que é responsável pelo cumprimento de todas as leis locais aplicáveis. Se você não concordar com algum desses termos, está proibido de usar ou acessar este site. Os materiais contidos neste site são protegidos pelas leis de direitos autorais e marcas comerciais aplicáveis.</span></p>
@@ -92,7 +86,7 @@ export default function TermosDeServicoPage() {
                         style={{ width: '64px', height: '64px', borderRadius: '50%', objectFit: 'cover', border: 'none', textDecoration: 'none' }} />
                 </Link>
             </div>
-            <h1 style={{ textAlign: 'center', color: '#0070f3', marginBottom: '30px' }}>Termos de Serviço</h1>
+            <h1 style={{ textAlign: 'center', color: '#0070f3', marginBottom: '30px' }}>Termos de Uso e Serviço</h1>
             {/* Renderiza o conteúdo HTML, incluindo estilos e links */}
             <div dangerouslySetInnerHTML={{ __html: termosHtmlContent }} />
             {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
@@ -110,14 +104,11 @@ export default function TermosDeServicoPage() {
                         <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
                         <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
                         <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
-                        <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" />
+                        <SocialIcon href={socialMediaLinks.linktree} label="Linktr.ee" iconClass="bi-tree-fill" />
                     </div>
                 </div>
 
                 <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginBottom: '15px' }}>
-                    <Link href="mailto:sjrpovoas@gmail.com" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
-                        Contato
-                    </Link>
                     <Link href="/termos-de-uso" style={{ color: '#888', textDecoration: 'none' }}>
                         Termos de Uso
                     </Link>
