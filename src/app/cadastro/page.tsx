@@ -168,7 +168,7 @@ export default function CadastroPage() {
                         <div
                             key={plano.tipo}
                             style={planoCardStyle(planoSelecionado === plano.tipo)}
-                            onClick={() => setPlanoSelecionado(plano.tipo)}
+                            onClick={() => setPlanoSelecionado(plano.tipo)} className="card-hover-effect-dark"
                         >
                             <h4 style={{ color: plano.tipo === 'anual' ? '#28a745' : '#0070f3' }}>
                                 {plano.tipo.toUpperCase()} 
