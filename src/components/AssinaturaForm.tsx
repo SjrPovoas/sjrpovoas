@@ -42,17 +42,20 @@ function AssinaturaForm() {
     // --- ESTILOS DE TEXTO ---
     const highlightPriceStyle: React.CSSProperties = {
         fontWeight: '600',
-        fontSize: '1.875rem',
+        fontSize: '1.8rem',
+        textAlign: 'justify',
         color: '#8c92a6', // Cinza Azulado (destaque suave)
     };
     const whitePriceStyle: React.CSSProperties = {
         ...highlightPriceStyle,
-        fontSize: '1.5rem',
+        fontSize: '1.6rem',
         color: '#000000',
+        textAlign: 'justify',
     };
     const savingsTextStyle: React.CSSProperties = {
         fontWeight: 'bold',
         color: '#199619FF', // Mantendo o verde (alerta/benefício)
+        textAlign: 'justify',
         fontSize: '0.8rem',
     };
     const lightGrayTextStyle: React.CSSProperties = {
@@ -78,10 +81,10 @@ function AssinaturaForm() {
                     </h2>
                 </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', textAlign: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center' }}>
 
                     {/* Layout de Duas Colunas Horizontal */}
-                    <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+                    <div style={{ display: 'flex', flexDirection: 'row', gap: '1rem', textAlign: 'center' }}>
 
                         {/* 💳 CARD 1: PLANO MENSAL */}
                         <Link
@@ -90,11 +93,10 @@ function AssinaturaForm() {
                             className="card-hover-effect-dark" // Classe customizada para hover (em gray)
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>Quero dominar meus dispositivos</span>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'center' }}>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.3rem' }}>Quero dominar meus dispositivos</span>
                                     <span style={whitePriceStyle}>R$ 4,90</span>
                                     <span style={savingsTextStyle}>Sem fidelidade!</span>
-                                    {/*<span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Sem fidelidade )</span>*/}
                                 </div>
                             </div>
                         </Link>
@@ -106,11 +108,10 @@ function AssinaturaForm() {
                             className="card-hover-effect-dark" // Classe customizada para hover (em dark gray)
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
-                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.7rem' }}>Domine a tecnologia o ano todo</span>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'center' }}>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.3rem' }}>Domine a tecnologia o ano todo</span>
                                     <span style={whitePriceStyle}>R$ 49,00</span>
                                     <span style={savingsTextStyle}>Assine o plano anual e ganhe 2 meses de bônus</span>
-                                   {/* <span style={{ ...lightGrayTextStyle, color: '#e5e7eb' }}> ( Economize 2 meses! )</span>*/}
                                 </div>
                             </div>
                         </Link>
