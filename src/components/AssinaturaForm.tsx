@@ -94,7 +94,7 @@ function AssinaturaForm() {
                         >
                             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.5rem' }}>
                                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', textAlign: 'center' }}>
-                                    <span style={{ fontWeight: 'bold', fontSize: '1.3rem' }}>Quero dominar meus dispositivos</span>
+                                    <span style={{ fontWeight: 'bold', fontSize: '1.3rem' }}>Domine seus dispositivos agora</span>
                                     <span style={whitePriceStyle}>R$ 4,90</span>
                                     <span style={savingsTextStyle}>Sem fidelidade!</span>
                                 </div>

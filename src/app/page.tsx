@@ -15,8 +15,8 @@ import "./globals.css";
 const cardStyle: React.CSSProperties = {
   // Ajuste de width e minWidth para que o carrossel funcione bem
   flexShrink: 0,
-  width: '300px',
-  height: '350px',
+  width: '250px',
+  height: '250px',
   minWidth: '200px',
   backgroundColor: '#444',
   borderRadius: '8px',
@@ -111,7 +111,7 @@ export default function Home() {
 
       {/* TÍTULO, INTRODUÇÃO E FORMULÁRIO DE ASSINATURA INTEGRADO */}
       <div style={{ maxWidth: '1200px', margin: '60px auto 30px', color: 'white', textAlign: 'left' }}>
-        <h1 style={{ fontSize: '2em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
+        <h1 style={{ fontSize: '1.5em', marginBottom: '10px' }}>Criamos a solução que você procura</h1>
       </div>
       {/* Fim da Seção Principal */}
 

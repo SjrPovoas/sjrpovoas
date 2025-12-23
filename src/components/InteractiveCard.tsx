@@ -68,7 +68,7 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
                 }} />
                 
                 <div style={{ position: 'relative', zIndex: 2, padding: '15px' }}>
-                    <h4 style={{ margin: 0, fontSize: '1.4em' }}>{title}</h4>
+                    <h4 style={{ margin: 0, fontSize: '1.3em' }}>{title}</h4>
                     <p style={{ fontSize: '0.9em', margin: '5px 0 0' }}>{description}</p>
                 </div>
             </Link>
@@ -100,7 +100,7 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
             }} />
             
             <div style={{ position: 'relative', zIndex: 2, padding: '15px' }}>
-                <h4 style={{ margin: 0, fontSize: '1.4em' }}>{title}</h4>
+                <h4 style={{ margin: 0, fontSize: '1.3em' }}>{title}</h4>
                 <p style={{ fontSize: '0.9em', margin: '5px 0 0' }}>{description}</p>
             </div>
         </div>

@@ -22,7 +22,7 @@ const buttonStyle: React.CSSProperties = {
   border: 'none',
   cursor: 'pointer',
   zIndex: 10, 
-  fontSize: '4em', // TAMANHO DA SETA
+  fontSize: '3em', // TAMANHO DA SETA
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -32,10 +32,10 @@ const buttonStyle: React.CSSProperties = {
 // Estilo para o título da seção
 const titleStyle: React.CSSProperties = {
   color: 'white',
-  fontSize: '1.7em',
+  fontSize: '1.5em',
   fontWeight: '700',
-  marginBottom: '15px',
-  marginTop: '35px',
+  marginBottom: '5px',
+  marginTop: '20px',
 };
 
 
