@@ -38,14 +38,14 @@ export default function NewsletterForm() {
     return (
         <section style={{
             maxWidth: '500px',
-            margin: '40px auto',
+            margin: '60px auto 40px',
             padding: '30px',
             backgroundColor: '#ffffff',
             borderRadius: '12px',
             boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
             textAlign: 'center'
         }}>
-            <h3 style={{ color: '#0070f3', marginBottom: '10px' }}>
+            <h3 style={{ color: '#0070f3', marginBottom: '20px' }}>
                 <i className="bi bi-shield-lock-fill"></i> Blindagem Digital
             </h3>
             <p style={{ color: '#666', fontSize: '0.95rem', marginBottom: '20px' }}>

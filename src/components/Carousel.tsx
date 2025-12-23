@@ -16,7 +16,7 @@ const buttonStyle: React.CSSProperties = {
   position: 'absolute',
   top: 0, 
   height: '100%', // Mantém esticado para cobrir toda a altura
-  width: '30px', // Mais fino
+  width: '24px', // Mais fino
   backgroundColor: 'rgba(0, 0, 0, 0.1)', // Maior transparência
   color: 'white', // COR DA SETA
   border: 'none',
@@ -32,7 +32,7 @@ const buttonStyle: React.CSSProperties = {
 // Estilo para o título da seção
 const titleStyle: React.CSSProperties = {
   color: 'white',
-  fontSize: '1.5em',
+  fontSize: '1.4em',
   fontWeight: '700',
   marginBottom: '5px',
   marginTop: '20px',
@@ -83,7 +83,7 @@ export default function Carousel({ title, children }: CarouselProps) {
 
   return (
     <section>
-      <h2 style={{...titleStyle, maxWidth: CAROUSEL_VIEWPORT_WIDTH, margin: '40px auto 15px'}}>{title}</h2>
+      <h2 style={{...titleStyle, maxWidth: CAROUSEL_VIEWPORT_WIDTH, margin: '35px auto 15px'}}>{title}</h2>
       
       <div style={buttonAreaStyle}>
         

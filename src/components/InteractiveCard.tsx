@@ -67,8 +67,8 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
                     background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)' 
                 }} />
                 
-                <div style={{ position: 'relative', zIndex: 2, padding: '15px' }}>
-                    <h4 style={{ margin: 0, fontSize: '1.3em' }}>{title}</h4>
+                <div style={{ position: 'relative', zIndex: 2, padding: '10px' }}>
+                    <h4 style={{ margin: 0, fontSize: '1em' }}>{title}</h4>
                     <p style={{ fontSize: '0.9em', margin: '5px 0 0' }}>{description}</p>
                 </div>
             </Link>
@@ -99,8 +99,8 @@ const InteractiveCard: React.FC<InteractiveCardProps> = ({
                 background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)' 
             }} />
             
-            <div style={{ position: 'relative', zIndex: 2, padding: '15px' }}>
-                <h4 style={{ margin: 0, fontSize: '1.3em' }}>{title}</h4>
+            <div style={{ position: 'relative', zIndex: 2, padding: '10px' }}>
+                <h4 style={{ margin: 0, fontSize: '1em' }}>{title}</h4>
                 <p style={{ fontSize: '0.9em', margin: '5px 0 0' }}>{description}</p>
             </div>
         </div>
