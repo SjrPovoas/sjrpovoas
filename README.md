@@ -28,7 +28,7 @@ Se encontrar algum problema ou tiver alguma dúvida, por favor compartilhe comig
 <details>
 <summary>✅ Pão de Queijo da Irá</summary>
 <ul>
-<li>🔧 Tecnologias Usadas: HTML, CSS e JAVASCRIPT</li>
+<li>🔧 Tecnologias Usadas: NEXT.JS, TAILWIND e JAVASCRIPT</li>
 <li>deploy realizado: https://paodequeijodaira.vercel.app</li>
 <li>PageSpeed Insights: (https://pagespeed.web.dev/analysis/https-paodequeijodaira-vercel-app/d1mwtkrzus?hl=pt_BR&form_factor=desktop)</li>  
 </ul>
@@ -52,6 +52,15 @@ Se encontrar algum problema ou tiver alguma dúvida, por favor compartilhe comig
 </ul>
 </details>
 
+<details>
+<summary>✅ Serralheria e Soldagens</summary>
+<ul>
+<li>🔧 Tecnologias Usadas: NEXT.JS, TAILWIND e JAVASCRIPT</li>
+<li>deploy realizado: https://serralheriaesoldagens.com.br</li>
+<li>PageSpeed Insights: (https://pagespeed.web.dev/analysis/https-serralheriaesoldagens-com-br/6i21uiso2b?hl=pt_BR&form_factor=desktop)</li>  
+</ul>
+</details>
+
 
 ---
 
@@ -68,12 +77,9 @@ Se encontrar algum problema ou tiver alguma dúvida, por favor compartilhe comig
     </a>
     <a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40" />
     </a>
-    <a href="https://www.python.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40" /> </a>
     <a href="https://reactjs.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40" />
     </a>
     <a href="https://reactnative.dev/" target="_blank"><img src="https://reactnative.dev/img/header_logo.svg" alt="reactnative" width="40" height="40" />
-    </a>
-    <a href="https://sass-lang.com" target="_blank"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sass/sass-original.svg" alt="sass" width="40" height="40" />
     </a>
     <a href="https://tailwindcss.com/" target="_blank"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40" />
     </a>
@@ -86,26 +92,79 @@ Se encontrar algum problema ou tiver alguma dúvida, por favor compartilhe comig
 
 Obrigado por visitar meu perfil e se por acaso gostar de algum repositório, marque-o clicando na ✨
 
----
-<p align="center">&COPY; 2025 SjrPovoaS</p>
 
----
 <!--🔄🌍🏛✍️🎓🤝🔐🦾🖥️🔥🏅🏆-->
 
+---
+## 🖥️ PARTE TÉCNICA
 
+## 1. CONFIGURANDO CONEXÃO VSCODE COM GITHUB
 
+**Para clonar esse Projeto, use:**
+
+```
+  git clone https://github.com/SjrPovoas/sjrpovoas.git
+```
+
+### 1.1 Verifique a configuração do Git
+Antes de fazer login, é importante verificar se você configurou seu nome de usuário e endereço de e-mail no Git.
+
+Você pode fazer isso com os seguintes comandos, substituindo "Seu Nome" e "seu@email.com" pelas suas informações reais:
+```
+  git config --global user.name  "Seu Nome"
+  git config --global user.email "usuario@email.com"
+```
+// Pra certificar que os dados foram salvos, use o seguinte comando:
+```
+  git config --list 
+```
 
 ---
+### 1.2 Fazendo o primeiro Commit
+
+1. Inicializar um novo repositório Git no diretório atual.
+```
+  git init
+```
+2. Adicionar todos os arquivos modificados e novos à área de stage.
+```
+  git add .
+```
+3. Criar um novo commit com os arquivos na área de stage e uma mensagem de commit.
+```
+  git commit -m "Mensagem de commit"
+```
+4. Adicionar um repositório remoto ao seu projeto.
+```
+  git remote add <nome> <URL do repositório>
+EX: git remote add https://github.com/SjrPovoas/sjrpovoas.git
+```
+5. Empurrar seus commits para o repositório remoto.
+```
+  git push -u origin main
+```
+
+## 2. Getting Started
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
 First, run the development server:
-# 1. Limpe a pasta de binários e locks
+### 2.1 Limpe a pasta de binários e locks
 rm -rf node_modules
 rm -f package-lock.json
-# 2. Instale todas as dependências do package.json
+### 2.2 Verifique a configuração do Git
+Antes de fazer login, é importante verificar se você configurou seu nome de usuário e endereço de e-mail no Git.
+Você pode fazer isso com os seguintes comandos, substituindo "Seu Nome" e "seu@email.com" pelas suas informações reais:
+```
+  git config --global user.name  "Seu Nome"
+  git config --global user.email "usuario@email.com"
+```
+// Pra certificar que os dados foram salvos, use o seguinte comando:
+```
+  git config --list 
+```
+### 2.3 Instale todas as dependências do package.json
 npm install
 ```bash
 npm run dev
@@ -113,9 +172,13 @@ npm run dev
 ```bash
 npm install --save-dev @types/estree
 ```
-# Apaga a pasta de cache do Next.js
+### 2.4 Apaga a pasta de cache do Next.js
+```
 rm -rf .next
 Ctrl+Shift+P :: TypeScript: Restart TS Server
+```
+
+### 2.5 Dependências para instalar
 ```bash
 npm install bootstrap
 ```
@@ -125,7 +188,9 @@ npm install bootstrap-icons
 ```bash
 npm install bcryptjs
 ```
+```bash
 npm install --save-dev @types/bcryptjs
+```
 ```bash
 npm install js-cookie
 ```
@@ -138,11 +203,15 @@ npm install mongoose
 ```bash
 npm install jsonwebtoken
 ```
+```bash
 npm install --save-dev @types/jsonwebtoken
+```
 ```bash
 npm install nodemailer
 ```
+```bash
 npm install --save-dev @types/nodemailer
+```
 
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -151,7 +220,7 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 3. Aprenda Mais
 
 To learn more about Next.js, take a look at the following resources:
 
@@ -160,14 +229,15 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 4. Deploy no Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 
-## Edit with VSCode
+## 5. Edite com VSCode
+
 ```
 git init
 ```
@@ -186,14 +256,19 @@ git remote add origin https://github.com/SjrPovoas/sjrpovoas.git
 ```
 git push -u origin main
 ```
-<br />
 
-```
-git remote add origin https://github.com/SjrPovoas/sjrpovoas.git
-```
-```
-git branch -M main
-```
-```
-git push -u origin main
-```
+<p>
+
+---
+## 6. CONHEÇA O TIME
+
+Nome | Título | Linkedin | X/Twitter | GitHub | Instagram
+---|---|---|---|---|---
+Silvio Póvoas | Desenvolvedor e Fundador | [sjrpovoas](https://www.linkedin.com/in/sjrpovoas) | [sjrpovoas](https://www.x.com/sjrpovoas) | [SjrPovoas](https://github.com/SjrPovoas) | [@silviopovoasjunior](https://www.instagram.com/silviopovoasjunior)
+
+
+***
+Última atualização: 15/05/2026 - 21:00
+<p align="center">
+  &COPY; 2025-2026 SjrPovoaS
+</p>
