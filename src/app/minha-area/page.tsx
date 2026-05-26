@@ -3,13 +3,11 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
-
-// Certifique-se de que esses arquivos existem em src/components/
+import React, { useState, useEffect } from 'react';
 import InteractiveCard from '@/components/InteractiveCard'; 
 import Carousel from '@/components/Carousel';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-
+import ElementosFlutuantes from '@/components/ElementosFlutuantes';
 
 // =======================================================================
 // INTERFACES E TIPOS
@@ -34,6 +32,7 @@ interface SocialIconProps {
     href: string;
     label: string;
     iconClass: string;
+    color: string;
 }
 
 // =======================================================================
@@ -82,9 +81,9 @@ const VideoModal: React.FC<VideoModalProps> = ({ url, onClose, title }) => {
     );
 };
 
-const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass }) => (
+const SocialIcon: React.FC<SocialIconProps> = ({ href, label, iconClass, color }) => (
     <Link href={href} target="_blank" style={{
-        color: '#aaa', fontSize: '1.5em', textDecoration: 'none', transition: 'color 0.3s'
+        color: color, fontSize: '1.5em', textDecoration: 'none', transition: 'color 0.3s'
     }} title={label}>
         <i className={`bi ${iconClass}`}></i>
     </Link>
@@ -102,14 +101,47 @@ export default function MinhaAreaPage() {
     const [modalOpen, setModalOpen] = useState(false);
     const [currentVideoUrl, setCurrentVideoUrl] = useState('');
     const [currentVideoTitle, setCurrentVideoTitle] = useState('');
+    
+    const [menuAberto, setMenuAberto] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(true);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detecta o tamanho da tela dinamicamente no lado do cliente
+    useEffect(() => {
+        const checarTamanhoTela = () => {
+            setIsMobile(window.innerWidth <= 768);
+            if (window.innerWidth > 768) {
+                setMenuAberto(false);
+            }
+        };
+
+        checarTamanhoTela();
+        window.addEventListener('resize', checarTamanhoTela);
+        return () => window.removeEventListener('resize', checarTamanhoTela);
+    }, []);
+
+    const alternarMenu = () => setMenuAberto(!menuAberto);
+    const alternarTema = () => setIsDarkMode(!isDarkMode);
+
+    // PALETA DE CORES DINÂMICA
+    const cores = {
+        bgPrincipal: isDarkMode ? '#000000' : '#f8f9fa',
+        bgHeader: isDarkMode ? '#0a0a0a' : '#ffffff',
+        bgCard: isDarkMode ? '#111113' : '#ffffff',
+        bgPortfolio: isDarkMode ? '#16161a' : '#e9ecef',
+        textoPrincipal: isDarkMode ? '#ffffff' : '#212529', 
+        textoSecundario: isDarkMode ? '#a0a0aa' : '#495057',
+        borda: isDarkMode ? '#1e1e22' : '#dee2e6',
+        destaque: '#0d6efd',
+    };
 
     // DADOS
     const trainingAreas: ContentItem[] = [
         { 
             title: 'Treinamento Rápido', 
             description: 'Como agem os ladrões e o que fazer se celular for roubado.', 
-            videoUrl: 'https://www.youtube.com/embed/H573VW6kCDw?autoplay=1', // Exemplo do vídeo que pesquisamos
-            thumbnail: 'url("https://img.youtube.com/vi/H573VW6kCDw/hqdefault.jpg")', // Miniatura do vídeo
+            videoUrl: 'https://www.youtube.com/embed/H573VW6kCDw?autoplay=1',
+            thumbnail: 'url("https://img.youtube.com/vi/H573VW6kCDw/hqdefault.jpg")',
             categoria: 'Treinamento Rápido - Como agem os ladrões e o que fazer se celular for roubado'
         },
         { 
@@ -146,35 +178,35 @@ export default function MinhaAreaPage() {
         { 
             title: 'Conteúdo VIP 1', 
             description: 'Episódio completo - Largados e Pelados 2025: Brasil A Tribo - S1 Eisódio 1.', 
-            videoUrl: 'https://www.youtube.com/embed/QXRDjxL5yJU?autoplay=1', // URL do usuário ajustada para embed
+            videoUrl: 'https://www.youtube.com/embed/QXRDjxL5yJU?autoplay=1',
             thumbnail: 'url("https://img.youtube.com/vi/QXRDjxL5yJU/hqdefault.jpg")',
             categoria: 'Conteúdo VIP - Episódio completo - Largados e Pelados 2025: Brasil A Tribo - S1 Eisódio 1'
         },
         { 
             title: 'Conteúdo VIP 2', 
             description: 'Episódio completo - Largados e Pelados 2025: Brasil Desafio Extremo - Episódio 6.', 
-            videoUrl: 'https://www.youtube.com/embed/MPtawaiTXsg?autoplay=1', // URL do usuário ajustada para embed
+            videoUrl: 'https://www.youtube.com/embed/MPtawaiTXsg?autoplay=1',
             thumbnail: 'url("https://img.youtube.com/vi/MPtawaiTXsg/hqdefault.jpg")',
             categoria: 'Conteúdo VIP - Episódio completo - Largados e Pelados 2025: Brasil Desafio Extremo - Episódio 6'
         },
         { 
             title: 'Conteúdo VIP 3', 
             description: 'Episódio completo - Largados e Pelados 2025: Brasil Desafio Extremo - Episódio 7.', 
-            videoUrl: 'https://www.youtube.com/embed/vqShbm2m6Ic?autoplay=1', // URL do usuário ajustada para embed
+            videoUrl: 'https://www.youtube.com/embed/vqShbm2m6Ic?autoplay=1',
             thumbnail: 'url("https://img.youtube.com/vi/vqShbm2m6Ic/hqdefault.jpg")',
             categoria: 'Conteúdo VIP - Episódio completo - Largados e Pelados 2025: Brasil Desafio Extremo - Episódio 7'
         },
         { 
             title: 'Conteúdo VIP 4', 
             description: 'Episódio completo - Largados e Pelados 2023: Brasil APAIXONADOS - 4 em 1.', 
-            videoUrl: 'https://www.youtube.com/embed/MW1Xj1WkP_I?autoplay=1', // URL do usuário ajustada para embed
+            videoUrl: 'https://www.youtube.com/embed/MW1Xj1WkP_I?autoplay=1',
             thumbnail: 'url("https://img.youtube.com/vi/MW1Xj1WkP_I/hqdefault.jpg")',
             categoria: 'Conteúdo VIP - Episódio completo - Largados e Pelados 2023: Brasil APAIXONADOS - 4 em 1'
         },
         { 
             title: 'Conteúdo VIP 5', 
             description: 'Episódio completo - Largados e Pelados 2025: Brasil Episódio 1 e 2.', 
-            videoUrl: 'https://www.youtube.com/embed/FZe9az4U9vc?autoplay=1', // URL do usuário ajustada para embed
+            videoUrl: 'https://www.youtube.com/embed/FZe9az4U9vc?autoplay=1',
             thumbnail: 'url("https://img.youtube.com/vi/FZe9az4U9vc/hqdefault.jpg")',
             categoria: 'Conteúdo VIP - Episódio completo - Largados e Pelados 2025: Brasil Episódio 1 e 2'
         }
@@ -189,12 +221,17 @@ export default function MinhaAreaPage() {
         linktree: 'https://linktr.ee/sjrpovoas',
     };
 
+    // Estilo dinâmico do card aplicando a cor correta da fonte de acordo com o tema
     const cardStyle: React.CSSProperties = {
-        flexShrink: 0, width: '300px', height: '350px', backgroundColor: '#444',
+        flexShrink: 0, width: '300px', height: '350px', 
+        backgroundColor: cores.bgCard,
         borderRadius: '8px', overflow: 'hidden', cursor: 'pointer', display: 'flex',
         flexDirection: 'column', justifyContent: 'flex-end', position: 'relative',
-        padding: '10px', textAlign: 'left', color: 'white', backgroundSize: 'cover',
+        padding: '10px', textAlign: 'left', 
+        color: cores.textoPrincipal, // Agora altera dinamicamente entre branco e preto
+        backgroundSize: 'cover',
         backgroundPosition: 'center',
+        border: `1px solid ${cores.borda}`
     };
 
     // FUNÇÕES
@@ -228,26 +265,33 @@ export default function MinhaAreaPage() {
     );
 
     return (
-        <main style={{ backgroundColor: '#000', minHeight: '100vh', padding: '20px', color: 'white' }}>
+        <main style={{ backgroundColor: cores.bgPrincipal, minHeight: '100vh', padding: '20px', color: cores.textoPrincipal, transition: 'background-color 0.3s, color 0.3s' }}>
             
             {/* HEADER */}
             <header style={{
                 maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between',
-                alignItems: 'center', paddingBottom: '20px', borderBottom: '1px solid #333'
+                alignItems: 'center', paddingBottom: '20px', borderBottom: `1px solid ${cores.borda}`
             }}>
-        {/*<Link href="/">
-          <img src="/assets/img/marca-SjrPovoaS.png" alt="Marca SjrPovoaS"
-            style={{ height: '40px', objectFit: 'contain', borderRadius: '48px' }} />
-        </Link>  }} className="card-hover-effect-blue"> */}
-        <div>
-          <Link href="/"
-            style={{
-              display: 'flex', justifyContent: 'space-between', padding: '10px 15px', fontSize: '1.5rem', backgroundColor: '#000000',
-              color: '#FFFFFF', textDecoration: 'none', borderRadius: '48px', fontWeight: 'bold'
-            }}>
-            SjrPovoaS
-          </Link>
-        </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#004aad', display: 'flex', justifyContent: 'center', alignItems: 'center', border: `1px solid ${cores.borda}`, overflow: 'hidden' }}>
+                            <Link href="/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                <img src="/assets/img/logo-SjrPovoaS.png" alt="Marca SjrPovoaS" style={{ height: '40px', width: '40px', objectFit: 'contain', borderRadius: '50%' }} />
+                            </Link>
+                        </div>
+                        <span style={{ fontSize: '1.3rem', color: cores.textoPrincipal, fontWeight: 'bold', letterSpacing: '0.5px' }}>
+                            SjrPovoaS
+                        </span>
+
+                    {/* Botão de Alternar Tema (Injetado para controle do Light/Dark Mode) */}
+                    <button onClick={alternarTema} style={{
+                        background: 'none', border: `1px solid ${cores.borda}`, padding: '8px 12px', borderRadius: '20px',
+                        cursor: 'pointer', color: cores.textoPrincipal, display: 'flex', alignItems: 'center', gap: '8px'
+                    }}>
+                        <i className={`bi ${isDarkMode ? 'bi-sun-fill' : 'bi-moon-fill'}`}></i>
+                        {isMobile ? '' : (isDarkMode ? 'Modo Claro' : 'Modo Escuro')}
+                    </button>
+                </div>
+
                 <Link href="/logout" style={{
                     padding: '10px 20px', backgroundColor: '#dc3545', color: 'white',
                     textDecoration: 'none', borderRadius: '5px'
@@ -265,20 +309,21 @@ export default function MinhaAreaPage() {
                     onChange={(e) => { setBusca(e.target.value); setSugestaoEnviada(false); }}
                     style={{
                         width: '100%', padding: '15px', borderRadius: '10px',
-                        border: 'none', fontSize: '16px', color: '#333'
+                        border: `1px solid ${cores.borda}`, fontSize: '16px', 
+                        color: cores.textoPrincipal, backgroundColor: cores.bgCard
                     }}
                 />
 
                 {busca !== '' && (
-                    <div style={{ marginTop: '20px', textAlign: 'left', background: '#111', padding: '20px', borderRadius: '10px' }}>
+                    <div style={{ marginTop: '20px', textAlign: 'left', background: cores.bgCard, padding: '20px', borderRadius: '10px', border: `1px solid ${cores.borda}` }}>
                         {resultados.length > 0 ? (
                             resultados.map((item, idx) => (
-                                <div key={idx} onClick={() => handleCardClick(item)} style={{ cursor: 'pointer', padding: '10px', borderBottom: '1px solid #333' }}>
+                                <div key={idx} onClick={() => handleCardClick(item)} style={{ cursor: 'pointer', padding: '10px', borderBottom: `1px solid ${cores.borda}`, color: cores.textoPrincipal }}>
                                     <strong>{item.title}</strong> {item.categoria && `- ${item.categoria}`}
                                 </div>
                             ))
                         ) : (
-                            <div>
+                            <div style={{ color: cores.textoPrincipal }}>
                                 <p>Não encontramos nada sobre "{busca}".</p>
                                 {!sugestaoEnviada ? (
                                     <button onClick={enviarSugestao} disabled={loadingSugestao} style={{ background: 'green', color: 'white', padding: '10px', borderRadius: '5px', border: 'none', cursor: 'pointer' }}>
@@ -295,7 +340,7 @@ export default function MinhaAreaPage() {
 
             <div style={{ textAlign: 'center', marginBottom: '40px' }}>
                 <h1 style={{ color: 'green' }}>✅ ACESSO EXCLUSIVO CONCEDIDO!</h1>
-                <p>Bem-vindo(a) à área exclusiva dos assinantes.</p>
+                <p style={{ color: cores.textoSecundario }}>Bem-vindo(a) à área exclusiva dos assinantes.</p>
             </div>
 
             {/* CARROSSEIS */}
@@ -327,44 +372,31 @@ export default function MinhaAreaPage() {
                 </Carousel>
             </div>
 
-      {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
-      <footer
-        style={{
-          maxWidth: '1200px', backgroundColor: '#444', margin: '80px auto 0', padding: '30px', borderTop: '1px solid #333',
-          color: '#888', fontSize: '0.9em', textAlign: 'center'
-        }}
-      >
-        <div style={{ marginBottom: '20px' }}>
-          <p style={{ margin: '0 0 10px 0', fontSize: '1em', color: 'white' }}>Siga-nos nas Redes Sociais:</p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
-            {/* Ícones do Bootstrap Icons */}
-            <SocialIcon href={socialMediaLinks.instagram} label="Instagram" iconClass="bi-instagram" />
-            <SocialIcon href={socialMediaLinks.facebook} label="Facebook" iconClass="bi-facebook" />
-            <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" />
-            <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" />
-            <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" />
-            <SocialIcon href={socialMediaLinks.linktree} label="Linktr.ee" iconClass="bi-tree-fill" />
-          </div>
-        </div>
+            {/* --- RODAPÉ COM MÍDIAS SOCIAIS --- */}
+            <footer style={{ maxWidth: '1200px', margin: '0 auto', padding: '40px 20px 30px 20px', borderTop: `1px solid ${cores.borda}`, color: cores.textoSecundario, fontSize: '0.85em', textAlign: 'center' }}>
+                <div style={{ marginBottom: '20px' }}>
+                    <p style={{ margin: '0 0 15px 0', fontSize: '0.95em', color: cores.textoPrincipal, fontWeight: '500' }}>Siga-nos nas Redes Sociais:</p>
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '25px' }}>
+                        <SocialIcon href={socialMediaLinks.instagram} label="Instagram" iconClass="bi-instagram" color={cores.textoSecundario} />
+                        <SocialIcon href={socialMediaLinks.facebook} label="Facebook" iconClass="bi-facebook" color={cores.textoSecundario} />
+                        <SocialIcon href={socialMediaLinks.twitter} label="Twitter / X" iconClass="bi-twitter-x" color={cores.textoSecundario} />
+                        <SocialIcon href={socialMediaLinks.linkedin} label="Linkedin" iconClass="bi-linkedin" color={cores.textoSecundario} />
+                        <SocialIcon href={socialMediaLinks.discord} label="Discord" iconClass="bi-discord" color={cores.textoSecundario} />
+                        <SocialIcon href={socialMediaLinks.linktree} label="Linktree" iconClass="bi-tree-fill" color={cores.textoSecundario} />
+                    </div>
+                </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '15px' }}>
-          <Link href="/termos-de-uso" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
-            Termos de Uso
-          </Link>
-          <Link href="/politica-de-privacidade" target="_blank" style={{ color: '#888', textDecoration: 'none' }}>
-            Política de Privacidade
-          </Link>
-        </div>
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '20px', fontSize: '12px' }}>
+                    <Link href="/termos-de-uso" target="_blank" style={{ color: cores.textoSecundario, textDecoration: 'none' }}>Termos de Uso</Link>
+                    <span style={{ color: cores.borda }}>|</span>
+                    <Link href="/politica-de-privacidade" target="_blank" style={{ color: cores.textoSecundario, textDecoration: 'none' }}>Política de Privacidade</Link>
+                </div>
 
-        <p style={{ margin: '10px 0 0' }}>
-          &copy; {new Date().getFullYear()} SjrPovoaS. Todos os direitos reservados.
-        </p>
-        <p style={{ margin: '5px 0 0', fontSize: '0.8em', color: '#777' }}>
-          Plataforma de acesso exclusivo.
-        </p>
-
-      </footer>
-      {/* --- FIM DO RODAPÉ --- */}
+                <p style={{ margin: '0', fontSize: '11px', color: cores.textoSecundario }}>
+                    &copy; 2025-{new Date().getFullYear()} SjrPovoaS. Todos os direitos reservados.
+                </p>
+            </footer>
+            {/* --- FIM DO RODAPÉ --- */}
 
             {/* MODAL DE VÍDEO */}
             {modalOpen && (
@@ -374,6 +406,7 @@ export default function MinhaAreaPage() {
                     onClose={() => setModalOpen(false)}
                 />
             )}
+            <ElementosFlutuantes />
         </main>
     );
 }

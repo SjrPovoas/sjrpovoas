@@ -51,17 +51,29 @@ export const newsletterSeguranca = (nome: string, linkDescadastrar: string) => {
                   <td style="padding: 40px 35px; color: #333333; line-height: 1.8;">
                       <h2 style="color: #0070f3; margin-top: 0; font-size: 22px;">📱 Seu celular está seguro?</h2>
                       <p style="font-size: 16px;">Olá, <strong>${nome}</strong>!</p>
-                      <p>Você já parou para pensar em quanto da sua vida está dentro do seu smartphone hoje? Contas bancárias, fotos e conversas importantes.</p>
+                      <p>Por que estou te enviando isso?</p>
                       <p>Na <strong>SjrPovoaS</strong>, nossa missão é garantir que você use a tecnologia sem riscos. Separamos 3 dicas essenciais para hoje:</p>
+                      <p>Meu nome é <strong>Silvio Povoas (SjrPovoaS)</strong>. Eu ajudo empreendedores a transformarem sua presença na internet em autoridade real.</p>
+                      <p>Sites lentos ou sem identidade afastam clientes. Eu desenvolvo soluções digitais, como as que criei para a Almeida Gomes Paisagismo, a Serralheria e Soldagens e o Pão de Queijo da Irá.</p>
+
+                      <p>Como prometido, aqui estão as 3 Dicas de Ouro para você blindar seu dispositivo agora mesmo:</p>
                       
                       <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
                           <ul style="padding-left: 5px; list-style: none; margin: 0;">
-                              <li style="margin-bottom: 12px;"><strong>🔐 Senhas:</strong> Nunca use a mesma senha para o e-mail e para o banco.</li>
-                              <li style="margin-bottom: 12px;"><strong>🛡️ 2FA:</strong> Ative a verificação em duas etapas (SMS ou App) em todas as suas contas.</li>
-                              <li style="margin-bottom: 0;"><strong>🌐 Redes Públicas:</strong> Evite Wi-Fi de locais públicos para acessar dados sensíveis.</li>
+                              <li style="margin-bottom: 12px;"><strong>🔐 CHIP:</strong> Proteja seu Chip (PIN do SIM): Se alguém roubar seu celular e colocar seu chip em outro aparelho, eles podem receber seus SMS de recuperação de banco. Ação: Vá em Configurações > Segurança > Bloqueio do cartão SIM e ative o PIN.</li>
+                              <li style="margin-bottom: 12px;"><strong>🛡️ NOTIFICAÇÕES:</strong> Esconda as Notificações: Não deixe que códigos de segurança apareçam na tela bloqueada. Ação: Nas configurações de tela/notificações, marque para "Ocultar conteúdo sensível" na tela de bloqueio.</li>
+                              <li style="margin-bottom: 0;"><strong>🌐 E-MAIL:</strong> O E-mail "Cofre": Nunca use como e-mail de recuperação uma conta que está logada no próprio celular. Ação: Crie um e-mail apenas para emergências e mantenha-o logado apenas em um dispositivo seguro em sua casa.</li>
                           </ul>
                       </div>
     
+                      <p>Quer profissionalizar sua presença digital hoje?</p>
+                      <p>Responda a este e-mail ou clique no botão abaixo para conversarmos no WhatsApp.</p>
+                       
+                      <p>Forte abraço,</p>
+                      
+                      <p>Silvio Povoas</p>
+                      <p>SjrPovoaS - Soluções Digitais</p>
+
                       <p style="margin-top: 35px; text-align: center;">
                           <a href="https://sjrpovoas.vercel.app/minha-area" style="background-color: #0070f3; color: #ffffff; padding: 16px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 16px; display: inline-block; box-shadow: 0 4px 6px rgba(0,112,243,0.3);">Proteger Meus Dados Agora</a>
                       </p>

@@ -1,0 +1,6 @@
+Sitemap: https://sjrpovoas.vercel.app/sitemap.xml
+
+User-agent: *
+Allow: /
+
+# This file was generated on Mon, 25 Mai 2025 20:00:35 +0000

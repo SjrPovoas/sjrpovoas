@@ -9,6 +9,12 @@ export default function NewsletterForm() {
     const [nome, setNome] = useState('');
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [mensagem, setMensagem] = useState('');
+    // -------------------------------------------------------------------
+    // ESTADOS (Gerenciamento do Formulário de Lead da Blindagem)
+    // -------------------------------------------------------------------
+    const [loadingLead, setLoadingLead] = useState(false);
+    const [leadEnviado, setLeadEnviado] = useState(false);
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -45,11 +51,10 @@ export default function NewsletterForm() {
             boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
             textAlign: 'center'
         }}>
-            <h3 style={{ color: '#0070f3', marginBottom: '20px' }}>
-                <i className="bi bi-shield-lock-fill"></i> Blindagem Digital
-            </h3>
-            <p style={{ color: '#666', fontSize: '0.95rem', marginBottom: '20px' }}>
-                Receba gratuitamente o guia <strong>3 Dicas de Ouro</strong> para proteger seu celular.
+            <i className="bi bi-shield-lock" style={{ color: '#0d6efd', fontSize: '2.5rem' }}></i>
+            <h2 style={{ fontSize: '1.6rem', fontWeight: '700', margin: '15px 0 8px 0', color: '#0d6efd' }}>Blindagem Digital</h2>
+            <p style={{ color: '#aaa', fontSize: '14px', margin: 0, lineHeight: '1.4' }}>
+                Receba gratuitamente no seu e-mail o guia <strong>3 Dicas de Ouro</strong> para proteger seu dispositivo contra invasões.
             </p>
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
@@ -69,22 +74,27 @@ export default function NewsletterForm() {
                     required
                     style={inputStyle}
                 />
-                <button 
-                    type="submit" 
-                    disabled={status === 'loading'}
+                {/* Botão com Cor de Ação Destacada / Vibrante para Maior Conversão */}
+                <button
+                    type="submit"
+                    disabled={loadingLead}
                     style={{
-                        ...buttonStyle,
-                        backgroundColor: status === 'loading' ? '#ccc' : '#0070f3'
+                        padding: '14px', borderRadius: '6px', border: 'none',
+                        backgroundColor: '#0d6efd', color: 'white', fontSize: '16px',
+                        fontWeight: 'bold', cursor: 'pointer', transition: 'all 0.2s',
+                        boxShadow: '0 4px 12px rgba(13, 110, 253, 0.4)'
                     }}
+                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#0b5ed7'}
+                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#0d6efd'}
                 >
-                    {status === 'loading' ? 'Enviando...' : 'Receber Dicas Gratuitas'}
+                    {loadingLead ? 'Processando envio...' : 'Receber Dicas Gratuitas'}
                 </button>
             </form>
 
             {mensagem && (
-                <p style={{ 
-                    marginTop: '20px', 
-                    fontSize: '0.9rem', 
+                <p style={{
+                    marginTop: '20px',
+                    fontSize: '0.9rem',
                     color: status === 'success' ? '#28a745' : '#dc3545',
                     fontWeight: '500'
                 }}>
@@ -92,6 +102,7 @@ export default function NewsletterForm() {
                 </p>
             )}
         </section>
+
     );
 }
 
