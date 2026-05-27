@@ -170,7 +170,7 @@ export default function LandingPagePrincipal() {
                     
                     {/* BRANDING */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
-                        <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#004aad', display: 'flex', justifyContent: 'center', alignItems: 'center', border: `1px solid ${cores.borda}`, overflow: 'hidden' }}>
+                        <div style={{ width: '42px', height: '42px', borderRadius: '50%', backgroundColor: '#000000', display: 'flex', justifyContent: 'center', alignItems: 'center', border: `1px solid ${cores.borda}`, overflow: 'hidden' }}>
                             <Link href="/" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                 <img src="/assets/img/logo-SjrPovoaS.png" alt="Marca SjrPovoaS" style={{ height: '40px', width: '40px', objectFit: 'contain', borderRadius: '50%' }} />
                             </Link>
